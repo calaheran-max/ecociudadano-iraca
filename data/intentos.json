@@ -1,0 +1,77 @@
+[
+  {
+    "sesion": "test1",
+    "nombre": "Ana",
+    "grado": "11°",
+    "cuestionarioId": "diego",
+    "respuestas": {
+      "d1": {
+        "opcion": 1,
+        "correcta": true
+      }
+    },
+    "createdAt": "2026-10-31T02:02:13.246Z",
+    "aciertos": 1,
+    "total": 8,
+    "porcentaje": 13,
+    "updatedAt": "2026-10-31T02:02:13.246Z"
+  },
+  {
+    "sesion": "3565c076-3208-4bd8-8900-d8ce06655c7b",
+    "nombre": "Miguel cala",
+    "grado": "11°",
+    "cuestionarioId": "jhoan-depablos",
+    "respuestas": {
+      "jd1": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "jd2": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "jd3": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "jd4": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "jd5": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "jd6": {
+        "opcion": 1,
+        "correcta": true
+      }
+    },
+    "createdAt": "2026-10-31T02:09:00.272Z",
+    "aciertos": 6,
+    "total": 8,
+    "porcentaje": 75,
+    "updatedAt": "2026-10-31T02:09:40.170Z"
+  },
+  {
+    "sesion": "a795a210-6805-4919-aa0b-2155a34d74c8",
+    "nombre": "Ana Lucía Rojas",
+    "grado": "11°",
+    "cuestionarioId": "daniela",
+    "respuestas": {
+      "dt1": {
+        "opcion": 1,
+        "correcta": true
+      },
+      "dt2": {
+        "opcion": 0,
+        "correcta": false
+      }
+    },
+    "createdAt": "2026-10-31T03:14:17.582Z",
+    "aciertos": 1,
+    "total": 8,
+    "porcentaje": 13,
+    "updatedAt": "2026-10-31T03:14:46.723Z"
+  }
+]

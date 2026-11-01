@@ -1,0 +1,12 @@
+NETLIFY — UN SOLO index.html
+============================
+Arrastra SOLO este index.html (o esta carpeta) a:
+https://app.netlify.com/projects/ecociudadano-iraca-guia8
+
+Cambios recientes:
+- Quitado bloque grande "Indicador de Impacto" con N=26/28
+- Quitado "Semáforo" y "Obligatorio Cuaderno" de la vista campaña
+- Quedan las 6 cajas Bento (incluye indicador técnico corto)
+- Glass iPhone en PC; en móvil fondo sólido (sin blur / sin pantallazo negro)
+
+Para API + calificación real en internet → usa Render (ver ../RENDER-PASOS.txt)

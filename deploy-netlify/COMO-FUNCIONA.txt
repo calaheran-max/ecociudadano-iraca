@@ -1,0 +1,37 @@
+UNA SOLA WEB EN INTERNET (sin pelear dos index.html)
+====================================================
+
+NO subas dos index.html a Netlify. Eso rompe el sitio.
+Sube SOLO la carpeta deploy-netlify (1 archivo index.html).
+
+Qué es cada cosa
+----------------
+A) INTERNET GLOBAL (sin tu PC) → Netlify
+   URL: https://ecociudadano-iraca-guia8.netlify.app
+   Archivo: deploy-netlify/index.html
+   Aquí conviven:
+     - Vista estudiante (campañas + encuesta demo)
+     - Panel docente (botón con PIN)
+   N=26 / N=28 = muestra OBJETIVO del cuaderno Guía 8
+   NO quiere decir "ya encuestaron a 26/28 personas".
+
+B) COLEGIO / API SEGURA (tu PC o un servidor Node)
+   URL local: http://localhost:3000
+   URL Wi‑Fi: http://192.168.101.75:3000
+   Archivos: public/index.html (alumnos) + public/admin.html (docente)
+   Calificación real en el servidor (no en el celular).
+
+Cómo republicar en Netlify (sin PC después)
+------------------------------------------
+1. Abre https://app.netlify.com/projects/ecociudadano-iraca-guia8/overview
+2. Arrastra SOLO deploy-netlify/index.html (o la carpeta deploy-netlify)
+3. Espera "Published"
+4. Prueba: https://ecociudadano-iraca-guia8.netlify.app
+   en PC y en celular (es el MISMO sitio; en celular el menú se adapta)
+
+PC vs celular
+-------------
+No son dos sitios. Es uno solo responsive:
+- En PC ves la lista de 12 a la izquierda.
+- En celular esa lista va al botón de usuarios (cajón inferior).
+- Panel docente es el mismo botón en ambos.

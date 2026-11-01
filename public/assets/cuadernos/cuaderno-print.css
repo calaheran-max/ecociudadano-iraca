@@ -1,0 +1,217 @@
+/* EcoCiudadano Iracá · Cuaderno Guía 8 · impresión institucional */
+:root {
+  --ink: #1a2332;
+  --blue: #1e3a5f;
+  --blue-soft: #e8eef5;
+  --line: #c5d0dc;
+  --rojo: #b91c1c;
+  --rojo-bg: #fde8e8;
+  --amarillo: #a16207;
+  --amarillo-bg: #fef3c7;
+  --verde: #166534;
+  --verde-bg: #dcfce7;
+  --paper: #ffffff;
+}
+* { box-sizing: border-box; }
+html { font-size: 11pt; }
+body {
+  margin: 0;
+  font-family: "Segoe UI", "Calibri", "Arial", sans-serif;
+  color: var(--ink);
+  background: #d9dee5;
+  line-height: 1.35;
+}
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: var(--blue);
+  color: #fff;
+  font-size: 0.9rem;
+}
+.toolbar a, .toolbar button {
+  color: #fff;
+  background: #2d4a6f;
+  border: 1px solid #4a6a90;
+  border-radius: 4px;
+  padding: 0.35rem 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  font: inherit;
+}
+.toolbar button.primary { background: #0f766e; border-color: #14b8a6; }
+.sheet {
+  max-width: 210mm;
+  margin: 1rem auto;
+  background: var(--paper);
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+  padding: 14mm 16mm;
+}
+.meta {
+  border-bottom: 2px solid var(--blue);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+.meta h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+  color: var(--blue);
+  letter-spacing: 0.02em;
+}
+.meta .sub { margin: 0; color: #4b5563; font-size: 0.85rem; }
+.meta .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.92rem;
+}
+.meta strong { color: var(--blue); }
+.page-break { break-before: page; page-break-before: always; margin-top: 1.5rem; padding-top: 1rem; border-top: 1px dashed var(--line); }
+.act-title {
+  margin: 0 0 0.65rem;
+  font-size: 1.05rem;
+  color: var(--blue);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.act-note { margin: 0 0 0.75rem; font-size: 0.82rem; color: #64748b; }
+table.semaforo {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  border: 1.5px solid var(--blue);
+}
+table.semaforo th {
+  background: var(--blue);
+  color: #fff;
+  padding: 0.45rem 0.5rem;
+  text-align: left;
+}
+table.semaforo td {
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.5rem;
+  vertical-align: top;
+}
+.badge {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.72rem;
+  padding: 0.15rem 0.4rem;
+  border-radius: 3px;
+  margin-bottom: 0.2rem;
+}
+.badge.rojo { background: var(--rojo-bg); color: var(--rojo); }
+.badge.amarillo { background: var(--amarillo-bg); color: var(--amarillo); }
+.badge.verde { background: var(--verde-bg); color: var(--verde); }
+.tr-rojo td:first-child { background: var(--rojo-bg); }
+.tr-amarillo td:first-child { background: var(--amarillo-bg); }
+.tr-verde td:first-child { background: var(--verde-bg); }
+.conclusion-box {
+  margin-top: 0.85rem;
+  border: 1px solid var(--blue);
+  background: var(--blue-soft);
+  padding: 0.65rem 0.85rem;
+  font-size: 0.85rem;
+}
+.conclusion-box ol { margin: 0.35rem 0 0; padding-left: 1.2rem; }
+.bento {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.55rem;
+}
+.bento .cell {
+  border: 1.5px solid #222;
+  min-height: 4.2rem;
+  padding: 0.55rem 0.65rem;
+  background: #fff;
+}
+.bento .cell h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #111;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.2rem;
+}
+.bento .cell p { margin: 0; font-size: 0.86rem; }
+.bento .cell .msg { font-style: italic; font-weight: 600; }
+table.impacto {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  border: 1px solid #9aa8b8;
+  border-radius: 6px;
+  overflow: hidden;
+}
+table.impacto th {
+  background: #1e3a5f;
+  color: #fff;
+  padding: 0.5rem 0.55rem;
+  text-align: left;
+}
+table.impacto td {
+  border: 1px solid #d1d9e3;
+  padding: 0.45rem 0.55rem;
+}
+table.impacto tbody tr:nth-child(even) { background: #f1f5f9; }
+table.impacto .num { text-align: center; font-variant-numeric: tabular-nums; white-space: nowrap; }
+table.impacto .var { text-align: center; font-weight: 700; color: var(--verde); }
+.hand {
+  margin-top: 0.5rem;
+}
+.hand h3 {
+  margin: 0.85rem 0 0.35rem;
+  font-size: 0.95rem;
+  color: #111;
+}
+.hand .lines {
+  border-top: 1px solid #333;
+}
+.hand .lines div {
+  border-bottom: 1px solid #333;
+  height: 1.55rem;
+}
+.pauta {
+  margin-top: 1rem;
+  border: 1px dashed #64748b;
+  background: #f8fafc;
+  padding: 0.7rem 0.85rem;
+  font-size: 0.8rem;
+}
+.pauta h4 {
+  margin: 0 0 0.4rem;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #475569;
+}
+.pauta p { margin: 0 0 0.45rem; }
+.pauta .hint { color: #64748b; font-size: 0.75rem; margin: 0; }
+.footer-sheet {
+  margin-top: 1.25rem;
+  font-size: 0.72rem;
+  color: #64748b;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  padding-top: 0.5rem;
+}
+@media print {
+  body { background: #fff; }
+  .toolbar { display: none !important; }
+  .sheet {
+    margin: 0;
+    box-shadow: none;
+    max-width: none;
+    padding: 10mm 12mm;
+  }
+  .page-break { margin-top: 0; padding-top: 0; border-top: none; }
+  a { color: inherit; text-decoration: none; }
+}
+@page { size: letter; margin: 10mm; }

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mascotas EcoCiudadano Iracá</title>
+<style>
+  body{margin:0;font-family:Inter,sans-serif;background:#0f172a;color:#fff;padding:30px}
+  h1{text-align:center}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px}
+  .card{border-radius:20px;padding:20px;text-align:center;background:rgba(255,255,255,.06);
+        border:1px solid rgba(255,255,255,.15);transition:transform .3s cubic-bezier(.16,1,.3,1)}
+  .card:hover{transform:translateY(-8px) scale(1.03)}
+  .card:hover svg{animation:bob 1s ease-in-out infinite}
+  svg{width:160px;height:160px}
+  @keyframes bob{50%{transform:translateY(-6px)}}
+  @media (prefers-reduced-motion:reduce){.card,.card:hover svg{animation:none;transition:none}}
+  h3{margin:8px 0 2px}p{margin:0;opacity:.75;font-size:14px}
+  .back{display:block;text-align:center;margin:0 0 18px;color:#7dffa8}
+</style>
+</head>
+<body>
+<a class="back" href="./index.html">Volver al centro de cuestionarios</a>
+<h1>Mascotas EcoCiudadano Iracá</h1>
+<div class="grid">
+
+<div class="card" style="border-color:#00FF9C">
+<svg viewBox="0 0 200 200">
+  <path d="M40 120 Q40 70 100 70 Q160 70 160 120 Q160 150 100 150 Q60 150 40 120Z" fill="#00FF9C"/>
+  <path d="M160 120 Q190 130 180 160 Q170 175 155 160" fill="none" stroke="#00FF9C" stroke-width="10"/>
+  <circle cx="70" cy="100" r="16" fill="#fff"/><circle cx="72" cy="100" r="7" fill="#050D0A"/>
+  <rect x="88" y="105" width="30" height="24" rx="4" fill="#00E5FF"/>
+  <path d="M93 105 V95 a10 10 0 0 1 20 0 V105" fill="none" stroke="#00E5FF" stroke-width="4"/>
+  <line x1="60" y1="150" x2="60" y2="170" stroke="#00FF9C" stroke-width="8"/>
+  <line x1="130" y1="150" x2="130" y2="170" stroke="#00FF9C" stroke-width="8"/>
+</svg>
+<h3>Byte</h3><p>Diego · Ciberseguridad</p></div>
+
+<div class="card" style="border-color:#CDB4DB">
+<svg viewBox="0 0 200 200">
+  <ellipse cx="100" cy="120" rx="65" ry="45" fill="#A2D2FF"/>
+  <path d="M100 85 L125 100 L125 130 L100 145 L75 130 L75 100Z" fill="#CDB4DB" stroke="#2B2D42" stroke-width="3"/>
+  <circle cx="170" cy="110" r="18" fill="#B5E48C"/><circle cx="176" cy="105" r="4" fill="#2B2D42"/>
+  <rect x="50" y="155" width="16" height="18" rx="6" fill="#B5E48C"/>
+  <rect x="134" y="155" width="16" height="18" rx="6" fill="#B5E48C"/>
+  <rect x="92" y="108" width="16" height="13" rx="2" fill="#2B2D42"/>
+  <path d="M95 108 V103 a5 5 0 0 1 10 0 V108" fill="none" stroke="#2B2D42" stroke-width="3"/>
+</svg>
+<h3>Lia</h3><p>Briget · Datos personales</p></div>
+
+<div class="card" style="border-color:#FFC300">
+<svg viewBox="0 0 200 200">
+  <ellipse cx="100" cy="110" rx="35" ry="25" fill="#1B4332"/>
+  <circle cx="135" cy="90" r="18" fill="#2D6A4F"/><circle cx="140" cy="86" r="4" fill="#fff"/>
+  <line x1="150" y1="92" x2="190" y2="96" stroke="#111" stroke-width="4"/>
+  <path d="M90 95 Q60 40 40 70 Q70 85 90 100Z" fill="#40916C"/>
+  <path d="M70 115 L30 135 L65 125Z" fill="#1B4332"/>
+  <rect x="85" y="118" width="34" height="24" rx="4" fill="#111"/>
+  <circle cx="102" cy="130" r="8" fill="#FFC300"/>
+</svg>
+<h3>Click</h3><p>Alexander · Fotografía responsable</p></div>
+
+<div class="card" style="border-color:#F28BB0">
+<svg viewBox="0 0 200 200">
+  <defs><filter id="acuarela"><feTurbulence baseFrequency=".05" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="6"/></filter></defs>
+  <g filter="url(#acuarela)" opacity=".9">
+  <ellipse cx="100" cy="115" rx="40" ry="50" fill="#A3C982"/>
+  <circle cx="100" cy="65" r="30" fill="#F28BB0"/>
+  <path d="M60 110 Q30 140 55 165 Q75 140 70 115Z" fill="#7FD1C7"/>
+  <path d="M120 62 Q140 70 125 85Z" fill="#FFD670"/>
+  </g>
+  <circle cx="95" cy="60" r="5" fill="#333"/>
+  <path d="M150 40 c5-10 20-10 20 2 c0 10-20 20-20 20 s-20-10-20-20 c0-12 15-12 20-2z" fill="#F28BB0"/>
+</svg>
+<h3>Floro</h3><p>Katerin · Redes y educación ambiental</p></div>
+
+<div class="card" style="border-color:#D9A441">
+<svg viewBox="0 0 200 200">
+  <defs><filter id="tinta"><feTurbulence baseFrequency=".04" numOctaves="2"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter></defs>
+  <g filter="url(#tinta)">
+  <ellipse cx="100" cy="115" rx="50" ry="60" fill="#D9A441" opacity=".8"/>
+  <ellipse cx="100" cy="130" rx="30" ry="35" fill="#F3EDE2"/>
+  </g>
+  <path d="M60 60 L70 40 L85 60 M140 60 L130 40 L115 60" stroke="#2B2B2B" stroke-width="4" fill="none"/>
+  <circle cx="80" cy="85" r="15" fill="#fff" stroke="#2B2B2B" stroke-width="3"/><circle cx="80" cy="85" r="6" fill="#2B2B2B"/>
+  <circle cx="120" cy="85" r="15" fill="#fff" stroke="#2B2B2B" stroke-width="3"/><circle cx="120" cy="85" r="6" fill="#2B2B2B"/>
+  <path d="M95 100 L100 110 L105 100Z" fill="#C0504D"/>
+  <circle cx="155" cy="140" r="16" fill="none" stroke="#6C8EA4" stroke-width="5"/>
+  <line x1="166" y1="152" x2="182" y2="170" stroke="#2B2B2B" stroke-width="6"/>
+</svg>
+<h3>Doc</h3><p>Sheyla · Información falsa</p></div>
+
+<div class="card" style="border-color:#2EC4B6">
+<svg viewBox="0 0 200 200">
+  <ellipse cx="100" cy="130" rx="60" ry="40" fill="#2EC4B6"/>
+  <circle cx="70" cy="90" r="20" fill="#2EC4B6"/><circle cx="130" cy="90" r="20" fill="#2EC4B6"/>
+  <circle cx="70" cy="88" r="10" fill="#fff"/><circle cx="70" cy="88" r="5" fill="#03045E"/>
+  <circle cx="130" cy="88" r="10" fill="#fff"/><circle cx="130" cy="88" r="5" fill="#03045E"/>
+  <path d="M80 130 Q100 145 120 130" stroke="#03045E" stroke-width="4" fill="none"/>
+  <path d="M160 40 Q175 65 160 75 Q145 65 160 40Z" fill="#0096C7"/>
+  <text x="153" y="70" font-size="10" fill="#fff">pH</text>
+</svg>
+<h3>Gota</h3><p>Jhoan Valencia · Cuidar el agua</p></div>
+
+<div class="card" style="border-color:#5BC0BE">
+<svg viewBox="0 0 200 200">
+  <path d="M20 100 Q60 60 100 95 Q140 60 180 100 Q140 90 100 120 Q60 90 20 100Z" fill="#5C677D"/>
+  <circle cx="100" cy="90" r="25" fill="#E0E1DD"/>
+  <path d="M80 70 L75 55 L90 68 M120 70 L125 55 L110 68" fill="#2B2D42"/>
+  <circle cx="90" cy="88" r="5" fill="#0B132B"/><circle cx="110" cy="88" r="5" fill="#0B132B"/>
+  <path d="M95 100 L100 112 L105 100Z" fill="#FCA311"/>
+  <circle cx="100" cy="160" r="22" fill="none" stroke="#5BC0BE" stroke-width="3"/>
+  <line x1="100" y1="132" x2="100" y2="188" stroke="#5BC0BE" stroke-width="2"/>
+  <line x1="72" y1="160" x2="128" y2="160" stroke="#5BC0BE" stroke-width="2"/>
+</svg>
+<h3>Vigía</h3><p>Jhoan de Pablos · Drones éticos</p></div>
+
+<div class="card" style="border-color:#39FF14">
+<svg viewBox="0 0 200 200">
+  <ellipse cx="110" cy="120" rx="55" ry="28" fill="#2D6A4F"/>
+  <circle cx="60" cy="105" r="22" fill="#40916C"/>
+  <circle cx="55" cy="100" r="6" fill="#0A0F0D"/>
+  <path d="M55 85 Q40 40 20 35 M65 85 Q70 40 90 30" stroke="#39FF14" stroke-width="3" fill="none"/>
+  <circle cx="20" cy="35" r="5" fill="#39FF14"/><circle cx="90" cy="30" r="5" fill="#39FF14"/>
+  <path d="M140 130 L170 95 L180 150" stroke="#2D6A4F" stroke-width="6" fill="none"/>
+  <polyline points="80,170 95,160 105,175 120,150 135,170 150,160" stroke="#39FF14" stroke-width="3" fill="none"/>
+</svg>
+<h3>Sensi</h3><p>Sebastian · Sensores ambientales</p></div>
+
+<div class="card" style="border-color:#FFB703">
+<svg viewBox="0 0 200 200">
+  <circle cx="60" cy="130" r="20" fill="#7F4F24"/>
+  <circle cx="100" cy="130" r="24" fill="#7F4F24"/>
+  <circle cx="145" cy="125" r="18" fill="#7F4F24"/>
+  <circle cx="150" cy="120" r="4" fill="#fff"/>
+  <path d="M150 108 L160 85 M140 108 L135 85" stroke="#7F4F24" stroke-width="3"/>
+  <line x1="80" y1="150" x2="70" y2="175" stroke="#7F4F24" stroke-width="4"/>
+  <line x1="100" y1="152" x2="100" y2="178" stroke="#7F4F24" stroke-width="4"/>
+  <line x1="120" y1="150" x2="130" y2="175" stroke="#7F4F24" stroke-width="4"/>
+  <path d="M60 40 Q100 20 120 60 Q100 100 70 85Z" fill="#2D6A4F"/>
+  <path d="M78 62 a14 14 0 1 0 18 8" fill="none" stroke="#FFB703" stroke-width="4"/>
+  <path d="M96 70 l6 2 l-2 6" fill="#FFB703"/>
+</svg>
+<h3>Reci</h3><p>Daniela · Suelos y abonos orgánicos</p></div>
+
+<div class="card" style="border-color:#FFB703">
+<svg viewBox="0 0 200 200">
+  <circle cx="150" cy="45" r="22" fill="#FFB703"/>
+  <g stroke="#FB8500" stroke-width="4">
+    <line x1="150" y1="12" x2="150" y2="2"/><line x1="183" y1="45" x2="193" y2="45"/>
+    <line x1="173" y1="22" x2="180" y2="15"/><line x1="173" y1="68" x2="180" y2="75"/>
+  </g>
+  <path d="M20 110 Q60 70 100 105 Q140 70 175 110 Q135 100 100 125 Q65 100 20 110Z" fill="#8D6E63"/>
+  <ellipse cx="100" cy="125" rx="22" ry="30" fill="#D7CCC8"/>
+  <circle cx="100" cy="90" r="20" fill="#5D4037"/>
+  <circle cx="93" cy="86" r="5" fill="#FFB703"/><circle cx="93" cy="86" r="2" fill="#023047"/>
+  <circle cx="107" cy="86" r="5" fill="#FFB703"/><circle cx="107" cy="86" r="2" fill="#023047"/>
+  <path d="M96 96 L104 96 L100 106Z" fill="#FB8500"/>
+  <rect x="78" y="155" width="44" height="26" rx="3" fill="#023047" stroke="#8ECAE6" stroke-width="2"/>
+  <line x1="100" y1="155" x2="100" y2="181" stroke="#8ECAE6" stroke-width="2"/>
+  <line x1="78" y1="168" x2="122" y2="168" stroke="#8ECAE6" stroke-width="2"/>
+  <path d="M104 128 L94 142 L101 142 L96 154 L108 138 L101 138Z" fill="#FFB703"/>
+</svg>
+<h3>Solaris</h3><p>Rous · Energías renovables</p></div>
+
+<div class="card" style="border-color:#588157">
+<svg viewBox="0 0 200 200">
+  <path d="M10 185 Q30 120 50 185Z" fill="#3A5A40"/>
+  <path d="M150 185 Q170 110 195 185Z" fill="#3A5A40"/>
+  <ellipse cx="110" cy="120" rx="55" ry="32" fill="#4A4E69"/>
+  <ellipse cx="60" cy="108" rx="24" ry="20" fill="#4A4E69"/>
+  <path d="M40 112 Q22 118 24 135 Q30 128 42 122Z" fill="#4A4E69"/>
+  <circle cx="58" cy="102" r="4" fill="#fff"/><circle cx="58" cy="102" r="2" fill="#111"/>
+  <ellipse cx="68" cy="88" rx="5" ry="8" fill="#22223B"/>
+  <g stroke="#22223B" stroke-width="10" stroke-linecap="round">
+    <line x1="75" y1="145" x2="75" y2="172"/><line x1="100" y1="148" x2="100" y2="175"/>
+    <line x1="130" y1="148" x2="130" y2="175"/><line x1="152" y1="142" x2="152" y2="170"/>
+  </g>
+  <path d="M110 60 Q125 40 140 60 Q125 75 110 60Z" fill="#A3B18A"/>
+  <line x1="125" y1="72" x2="125" y2="90" stroke="#588157" stroke-width="3"/>
+</svg>
+<h3>Flora</h3><p>Alison · Biodiversidad y corredores</p></div>
+
+<div class="card" style="border-color:#DDA15E">
+<svg viewBox="0 0 200 200">
+  <circle cx="160" cy="70" r="16" fill="#606C38"/>
+  <rect x="157" y="84" width="6" height="40" fill="#7F4F24"/>
+  <circle cx="148" cy="62" r="12" fill="#606C38"/><circle cx="172" cy="60" r="12" fill="#606C38"/>
+  <ellipse cx="95" cy="130" rx="50" ry="30" fill="#DDA15E"/>
+  <circle cx="60" cy="100" r="26" fill="#BC6C25"/>
+  <path d="M40 82 Q22 60 30 50 Q38 70 48 78Z" fill="#FEFAE0"/>
+  <path d="M80 82 Q98 60 90 50 Q82 70 72 78Z" fill="#FEFAE0"/>
+  <circle cx="52" cy="96" r="4" fill="#283618"/><circle cx="68" cy="96" r="4" fill="#283618"/>
+  <ellipse cx="60" cy="114" rx="14" ry="9" fill="#FEFAE0"/>
+  <circle cx="55" cy="114" r="2" fill="#283618"/><circle cx="65" cy="114" r="2" fill="#283618"/>
+  <g stroke="#BC6C25" stroke-width="9" stroke-linecap="round">
+    <line x1="70" y1="155" x2="70" y2="180"/><line x1="120" y1="155" x2="120" y2="180"/>
+  </g>
+  <path d="M145 125 Q160 120 158 140" stroke="#BC6C25" stroke-width="4" fill="none"/>
+  <path d="M0 185 H200" stroke="#606C38" stroke-width="6"/>
+</svg>
+<h3>Tauro</h3><p>Duvan · Silvopastoril y ganadería regenerativa</p></div>
+
+</div>
+</body>
+</html>

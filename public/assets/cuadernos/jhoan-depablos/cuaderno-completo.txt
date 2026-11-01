@@ -1,0 +1,150 @@
+================================================================================
+ECOCIUDADANO IRACÁ · GUÍA DE APRENDIZAJE Nº 8
+Cuaderno institucional — listo para impresión / transcripción
+================================================================================
+Estudiante : Jhoan de Pablos
+Mascota    : Vigía, el murciélago
+Línea      : Monitoreo con Drones (RPAS)
+Perfil     : Tecnológico / Ciberseguridad
+Población  : 26 encuestados (control estricto)
+Docente    : Lidya Amanda Ladino Cristiano
+I.E. Iracá · San Martín, Meta · Grado 11°
+================================================================================
+ORDEN OBLIGATORIO EN EL CUADERNO
+  1. Actividad 1 — Semáforo Digital Ley 1581 (3 niveles: ROJO / AMARILLO / VERDE)
+  2. Actividad 2 — Ficha de Campaña Bento Grid (6 componentes del micrositio)
+  3. Actividad 3 — Tabla de Indicador Simple de Impacto (métricas reales N=26)
+  4. Actividad 4 — Conclusión y Reflexión (líneas en blanco + pauta orientativa)
+Plantillas visuales de apoyo:
+  ../plantillas/01-semaforo-ley1581.jpg
+  ../plantillas/02-ficha-bento-guia8.jpg
+  ../plantillas/03-tabla-indicador-impacto.jpg
+  ../plantillas/01-conclusion-reflexion-lineas.jpg
+================================================================================
+
+================================================================================
+ACTIVIDAD 1 — SEMÁFORO DIGITAL Y LEY 1581 DE 2012
+(Base institucional IDÉNTICA para los 12 cuadernos · 3 niveles)
+Institución Educativa Iracá · San Martín, Meta
+Docente: Lidya Amanda Ladino Cristiano · Guía de Aprendizaje Nº 8
+================================================================================
+
+MATRIZ LEGAL INSTITUCIONAL (copiar al cuaderno)
+
+| Nivel / Color              | Situación institucional evaluada                                                                 | Fundamento técnico y legal (Ley 1581 / ciberseguridad)                                                      |
+|----------------------------|---------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| ROJO (Prohibido / alto riesgo) | Publicar o difundir fotografías del grupo escolar o salidas de campo en redes sin autorización explícita. | Violación del derecho a la privacidad, al habeas data y a la protección de datos personales de menores.   |
+| ROJO (Prohibido / alto riesgo) | Compartir credenciales o contraseñas del correo institucional y plataformas técnicas con terceros.       | Vulnerabilidad crítica, pérdida de control del perfil académico y riesgo de suplantación.                 |
+| AMARILLO (Precaución / zona gris) | Conectarse a Wi-Fi públicas u abiertas para enviar datos de monitoreo sin cifrado.                    | Riesgo de interceptación (sniffing). Exige conexiones seguras o redes privadas.                           |
+| AMARILLO (Precaución / zona gris) | Reenviar alertas o noticias ambientales en chats escolares sin leer ni validar la información.        | Riesgo de desinformación o pánico. Pausar y comprobar antes de compartir.                                 |
+| VERDE (Permitido / seguro) | Consultar fuentes oficiales (IDEAM, Alcaldía, directivas I.E. Iracá) antes de divulgar cifras o noticias. | Verificación responsable y combate activo a las fake news.                                                |
+| VERDE (Permitido / seguro) | Anonimizar datos identificables al tabular encuestas o registros técnicos de campo.                      | Cumplimiento del protocolo ético de recolección de datos e investigación académica.                       |
+
+CONCLUSIÓN GENERAL DEL SEMÁFORO (4 líneas — transcribir al cuaderno)
+--------------------------------------------------------------------------------
+1. En la I.E. Iracá es imperativo adoptar una cultura de responsabilidad digital
+   que combine la protección estricta de la información personal (Ley 1581) con
+   el análisis crítico previo a cualquier publicación o reenvío de datos.
+2. El pensamiento crítico y la verificación de fuentes oficiales protegen a la
+   comunidad escolar frente a la desinformación ambiental y al uso indebido de
+   datos personales o institucionales.
+3. El consentimiento informado, el habeas data y las prácticas de ciberseguridad
+   no son opcionales: son requisitos éticos y legales del trabajo técnico escolar.
+4. Cada estudiante asume el deber de clasificar sus acciones digitales en rojo,
+   amarillo o verde antes de actuar en redes, plataformas o salidas de campo.
+
+
+================================================================================
+ACTIVIDAD 2 — FICHA DE CAMPAÑA (BENTO GRID)
+Núcleo técnico único del proyecto · transcribir en las 6 cajas
+Plantilla de apoyo: ../plantillas/02-ficha-bento-guia8.jpg
+================================================================================
+
+PROBLEMA
+Uso de drones sin respeto a privacidad, fauna y normatividad aeronáutica en monitoreo.
+
+PÚBLICO OBJETIVO
+Estudiantes de media técnica y operadores escolares de RPAS.
+
+COMPORTAMIENTO A PROMOVER
+Volar en VLOS, evitar zonas sensibles y planificar traslapes sin estrés a la fauna.
+
+CANAL DE DIFUSIÓN
+Plataforma EcoCiudadano y demostraciones de vuelo controladas.
+
+MENSAJE PRINCIPAL DE IMPACTO (cursiva en el cuaderno)
+*Monitorea desde el aire sin invadir ni ahuyentar.*
+
+INDICADOR DE IMPACTO TÉCNICO
+Porcentaje de estudiantes que reconocen límites éticos y normativos del vuelo escolar.
+
+================================================================================
+ACTIVIDAD 3 — TABLA DE INDICADOR SIMPLE DE IMPACTO
+Población de control: 26 encuestados · Perfil: Tecnológico / Ciberseguridad
+Canal usado: Sesión de vuelo seguro en el campo deportivo con lista de chequeo ética.
+Plantilla de apoyo: ../plantillas/03-tabla-indicador-impacto.jpg
+================================================================================
+
+| Indicador específico evaluado                                  |   Antes  | Después  | Variación |
+|----------------------------------------------------------------|----------|----------|-----------|
+| Operadores que aplican checklist previa al vuelo (VLOS y zonas) |   3 / 26 |  25 / 26 |    +22 |
+| Estudiantes que respetan los límites de privacidad desde el aire |   5 / 26 |  24 / 26 |    +19 |
+| Personas evaluadas en la demostración aérea                    |   0 / 26 |  26 / 26 |    +26 |
+
+Nota: métricas propias del indicador de Jhoan de Pablos; no duplicar tablas genéricas.
+
+================================================================================
+ACTIVIDAD 4 — CONCLUSIÓN Y REFLEXIÓN PERSONAL
+Escribir A MANO sobre las líneas. La pauta orienta; NO se pega literal.
+Plantilla de líneas: ../plantillas/01-conclusion-reflexion-lineas.jpg
+================================================================================
+
+CONCLUSIÓN
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+
+REFLEXIÓN PERSONAL
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+________________________________________________________________________
+
+--------------------------------------------------------------------------------
+PAUTA TÉCNICA ORIENTATIVA (5–7 líneas de guía · solo para orientar la redacción)
+--------------------------------------------------------------------------------
+CONCLUSIÓN (escribir a mano): Operar RPAS bajo la normativa vigente previene perturbaciones al ecosistema y respeta predios vecinos. Relacionar VLOS, checklist y zonas sensibles.
+
+REFLEXIÓN (escribir a mano): El uso de tecnología aérea debe guiarse por la seguridad operativa y la ética territorial; no invadir privacidad ni ahuyentar fauna.
+
+Criterios de calidad al escribir a mano:
+- Lenguaje formal académico (SENA / I.E. Iracá), sin adornos ni jerga decorativa.
+- Vincular el indicador medido (N=26) con el cambio de comportamiento observado.
+- Citar la Ley 1581 o la ética técnica de su línea cuando corresponda.
+- Cerrar con un compromiso concreto y verificable en la institución o el territorio.
+
+================================================================================
+Fin del cuaderno · Jhoan de Pablos · EcoCiudadano Iracá · Guía 8
+================================================================================

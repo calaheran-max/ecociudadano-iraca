@@ -1,0 +1,29 @@
+[
+  {
+    "sesion": "01a95beb-cc18-4cdf-a8c9-a698fbcd0fdb",
+    "nombre": "Ana Lucía Rojas",
+    "grado": "11°",
+    "cuestionarioId": "katerin",
+    "compromiso": "Me comprometo a publicar con fuente, a no exponer a compañeros y a no replicar retos que dañen un ecosistema o a una persona.",
+    "notas": "",
+    "createdAt": "2026-10-31T02:49:33.699Z"
+  },
+  {
+    "sesion": "3565c076-3208-4bd8-8900-d8ce06655c7b",
+    "nombre": "Miguel cala",
+    "grado": "11°",
+    "cuestionarioId": "jhoan-depablos",
+    "compromiso": "Me comprometo a volar solo con permiso, a no perseguir fauna ni personas y a no publicar imágenes que identifiquen viviendas.",
+    "notas": "",
+    "createdAt": "2026-10-31T02:09:50.701Z"
+  },
+  {
+    "sesion": "bb014271-6cd6-482b-bd43-46988ad37d9e",
+    "nombre": "Miguel cala",
+    "grado": "11°",
+    "cuestionarioId": "jhoan-depablos",
+    "compromiso": "Me comprometo a volar solo con permiso, a no perseguir fauna ni personas y a no publicar imágenes que identifiquen viviendas.",
+    "notas": "",
+    "createdAt": "2026-10-31T02:14:59.731Z"
+  }
+]

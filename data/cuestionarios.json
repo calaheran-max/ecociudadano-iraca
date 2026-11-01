@@ -1,0 +1,1430 @@
+[
+  {
+    "id": "diego",
+    "slug": "diego",
+    "titulo": "Ciberseguridad en el monitoreo ambiental",
+    "autor": "Diego Jimenez",
+    "tema": "Ciberseguridad",
+    "ancla": "Estonia · llave digital sobre una hoja",
+    "descripcion": "Una estación escolar que mide agua o aire también es un sistema informático: si alguien entra sin permiso, el dato ambiental deja de ser confiable.",
+    "compromiso": "Me comprometo a no compartir claves, a no conectar dispositivos desconocidos y a reportar cualquier acceso sospechoso a la estación de monitoreo.",
+    "theme": "diego",
+    "colorIdentidad": "#00FF9C",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "d1",
+        "enunciado": "La estación de humedad del colegio sigue con la clave de fábrica. Un compañero propone dejarla así “para que todos consulten”. La decisión que protege la evidencia es:",
+        "opciones": [
+          "Publicar la clave en el grupo del curso",
+          "Cambiar la clave, activar un segundo factor y entregar acceso solo al equipo responsable",
+          "Escribir la clave en la carcasa del sensor",
+          "Apagar la estación para evitar riesgos"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Una clave por defecto es una puerta abierta. El principio de mínimo privilegio limita quién entra y deja un rastro de responsabilidad."
+      },
+      {
+        "id": "d2",
+        "enunciado": "Aparece una memoria USB junto al computador que guarda los muestreos. Nadie la reconoce. Lo técnicamente correcto es:",
+        "opciones": [
+          "Conectarla para ver si hay fotos de la salida",
+          "No conectarla y entregarla al docente responsable",
+          "Formatearla en ese mismo equipo",
+          "Llevarla a casa y revisarla con antivirus"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Un USB desconocido puede ejecutar código al conectarse. Aislar el dispositivo evita contaminar la bitácora ambiental."
+      },
+      {
+        "id": "d3",
+        "enunciado": "Llega un correo: “Actualice ya el firmware del sensor” desde un dominio parecido al oficial. El primer paso de verificación es:",
+        "opciones": [
+          "Hacer clic, porque el asunto habla de la estación",
+          "Confirmar el aviso en el canal oficial del fabricante o con el docente, sin usar el enlace del correo",
+          "Reenviar el correo a todo el curso",
+          "Responder con el usuario y la clave para “confirmar identidad”"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El phishing se disfraza de urgencia. La fuente se comprueba por un canal distinto al mensaje que la pide."
+      },
+      {
+        "id": "d4",
+        "enunciado": "Van a publicar el informe mensual de calidad del aire. ¿Qué dato no debe salir en la versión pública?",
+        "opciones": [
+          "Promedio de material particulado y la unidad de medida",
+          "Fecha, lugar general del muestreo y número de lecturas",
+          "Usuarios, contraseñas y dirección IP interna de la estación",
+          "La limitación del sensor y el margen de error"
+        ],
+        "respuesta_correcta": 2,
+        "retroalimentacion": "Transparencia no es publicar credenciales. El informe muestra el hallazgo; las llaves se quedan en custodia del equipo."
+      },
+      {
+        "id": "d5",
+        "enunciado": "Dos estudiantes comparten la misma cuenta de la plataforma de sensores. El riesgo principal es:",
+        "opciones": [
+          "Que el gráfico se vea más bonito",
+          "Que no se pueda saber quién cambió un dato o una configuración",
+          "Que el sensor mida mejor",
+          "Que el colegio gaste menos energía"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las cuentas compartidas borran la trazabilidad. Sin responsable, un dato alterado no se puede auditar."
+      },
+      {
+        "id": "d6",
+        "enunciado": "El portátil de campo se conecta a un Wi-Fi abierto llamado “Colegio-Gratis”. Para subir la bitácora, lo más seguro es:",
+        "opciones": [
+          "Usar esa red porque carga rápido",
+          "Esperar la red autorizada del colegio o una conexión conocida",
+          "Enviar las claves por el chat de esa red",
+          "Desactivar el bloqueo de pantalla para trabajar más rápido"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Una red abierta permite interceptar tráfico. Los datos de monitoreo se transmiten solo por un canal de confianza."
+      },
+      {
+        "id": "d7",
+        "enunciado": "Alguien pide “solo una foto” de la pantalla donde se ven usuarios de la estación. Debes:",
+        "opciones": [
+          "Enviarla si promete no reenviarla",
+          "Negarte y recordar que una captura también filtra accesos",
+          "Taparle los nombres con el dedo y enviarla igual",
+          "Publicarla en la historia del curso"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Una captura es una copia del secreto. Si salió de la pantalla, ya no controlas quién la tiene."
+      },
+      {
+        "id": "d8",
+        "enunciado": "Después de una práctica, el equipo debe cerrar la sesión de la estación. Esa rutina sirve para:",
+        "opciones": [
+          "Borrar los datos ambientales del mes",
+          "Evitar que la siguiente persona herede un acceso abierto",
+          "Mejorar la precisión del sensor",
+          "Cumplir un trámite sin efecto técnico"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Cerrar sesión es control de acceso. Una sesión abierta es una invitación a modificar evidencia sin dejar intención clara."
+      }
+    ],
+    "ficha": {
+      "problema": "Vulnerabilidad de nodos IoT y filtración de credenciales en estaciones de monitoreo ambiental escolar.",
+      "publico": "Estudiantes de media técnica y comunidad académica de la I.E. Iracá.",
+      "comportamiento": "Proteger claves de acceso, actualizar firmware y reportar accesos sospechosos a la estación.",
+      "mensaje": "Cifra tus nodos y asegura el dato ambiental.",
+      "canal": "Plataforma EcoCiudadano Iracá y socialización en el aula.",
+      "indicador": "Número de estudiantes que identifican prácticas seguras en monitoreo conectado."
+    }
+  },
+  {
+    "id": "briget",
+    "slug": "briget",
+    "titulo": "Datos personales en investigaciones escolares",
+    "autor": "Briget Ramirez",
+    "tema": "Datos personales",
+    "ancla": "Suiza · carpeta de campo sellada",
+    "descripcion": "Investigar el territorio no autoriza a coleccionar vidas ajenas. La Ley 1581 pide finalidad, mínimo de datos y una salida para quien quiera ser olvidado.",
+    "compromiso": "Me comprometo a recolectar solo los datos necesarios, a pedir autorización y a no publicar nombres, fotos ni contactos de otras personas.",
+    "theme": "briget",
+    "colorIdentidad": "#A2D2FF",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "b1",
+        "enunciado": "El curso quiere saber cuántas casas del barrio separan residuos. El dato suficiente para el informe es:",
+        "opciones": [
+          "Nombre, cédula, teléfono y dirección de cada familia",
+          "Un conteo por manzana o grado, sin identificar a la persona",
+          "Foto de la fachada con el número visible",
+          "Lista de familiares y su ocupación"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Minimización: si el objetivo es una cifra, la identidad sobra. Menos datos, menos daño si el archivo se pierde."
+      },
+      {
+        "id": "b2",
+        "enunciado": "Una foto de la salida muestra el rostro de un compañero menor de edad. Antes de usarla en la campaña:",
+        "opciones": [
+          "Se publica porque el fin es educativo",
+          "Se pide autorización al acudiente y al docente, o se excluye el rostro",
+          "Se etiqueta a toda la familia",
+          "Se sube si el grupo tiene pocos seguidores"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La imagen de un menor es un dato personal. El fin pedagógico no reemplaza la autorización."
+      },
+      {
+        "id": "b3",
+        "enunciado": "Un vecino pide que borren su nombre de la encuesta de olores del río. El curso debe:",
+        "opciones": [
+          "Negarse porque “el dato ya es del colegio”",
+          "Avisar al docente y suprimir el registro de esa persona",
+          "Publicar que pidió la eliminación",
+          "Conservar una copia “por si acaso” en un chat"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La Ley 1581 incluye el derecho de supresión. La finalidad terminó para esa persona cuando ella lo pide."
+      },
+      {
+        "id": "b4",
+        "enunciado": "Guardar la base de la encuesta en un grupo abierto de mensajería implica:",
+        "opciones": [
+          "Más transparencia para la comunidad",
+          "Que cualquiera pueda copiar nombres y respuestas sin control",
+          "Que los datos queden cifrados automáticamente",
+          "Que el docente ya no es responsable"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Un chat no es un archivo de custodia. Quien recibe el archivo puede reenviarlo sin límite."
+      },
+      {
+        "id": "b5",
+        "enunciado": "Para una entrevista a una recicladora del barrio, el consentimiento claro incluye:",
+        "opciones": [
+          "Empezar a grabar y explicar después",
+          "Decir para qué se usará, quién la verá y que puede negarse",
+          "Ofrecer una nota a cambio de todos sus datos",
+          "Publicar el audio completo con su dirección"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Autorizar es entender el uso. Sin finalidad explicada, la firma o el “sí” no alcanza."
+      },
+      {
+        "id": "b6",
+        "enunciado": "El informe necesita un ejemplo de una familia. La forma que respeta la privacidad es:",
+        "opciones": [
+          "Poner nombre y apellido reales “para que suene verdadero”",
+          "Usar un caso agregado o un seudónimo acordado",
+          "Publicar la cédula y tachar solo el primer dígito",
+          "Dejar el audio de WhatsApp incrustado"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Un caso puede enseñar sin señalar. El seudónimo y el dato agregado reducen la reidentificación."
+      },
+      {
+        "id": "b7",
+        "enunciado": "Un compañero descarga la encuesta “para trabajar en casa” en su computador personal. El riesgo es:",
+        "opciones": [
+          "Ninguno, porque es del mismo curso",
+          "Que el archivo quede fuera de la custodia del proyecto y se mezcle con otros datos",
+          "Que la encuesta se vuelva anónima sola",
+          "Que mejore la estadística"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Sacar la base del equipo del proyecto multiplica copias. Cada copia es otra puerta."
+      },
+      {
+        "id": "b8",
+        "enunciado": "Al cerrar la campaña, lo coherente con la Ley 1581 es:",
+        "opciones": [
+          "Dejar los formularios en el salón “por si el otro año sirven”",
+          "Entregar la custodia al docente y eliminar copias que ya no tienen finalidad",
+          "Subir el Excel a una red pública",
+          "Imprimir la lista de nombres y pegarla en la cartelera"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Los datos viven mientras existe la finalidad. Cuando la campaña termina, la copia de más también termina."
+      }
+    ],
+    "ficha": {
+      "problema": "Exposición de datos personales y ubicaciones sensibles en investigaciones y salidas ecológicas escolares.",
+      "publico": "Estudiantes, docentes y equipos de investigación escolar.",
+      "comportamiento": "Anonimizar datos, pedir consentimiento informado y aplicar minimización (Ley 1581).",
+      "mensaje": "Sin consentimiento no hay dato personal en la bitácora.",
+      "canal": "Módulo digital EcoCiudadano y talleres de habeas data ambiental.",
+      "indicador": "Porcentaje de estudiantes que rechazan publicar datos identificables sin autorización."
+    }
+  },
+  {
+    "id": "alexander",
+    "slug": "alexander",
+    "titulo": "Fotografías responsables en salidas de campo",
+    "autor": "Alexander Sanchez",
+    "tema": "Fotos de campo",
+    "ancla": "Costa Rica · cámara con visor en la selva",
+    "descripcion": "Una buena foto de campo informa sin marcar el camino hacia un nido, una persona o una finca. El encuadre también es una decisión ética.",
+    "compromiso": "Me comprometo a pedir consentimiento, a no publicar coordenadas ni pistas del lugar y a no alterar el hábitat para lograr una foto.",
+    "theme": "alexander",
+    "colorIdentidad": "#FFC300",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "a1",
+        "enunciado": "El grupo encuentra un nido activo. Quieren “probar” que lo vieron. La documentación que no pone en riesgo el sitio es:",
+        "opciones": [
+          "Publicar el punto GPS y el camino desde la carretera",
+          "Una foto cercana del ave, sin coordenadas, sin referencias del lugar y sin ruta",
+          "Un en vivo con la ubicación del celular activada",
+          "Invitar a cuentas grandes a las coordenadas exactas"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La prueba no necesita el mapa del tesoro. Coordenadas y puntos de referencia convierten la foto en una guía."
+      },
+      {
+        "id": "a2",
+        "enunciado": "Van a retratar a una familia que cuida una huerta comunitaria. Antes del disparo corresponde:",
+        "opciones": [
+          "Tomar la foto y preguntar si les gustó",
+          "Explicar el uso y esperar un sí claro",
+          "Fotografiar desde la calle porque es espacio público",
+          "Ofrecer etiquetarlos a cambio de la imagen"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El consentimiento es previo. El espacio público no autoriza a usar el rostro de alguien en una campaña."
+      },
+      {
+        "id": "a3",
+        "enunciado": "Una foto “inocente” del río incluye, en sus metadatos, la latitud. Eso significa que:",
+        "opciones": [
+          "Solo se ve el modelo de la cámara",
+          "Quien descargue el archivo puede ubicar el sitio aunque el pie de foto no lo diga",
+          "El celular borra el GPS al compartir",
+          "Los metadatos solo guardan el filtro"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El archivo carga contexto invisible. Antes de publicar, se revisan o se eliminan los datos de ubicación."
+      },
+      {
+        "id": "a4",
+        "enunciado": "Para un mejor encuadre, alguien propone mover una rama que tapa el nido. Esa acción:",
+        "opciones": [
+          "Es válida si la rama se devuelve después",
+          "Perturba el sitio y no se justifica por la estética",
+          "Mejora el valor científico de la foto",
+          "Es obligatoria en fotografía de naturaleza"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El hábitat no es un set. Documentar implica no reorganizar la vida que se observa."
+      },
+      {
+        "id": "a5",
+        "enunciado": "El pie de foto de una pieza de ecoturismo escolar debería:",
+        "opciones": [
+          "Exagerar el peligro para que se comparta más",
+          "Decir qué se ve, dónde de forma general, y qué no se debe imitar",
+          "Omitir la fuente para que parezca exclusiva",
+          "Incluir el número de celular del guía"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El texto editorial contextualiza y pone límite. El sensacionalismo convierte el hallazgo en espectáculo."
+      },
+      {
+        "id": "a6",
+        "enunciado": "Usan flash a pocos centímetros de un anfibio nocturno. El problema ético y biológico es:",
+        "opciones": [
+          "Que la foto sale amarilla",
+          "Que la luz directa puede desorientar o estresar al animal",
+          "Que el flash gasta la batería del dron",
+          "Que la imagen no sirve para redes"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La toma no puede costarle la calma al animal. Se prioriza distancia y luz ambiente."
+      },
+      {
+        "id": "a7",
+        "enunciado": "Una cuenta pide “la ubicación exacta de las cascadas secretas” que el curso fotografió. La respuesta responsable es:",
+        "opciones": [
+          "Enviar el pin “solo a esa persona”",
+          "Compartir la belleza del lugar sin la ruta ni el punto",
+          "Publicar el mapa en la historia",
+          "Decir que no existen"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Lo exclusivo se vuelve masivo en un reenvío. La imagen puede circular; el acceso, no."
+      },
+      {
+        "id": "a8",
+        "enunciado": "Cierran la galería de la salida con el sello “Con consentimiento”. Ese sello solo es honesto si:",
+        "opciones": [
+          "Alguien del curso lo diseñó",
+          "De verdad hubo permiso de las personas y cuidado con la fauna",
+          "La foto tiene muchos likes",
+          "Se tomó dentro del colegio"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El sello no arregla una toma indebida. Certifica una práctica que ya ocurrió."
+      }
+    ],
+    "ficha": {
+      "problema": "Fotografías de campo que revelan coordenadas, alteran hábitats o vulneran privacidad de personas y fauna.",
+      "publico": "Estudiantes en salidas de campo y brigadas de ecoturismo escolar.",
+      "comportamiento": "Mantener distancia, ocultar metadatos sensibles y no alterar el entorno para la foto.",
+      "mensaje": "La mejor foto es la que no daña el hábitat.",
+      "canal": "Plataforma web y socialización de salidas de campo.",
+      "indicador": "Número de estudiantes que aplican criterios éticos al publicar fotos de campo."
+    }
+  },
+  {
+    "id": "katerin",
+    "slug": "katerin",
+    "titulo": "Redes sociales y educación ambiental",
+    "autor": "Katerin Rubiano",
+    "tema": "Redes sociales",
+    "ancla": "Megáfono en acuarela botánica",
+    "descripcion": "Una campaña ambiental en redes no se mide solo en vistas. Se mide en si informa, respeta y no empuja a la gente a un daño.",
+    "compromiso": "Me comprometo a publicar con fuente, a no exponer a compañeros y a no replicar retos que dañen un ecosistema o a una persona.",
+    "theme": "katerin",
+    "colorIdentidad": "#F28BB0",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "k1",
+        "enunciado": "El curso arma una pieza sobre la quebrada. La versión que educa de verdad:",
+        "opciones": [
+          "Copia un rumor porque “prende” el algoritmo",
+          "Muestra un dato con fuente, un gesto concreto y un tono respetuoso",
+          "Etiqueta a cientos de desconocidos",
+          "Oculta quién hizo la campaña"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Alcance sin fuente es ruido. La pieza útil dice de dónde sale el dato y qué puede hacer quien la ve."
+      },
+      {
+        "id": "k2",
+        "enunciado": "Un comentario insulta al curso por “alarmistas”. La respuesta que no alimenta el conflicto es:",
+        "opciones": [
+          "Devolver el insulto con más fuerza",
+          "Aportar la fuente y no amplificar el ataque",
+          "Publicar el nombre y el colegio de quien comentó",
+          "Borrar la campaña completa"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Corregir no es humillar. La fuente vuelve al tema; el ataque personal lo secuestra."
+      },
+      {
+        "id": "k3",
+        "enunciado": "Un challenge pide entrar a un humedal cerrado para grabar “contenido verde”. El curso debe:",
+        "opciones": [
+          "Participar para no quedar por fuera de la tendencia",
+          "No replicarlo y explicar el daño de pisar esa zona",
+          "Ir de noche para que no los vean",
+          "Cambiar la ubicación y decir que sí entraron"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La visibilidad no justifica la intrusión. Rechazar el reto también es contenido educativo."
+      },
+      {
+        "id": "k4",
+        "enunciado": "¿Qué elemento rompe la ética de un post escolar sobre reciclaje?",
+        "opciones": [
+          "Un consejo con la entidad que lo respalda",
+          "La foto de menores del curso sin autorización",
+          "La invitación a un taller del colegio",
+          "Un dato de cuántas botellas se recogieron"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La causa ambiental no autoriza a usar la imagen de otra persona. El dato puede contarse sin el rostro."
+      },
+      {
+        "id": "k5",
+        "enunciado": "Van a citar a Cormacarena en una historia. Lo correcto es:",
+        "opciones": [
+          "Poner el logo aunque el dato sea de un meme",
+          "Enlazar o nombrar la pieza oficial y no alterar la cifra",
+          "Mezclar la cifra con otra región para que impacte más",
+          "Decir “según internet”"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Citar es atribuir con fidelidad. Cambiar el número o inventar el logo es desinformar con sello institucional."
+      },
+      {
+        "id": "k6",
+        "enunciado": "Un compañero pide que borren una historia donde salía sin querer. Deben:",
+        "opciones": [
+          "Dejarla porque “ya la vieron”",
+          "Retirarla y no volver a archivarla en público",
+          "Recortarla y republicarla",
+          "Pedirle que no sea exagerado"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El consentimiento se puede retirar. Bajar la pieza es parte de cuidar a quien está en ella."
+      },
+      {
+        "id": "k7",
+        "enunciado": "Para que el mensaje llegue a familias con pocos datos móviles, conviene:",
+        "opciones": [
+          "Subir un video de 10 minutos en alta resolución",
+          "Un texto breve, una imagen liviana y la misma idea en el mural del colegio",
+          "Obligar a descargar una aplicación",
+          "Publicar solo en inglés"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Educar también es incluir. El formato pesado deja por fuera a quien tiene la red más frágil."
+      },
+      {
+        "id": "k8",
+        "enunciado": "Miden el éxito de la campaña ambiental. El indicador más honesto es:",
+        "opciones": [
+          "Solo el número de likes",
+          "Si la gente entendió el dato y evitó un daño concreto",
+          "La cantidad de stickers usados",
+          "Que la pieza se haya copiado sin fuente"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La vanidad de la métrica no limpia un río. El impacto se mira en la acción y en la fidelidad del mensaje."
+      }
+    ],
+    "ficha": {
+      "problema": "Desinformación y contenido ambiental sin fuente en redes sociales escolares.",
+      "publico": "Estudiantes de grado 10° y 11° y comunidad digital del colegio.",
+      "comportamiento": "Publicar con fuente verificada, sin exponer compañeros ni retos dañinos.",
+      "mensaje": "Antes de compartir, verifica la fuente ambiental.",
+      "canal": "Redes institucionales y módulo EcoCiudadano Iracá.",
+      "indicador": "Cantidad de publicaciones escolares con fuente citada en campañas ambientales."
+    }
+  },
+  {
+    "id": "sheyla",
+    "slug": "sheyla",
+    "titulo": "Información falsa sobre problemas ambientales",
+    "autor": "Sheyla Romero",
+    "tema": "Fake news",
+    "ancla": "Lupa sobre el periódico del naturalista",
+    "descripcion": "Una alerta ambiental falsa también hace daño: o paraliza, o gasta la confianza que hará falta cuando el riesgo sea real.",
+    "compromiso": "Me comprometo a pausar antes de reenviar, a contrastar fuente, fecha y evidencia, y a corregir en el mismo canal si compartí un error.",
+    "theme": "sheyla",
+    "colorIdentidad": "#D9A441",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "s1",
+        "enunciado": "Un audio dice que “mañana cerrarán todos los parques del Meta por una nube tóxica”. No cita institución ni fecha del aviso. Antes de reenviarlo:",
+        "opciones": [
+          "Se reenvía para “salvar vidas”",
+          "Se busca el comunicado en la entidad responsable y se mira fecha y territorio",
+          "Se cree porque tiene muchos reenvíos",
+          "Se le agrega un emoji de sirena para que se note más"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La urgencia sin autor es una pista, no una prueba. La entidad, la fecha y el lugar se verifican fuera del audio."
+      },
+      {
+        "id": "s2",
+        "enunciado": "¿Cuál de estas piezas tiene la forma típica de una desinformación ambiental?",
+        "opciones": [
+          "Un boletín del IDEAM con fecha y enlace",
+          "Un texto en mayúsculas, sin autor, que exige compartirlo “antes de que lo borren”",
+          "Un PDF de Cormacarena con metodología",
+          "Una nota que distingue dato y opinión"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La orden de compartir y la amenaza de censura sustituyen la evidencia. Las fuentes institucionales se pueden contrastar."
+      },
+      {
+        "id": "s3",
+        "enunciado": "Circula un video de un incendio. El paso de comprobación más sólido es:",
+        "opciones": [
+          "Mirar solo el titular del video",
+          "Buscar el mismo hecho en al menos dos fuentes confiables y revisar si el video es de otro año o lugar",
+          "Contar los comentarios a favor",
+          "Republicarlo con la frase “parece del Meta”"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Un video puede ser real y estar fuera de contexto. Fecha, lugar y segunda fuente evitan el incendio equivocado."
+      },
+      {
+        "id": "s4",
+        "enunciado": "Ya reenviaste una cifra de deforestación que resultó de otro departamento. Lo responsable es:",
+        "opciones": [
+          "Callar para no quedar mal",
+          "Corregir en el mismo chat, con la fuente, sin echarle la culpa a otro",
+          "Borrar el chat y negar el envío",
+          "Inventar una cifra intermedia"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La corrección pública contiene el error. Esconderlo lo deja circulando en los otros teléfonos."
+      },
+      {
+        "id": "s5",
+        "enunciado": "Una gráfica no tiene eje, fuente ni año. Para un lector crítico eso significa que:",
+        "opciones": [
+          "Es más fácil de entender y por eso es mejor",
+          "No se puede saber qué mide ni si compara periodos equivalentes",
+          "La ciencia ya la validó",
+          "Sirve como prueba definitiva"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Sin eje ni fuente, la gráfica es una opinión dibujada. El número necesita contexto para significar algo."
+      },
+      {
+        "id": "s6",
+        "enunciado": "Quieren “equilibrar” el debate dando el mismo espacio a un dato del IDEAM y a un rumor. Esa simetría:",
+        "opciones": [
+          "Siempre es la opción más justa",
+          "Puede inflar un rumor hasta volverlo equivalente a la evidencia",
+          "Es obligatoria en todo trabajo escolar",
+          "Elimina la necesidad de citar"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "No toda afirmación tiene el mismo peso. Equilibrar sin jerarquía de pruebas confunde al lector."
+      },
+      {
+        "id": "s7",
+        "enunciado": "El curso arma una ficha de verificación. El orden más útil es:",
+        "opciones": [
+          "Emoción, likes, fuente",
+          "¿Quién lo dice? ¿Cuándo? ¿Con qué evidencia? ¿Qué dicen otras fuentes?",
+          "Compartir, luego leer",
+          "Traducir, luego creer"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La ficha obliga a la pausa. Autor, tiempo, prueba y contraste cubren el esqueleto de un chequeo."
+      },
+      {
+        "id": "s8",
+        "enunciado": "Una alerta verdadera de creciente llega de la autoridad local. Diferenciarla de un rumor sirve para:",
+        "opciones": [
+          "Publicar menos, siempre",
+          "No gastar la confianza: cuando la fuente oficial hable, la comunidad todavía escuche",
+          "Ignorar todo lo que asuste",
+          "Esperar a que el rumor coincida"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La credibilidad es un recurso. Quien grita falso después no convence cuando el río sí sube."
+      }
+    ],
+    "ficha": {
+      "problema": "Circulación de noticias falsas sobre emergencias y datos ambientales locales.",
+      "publico": "Comunidad educativa de San Martín, Meta.",
+      "comportamiento": "Contrastar con IDEAM, autoridades ambientales y búsqueda inversa de imágenes.",
+      "mensaje": "Fact-check antes del reenvío.",
+      "canal": "Plataforma interactiva y chats escolares moderados.",
+      "indicador": "Número de estudiantes capaces de detectar al menos una señal de fake news ambiental."
+    }
+  },
+  {
+    "id": "jhoan-valencia",
+    "slug": "jhoan-valencia",
+    "titulo": "Tecnología para cuidar el agua",
+    "autor": "Jhoan Valencia",
+    "tema": "Cuidado del agua",
+    "ancla": "Páramo de Chingaza · gota con sensor de pH",
+    "descripcion": "Medir el agua no es coleccionar números. Es saber si el dato está calibrado, qué río representa y qué decisión permite.",
+    "compromiso": "Me comprometo a no alterar un cuerpo de agua para “mejorar” una medida y a publicar datos de calidad solo con fecha, unidad y contexto.",
+    "theme": "jhoan-valencia",
+    "colorIdentidad": "#2EC4B6",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "jv1",
+        "enunciado": "Un sensor de pH en la quebrada del colegio sirve, sobre todo, para:",
+        "opciones": [
+          "Decorar el informe con un aparato",
+          "Detectar cambios que pueden indicar un vertimiento o una alteración",
+          "Reemplazar el acueducto",
+          "Medir el ruido de la vía"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El pH es una señal, no un adorno. Un cambio sostenido obliga a preguntar qué entró al agua."
+      },
+      {
+        "id": "jv2",
+        "enunciado": "Antes de publicar “el agua está contaminada” con una sola lectura, hay que:",
+        "opciones": [
+          "Redondear el número para que alarme",
+          "Revisar calibración, hora, lugar exacto del muestreo y repetir la medida",
+          "Mezclarla con un dato de otro río",
+          "Quitar la metodología para que el texto quede corto"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Una lectura aislada puede ser un error del equipo. La afirmación fuerte exige repetición y contexto."
+      },
+      {
+        "id": "jv3",
+        "enunciado": "El páramo de Chingaza importa en una discusión sobre agua porque:",
+        "opciones": [
+          "Es solo un paisaje para fotos",
+          "Regula y aporta agua que después consume la ciudad",
+          "No tiene relación con el ciclo hídrico",
+          "Puede urbanizarse sin cambiar el caudal"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El páramo no es un telón: es infraestructura natural. Alterarlo se siente aguas abajo."
+      },
+      {
+        "id": "jv4",
+        "enunciado": "En el laboratorio escolar sobra una solución. Verterla en el desagüe “porque es poca”:",
+        "opciones": [
+          "Es aceptable si se diluye con la mano",
+          "Puede llegar a la red o al suelo sin tratamiento",
+          "La neutraliza el jabón del baño",
+          "Es la práctica recomendada para ácidos"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Lo poco también es carga. Los residuos de laboratorio tienen un punto de acopio, no el lavamanos."
+      },
+      {
+        "id": "jv5",
+        "enunciado": "Dos grupos miden oxígeno disuelto a horas distintas y comparan los números como si fueran iguales. El error es:",
+        "opciones": [
+          "Usar la misma unidad",
+          "Ignorar que la hora y la temperatura cambian la lectura",
+          "Anotar el nombre del sensor",
+          "Tomar el dato en el mismo tramo"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El agua no es estable todo el día. Comparar sin controlar la hora produce una conclusión falsa."
+      },
+      {
+        "id": "jv6",
+        "enunciado": "Una app escolar muestra un semáforo del agua. Es responsable si:",
+        "opciones": [
+          "Pinta rojo para asustar aunque el dato sea incompleto",
+          "Muestra la fecha, la unidad y el límite del sensor",
+          "Permite editar el número para que “se vea grave”",
+          "Oculta quién tomó la muestra"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El semáforo sin contexto es un juicio. El usuario necesita saber qué tan fresco y qué tan fino es el dato."
+      },
+      {
+        "id": "jv7",
+        "enunciado": "Quieren tomar agua de un nacimiento del páramo “para la muestra” sin permiso. Además del dato, falta:",
+        "opciones": [
+          "Un recipiente más grande",
+          "La autorización y el cuidado de no abrir un camino nuevo",
+          "Un filtro de Instagram",
+          "Publicar el punto exacto"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Muestrear también es intervenir. Sin permiso se puede dañar el sitio que se dice cuidar."
+      },
+      {
+        "id": "jv8",
+        "enunciado": "La acción escolar más coherente con el cuidado del agua es:",
+        "opciones": [
+          "Registrar fugas del colegio y proponer un uso medido",
+          "Lavar el sensor con detergente dentro del cauce",
+          "Prometer que el pH “se arregla solo”",
+          "Extraer agua de más para tener muestras de repuesto"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La tecnología señala; la acción cierra el grifo. Una fuga medida vale más que un eslogan."
+      }
+    ],
+    "ficha": {
+      "problema": "Desconocimiento de parámetros de calidad hídrica (pH, OD, turbidez) en fuentes locales.",
+      "publico": "Estudiantes de monitoreo ambiental y comunidad cercana a fuentes hídricas.",
+      "comportamiento": "Medir con sensores calibrados y reportar anomalías sin alterar el ecosistema acuático.",
+      "mensaje": "Mide el agua, protege la vida.",
+      "canal": "Módulo digital y prácticas de campo con sondas.",
+      "indicador": "Número de estudiantes que interpretan correctamente un valor de pH o OD en contexto."
+    }
+  },
+  {
+    "id": "jhoan-depablos",
+    "slug": "jhoan-depablos",
+    "titulo": "Uso ético de drones para monitoreo",
+    "autor": "Jhoan de Pablos",
+    "tema": "Drones",
+    "ancla": "Dron con mira sobre la Amazonía",
+    "descripcion": "El dron ve desde arriba lo que una persona no alcanza. También ve patios, cultivos y nidos. La altura no borra la privacidad.",
+    "compromiso": "Me comprometo a volar solo con permiso, a no perseguir fauna ni personas y a no publicar imágenes que identifiquen viviendas.",
+    "theme": "jhoan-depablos",
+    "colorIdentidad": "#5BC0BE",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "jd1",
+        "enunciado": "El curso quiere un plano de las huertas. Hay casas al lado. Antes de despegar corresponde:",
+        "opciones": [
+          "Elevar el dron porque “es un trabajo del colegio”",
+          "Revisar la norma, pedir permiso y planear un encuadre que no filme patios",
+          "Subir a la máxima altura sobre el pueblo",
+          "Seguir a las personas para tener movimiento en el video"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El fin educativo no está por encima de la norma ni de la intimidad. El plan de vuelo se diseña antes de armar las hélices."
+      },
+      {
+        "id": "jd2",
+        "enunciado": "Durante el vuelo aparecen aves levantando vuelo por el ruido. Lo ético es:",
+        "opciones": [
+          "Acercarse para aprovechar que están en el aire",
+          "Alejar el equipo y no perseguir la bandada ni un nido",
+          "Bajar entre los árboles para “mejor plano”",
+          "Repetir la pasada hasta que se acostumbren"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Si la fauna cambia su conducta, el dron ya intervino. Se prioriza la distancia, no la toma."
+      },
+      {
+        "id": "jd3",
+        "enunciado": "En la ortofoto se leen techos, carros y una casa con el nombre de la finca. Antes de publicarla:",
+        "opciones": [
+          "Se sube en la máxima resolución",
+          "Se recorta o se difumina lo que identifica viviendas y personas",
+          "Se etiqueta la dirección para que sirva de mapa",
+          "Se vende el archivo a un canal"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Resolución no es transparencia. Lo que identifica a una familia se queda fuera del informe público."
+      },
+      {
+        "id": "jd4",
+        "enunciado": "El dron pierde enlace sobre un cultivo vecino. La maniobra correcta es:",
+        "opciones": [
+          "Seguir bajando para “recuperar señal”",
+          "Activar el retorno al punto de despegue y no aterrizar en propiedad ajena",
+          "Pedirle a alguien que entre al cultivo a recogerlo sin avisar",
+          "Dejarlo grabando hasta que se agote la batería"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Perder señal no autoriza a invadir. El retorno y el aviso al dueño cierran el incidente."
+      },
+      {
+        "id": "jd5",
+        "enunciado": "Un compañero propone volar de noche sobre el barrio “porque se ve más cinematográfico”. El problema principal es:",
+        "opciones": [
+          "Que el video queda azul",
+          "Que aumenta el riesgo y la grabación de espacios privados sin control",
+          "Que el dron no tiene hélices",
+          "Que las redes no aceptan videos nocturnos"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La oscuridad no es un permiso. Volar de noche sobre viviendas concentra riesgo y exposición."
+      },
+      {
+        "id": "jd6",
+        "enunciado": "La bitácora de cada vuelo debería guardar:",
+        "opciones": [
+          "Solo el clip más vistoso",
+          "Fecha, piloto, lugar general, altura y si hubo permiso",
+          "Las claves del control remoto en el mismo archivo público",
+          "El nombre de cada persona que apareció en un patio"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Sin bitácora no hay responsabilidad. El registro permite saber quién voló y bajo qué condición."
+      },
+      {
+        "id": "jd7",
+        "enunciado": "Usan el dron para “vigilar” quién bota basura y publican el rostro. Esa práctica se parece más a:",
+        "opciones": [
+          "Un monitoreo ambiental con consentimiento",
+          "Vigilancia de personas sin una base legítima",
+          "Un censo de residuos anónimo",
+          "Una clase de cartografía"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Medir residuos no es identificar vecinos. El objetivo ambiental se logra sin convertir el dron en una patrulla."
+      },
+      {
+        "id": "jd8",
+        "enunciado": "Al terminar, el grupo quiere el mapa descargable con el punto exacto de un nido que filmaron. Deben:",
+        "opciones": [
+          "Adjuntar el KML abierto",
+          "Entregar al docente una versión sin coordenadas sensibles",
+          "Subirlo a un grupo público “solo por hoy”",
+          "Imprimir el punto en la cartelera"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El producto final también filtra. Un mapa escolar puede revelar lo mismo que el video."
+      }
+    ],
+    "ficha": {
+      "problema": "Uso de drones sin respeto a privacidad, fauna y normatividad aeronáutica en monitoreo.",
+      "publico": "Estudiantes de media técnica y operadores escolares de RPAS.",
+      "comportamiento": "Volar en VLOS, evitar zonas sensibles y planificar traslapes sin estrés a la fauna.",
+      "mensaje": "Monitorea desde el aire sin invadir ni ahuyentar.",
+      "canal": "Plataforma EcoCiudadano y demostraciones controladas.",
+      "indicador": "Porcentaje de estudiantes que reconocen límites éticos y normativos del vuelo escolar."
+    }
+  },
+  {
+    "id": "sebastian",
+    "slug": "sebastian",
+    "titulo": "Uso responsable de sensores ambientales",
+    "autor": "Sebastian Mogollon",
+    "tema": "Sensores",
+    "ancla": "Países Bajos · estación y osciloscopio",
+    "descripcion": "Un sensor no dice la verdad: dice una señal. Calibrarlo, anotar el error y no convertir un pico en un titular es parte del método.",
+    "compromiso": "Me comprometo a no alterar lecturas, a registrar unidades y fallos, y a no publicar una alarma con una sola medición extrema.",
+    "theme": "sebastian",
+    "colorIdentidad": "#39FF14",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "sm1",
+        "enunciado": "El sensor de material particulado marca un pico único y altísimo durante un minuto. Sin repetir la medida, ese valor debe tratarse como:",
+        "opciones": [
+          "Prueba de una emergencia confirmada",
+          "Un dato a verificar: error, calibración o un evento muy local",
+          "El promedio oficial del mes",
+          "Motivo para apagar todos los equipos del colegio"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Un extremo aislado puede ser ruido del instrumento. La alarma pública espera repetición y contexto."
+      },
+      {
+        "id": "sm2",
+        "enunciado": "La bitácora mínima de la estación incluye:",
+        "opciones": [
+          "Solo el número más alto, porque “es el que importa”",
+          "Fecha, responsable, unidad, lugar y cualquier anomalía",
+          "La contraseña del Wi-Fi",
+          "Los nombres de los vecinos del sensor"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Sin unidad y sin responsable, el número no se puede repetir ni auditar. La bitácora es parte del dato."
+      },
+      {
+        "id": "sm3",
+        "enunciado": "Instalan el sensor de aire junto al exosto de una moto que pasa cada tarde. La lectura:",
+        "opciones": [
+          "Representa mejor al municipio",
+          "Describe ese microambiente, no el aire de todo el sector",
+          "Se vuelve más precisa por el calor",
+          "Sirve como línea base regional"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El lugar de instalación es una variable. Un punto mal puesto produce una conclusión que no viaja."
+      },
+      {
+        "id": "sm4",
+        "enunciado": "Compartir la serie de datos del curso de forma responsable implica:",
+        "opciones": [
+          "Borrar los días incómodos",
+          "Declarar unidades, huecos, posible error y el periodo medido",
+          "Redondear todo para que la gráfica quede lisa",
+          "Publicar solo la captura, sin la tabla"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El método viaja con el número. Ocultar huecos hace ver una certeza que no existe."
+      },
+      {
+        "id": "sm5",
+        "enunciado": "Dos sensores del mismo patio no coinciden. Lo primero que se revisa es:",
+        "opciones": [
+          "Cuál grupo “tiene la razón” por votación",
+          "Calibración, altura y hora de cada equipo",
+          "El color de la carcasa",
+          "La cantidad de diapositivas del informe"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La discrepancia es una pista de método, no un concurso. Se comparan condiciones antes de promediar a ciegas."
+      },
+      {
+        "id": "sm6",
+        "enunciado": "Alguien edita un valor “porque se ve raro” y no lo anota. Eso daña el proyecto porque:",
+        "opciones": [
+          "La gráfica queda más estética y eso basta",
+          "La serie deja de ser evidencia: ya no se distingue medida de opinión",
+          "El sensor se recalibra solo",
+          "El promedio siempre mejora"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Corregir sin dejar huella es alterar. Si hay un error, se documenta; no se disimula."
+      },
+      {
+        "id": "sm7",
+        "enunciado": "La pantalla del monitor parpadea y muestra un cero permanente. El reporte debe decir:",
+        "opciones": [
+          "Que la contaminación desapareció",
+          "Que el equipo falló y que ese tramo no tiene dato válido",
+          "Que el cero es el objetivo cumplido",
+          "Que se copie el valor del día anterior"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Ausencia de señal no es aire limpio. Un fallo declarado vale más que un cero inventado."
+      },
+      {
+        "id": "sm8",
+        "enunciado": "El curso quiere un tablero en el pasillo. El diseño científico muestra:",
+        "opciones": [
+          "Una cifra gigante sin unidad",
+          "Valor, unidad, hora de actualización y una frase de límite del sensor",
+          "Solo una cara feliz o triste",
+          "La meta del curso aunque no se haya medido"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El tablero también es un instrumento. Quien lo lee en diez segundos necesita unidad y frescura del dato."
+      }
+    ],
+    "ficha": {
+      "problema": "Lecturas erróneas por sensores sin calibrar y nodos mal mantenidos en campo.",
+      "publico": "Equipos de telemetría escolar y docentes de monitoreo.",
+      "comportamiento": "Calibrar, proteger hardware y registrar datos con marca de tiempo confiable.",
+      "mensaje": "Sin calibración no hay dato científico.",
+      "canal": "Laboratorio escolar y módulo digital.",
+      "indicador": "Número de estudiantes que priorizan calibración antes de una toma de campo."
+    }
+  },
+  {
+    "id": "daniela",
+    "slug": "daniela",
+    "titulo": "Manejo sostenible de suelos agrícolas y abonos orgánicos",
+    "autor": "Daniela Torres",
+    "tema": "Producción agropecuaria · suelos",
+    "ancla": "Meta · compost y rotación en la finca escolar",
+    "descripcion": "En Producción Agropecuaria el suelo no es un soporte inerte: es un sistema vivo. Compost, rotación y laboreo mínimo sostienen la cosecha sin agotar el recurso.",
+    "compromiso": "Me comprometo a fomentar prácticas agropecuarias limpias, rotación de cultivos y manejo responsable de abonos orgánicos.",
+    "theme": "daniela",
+    "colorIdentidad": "#2D6A4F",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "dt1",
+        "enunciado": "¿Cuál es la principal ventaja de incorporar compost o abono orgánico en suelos agrícolas del Meta?",
+        "opciones": [
+          "Compactar la tierra",
+          "Mejorar la estructura, retención de humedad y actividad microbiana del suelo",
+          "Aumentar la acidez extrema",
+          "Eliminar los nutrientes"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El abono orgánico nutre la biota del suelo y retiene mejor el agua."
+      },
+      {
+        "id": "dt2",
+        "enunciado": "La práctica de rotación de cultivos en la producción agropecuaria evita principalmente:",
+        "opciones": [
+          "El crecimiento de las plantas",
+          "El agotamiento de nutrientes específicos del suelo y la proliferación de plagas",
+          "Que llueva",
+          "El uso de semillas criollas"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Rompe el ciclo biológico de plagas y equilibra los nutrientes."
+      },
+      {
+        "id": "dt3",
+        "enunciado": "¿Qué indica un suelo agrícola con pH altamente ácido (menor a 5.5)?",
+        "opciones": [
+          "Exceso de cal",
+          "Necesidad de encalado para liberar fósforo y reducir aluminio tóxico",
+          "Suelo óptimo para cualquier cultivo",
+          "Ausencia total de minerales"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El encalado neutraliza la acidez y libera elementos esenciales."
+      },
+      {
+        "id": "dt4",
+        "enunciado": "Los abonos verdes (siembra de leguminosas incorporadas al suelo) aportan principalmente:",
+        "opciones": [
+          "Sal marina",
+          "Nitrógeno fijado biológicamente de forma natural",
+          "Petróleo",
+          "Plástico biodegradable"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las leguminosas fijan nitrógeno atmosférico con bacterias simbiontes."
+      },
+      {
+        "id": "dt5",
+        "enunciado": "El laboreo mínimo o siembra directa en agropecuaria busca:",
+        "opciones": [
+          "Destruir la capa vegetal",
+          "Proteger la estructura del suelo frente a la erosión hídrica y eólica",
+          "Gastar más combustible en tractores",
+          "Compactar la tierra"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Menos remoción conserva agregados, cobertura y vida del suelo."
+      },
+      {
+        "id": "dt6",
+        "enunciado": "¿Qué función cumplen las lombrices en un sistema de lombricultivo agropecuario?",
+        "opciones": [
+          "Consumir raíces sanas",
+          "Transformar materia orgánica en humus rico en nutrientes asimilables",
+          "Producir gas metano",
+          "Contaminar el agua"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El humus de lombriz mejora fertilidad y estructura."
+      },
+      {
+        "id": "dt7",
+        "enunciado": "El control biológico de plagas en fincas sostenibles se basa en:",
+        "opciones": [
+          "Usar químicos de alta toxicidad",
+          "Utilizar enemigos naturales (depredadores y parasitoides) para regular poblaciones plaga",
+          "Eliminar todos los insectos",
+          "Quemar el lote"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Los enemigos naturales regulan plagas sin destruir el agroecosistema."
+      },
+      {
+        "id": "dt8",
+        "enunciado": "La producción agropecuaria sostenible busca equilibrar:",
+        "opciones": [
+          "La máxima ganancia económica destruyendo el suelo",
+          "La rentabilidad productiva con la conservación de los recursos naturales",
+          "El abandono del campo",
+          "El uso desmedido de urea"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Producir y conservar no son opuestos: el suelo sano sostiene la finca a largo plazo."
+      }
+    ],
+    "ficha": {
+      "problema": "Degradación de suelos agrícolas por mal manejo de abonos, acidez y laboreo excesivo.",
+      "publico": "Estudiantes de Producción Agropecuaria y comunidad rural vinculada a la IE.",
+      "comportamiento": "Usar compost, rotación de cultivos y laboreo mínimo con control biológico.",
+      "mensaje": "Suelo vivo, finca que dura.",
+      "canal": "Plataforma EcoCiudadano y práctica en huerta/finca escolar.",
+      "indicador": "Número de estudiantes que identifican prácticas de suelo sostenible."
+    }
+  },
+  {
+    "id": "rous",
+    "slug": "rous",
+    "titulo": "Energías renovables y eficiencia energética en el campo",
+    "autor": "Rous Vidal",
+    "tema": "Energías renovables",
+    "ancla": "Meta · panel solar sobre la estación de bombeo",
+    "descripcion": "En fincas apartadas la red eléctrica llega tarde o no llega. Solar, biogás y eficiencia LED bajan la huella de carbono sin apagar la producción.",
+    "compromiso": "Me comprometo a promover el uso de energías limpias, paneles solares y reducción de huella de carbono en entornos rurales.",
+    "theme": "rous",
+    "colorIdentidad": "#FFB703",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "rv1",
+        "enunciado": "¿Qué ventaja principal ofrecen los paneles solares fotovoltaicos en fincas apartadas del Meta?",
+        "opciones": [
+          "Generar calor artificial",
+          "Suministrar energía eléctrica limpia sin depender de redes interconectadas lejanas",
+          "Aumentar la temperatura ambiente",
+          "Gastar combustible fósil"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Aprovechan la radiación solar para autonomía energética rural."
+      },
+      {
+        "id": "rv2",
+        "enunciado": "Un biodigestor rural aprovecha estiércol animal para producir:",
+        "opciones": [
+          "Biogás combustible y abono orgánico (biol)",
+          "Agua potable",
+          "Plástico reciclado",
+          "Electricidad nuclear"
+        ],
+        "respuesta_correcta": 0,
+        "retroalimentacion": "Transforma residuos pecuarios en gas combustible limpio y fertilizante."
+      },
+      {
+        "id": "rv3",
+        "enunciado": "La eficiencia energética en sistemas de bombeo de agua agropecuaria se optimiza con:",
+        "opciones": [
+          "Motores diésel antiguos",
+          "Bombas solares fotovoltaicas de corriente continua",
+          "Dejar el grifo abierto",
+          "Conexión clandestina"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las bombas solares evitan combustible fósil en el riego y el abrevadero."
+      },
+      {
+        "id": "rv4",
+        "enunciado": "¿Qué es la huella de carbono en la producción agrícola?",
+        "opciones": [
+          "Las huellas de los tractores en el barro",
+          "La cantidad total de gases de efecto invernadero emitidos directa e indirectamente",
+          "El color de las hojas",
+          "La cantidad de agua consumida"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Mide el impacto climático de insumos, energía y manejo de la finca."
+      },
+      {
+        "id": "rv5",
+        "enunciado": "La energía eólica de pequeña escala en zonas rurales utiliza:",
+        "opciones": [
+          "Molinos de viento para generar electricidad o bombeo mecánico",
+          "Aspas gigantes industriales exclusivas",
+          "Ventiladores de oficina",
+          "Turbinas submarinas"
+        ],
+        "respuesta_correcta": 0,
+        "retroalimentacion": "Los aerogeneradores de pequeña escala sirven para electricidad local o bombeo."
+      },
+      {
+        "id": "rv6",
+        "enunciado": "El uso de bombillos LED frente a incandescentes tradicionales reduce el consumo en:",
+        "opciones": [
+          "Un 5%",
+          "Hasta un 80-90% de energía",
+          "No reduce nada",
+          "Aumenta el consumo"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Los LED entregan más luz útil por vatio consumido."
+      },
+      {
+        "id": "rv7",
+        "enunciado": "En una casa bioclimática rural, la orientación y ventilación natural sirven para:",
+        "opciones": [
+          "Gastar más aire acondicionado",
+          "Mantener confort térmico sin consumo eléctrico artificial",
+          "Hacer frío extremo",
+          "Bloquear el sol por completo"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El diseño pasivo baja la demanda energética antes de instalar equipos."
+      },
+      {
+        "id": "rv8",
+        "enunciado": "La transición energética global busca principalmente:",
+        "opciones": [
+          "Agotar el petróleo",
+          "Sustituir combustibles fósiles por fuentes renovables",
+          "Apagar la luz del mundo",
+          "Aumentar el uso de carbón"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El objetivo es energía limpia, renovable y con menor emisión de GEI."
+      }
+    ],
+    "ficha": {
+      "problema": "Dependencia de energía convencional y alto consumo en entornos rurales y escolares.",
+      "publico": "Productores rurales y comunidad educativa de San Martín, Meta.",
+      "comportamiento": "Promover solar, biogás y eficiencia (LED, bombeo fotovoltaico).",
+      "mensaje": "Energía limpia para el campo.",
+      "canal": "Módulo digital y talleres de eficiencia energética.",
+      "indicador": "Porcentaje de participantes dispuestos a adoptar al menos una práctica de energía limpia."
+    }
+  },
+  {
+    "id": "alison",
+    "slug": "alison",
+    "titulo": "Conservación de la biodiversidad y corredores ecológicos",
+    "autor": "Alison Tarache",
+    "tema": "Biodiversidad",
+    "ancla": "Piedemonte · bosque de galería y paso de fauna",
+    "descripcion": "Fragmentar el hábitat aísla a las especies. Los corredores ecológicos y los bosques de galería mantienen el tránsito de fauna y protegen el agua.",
+    "compromiso": "Me comprometo a defender la fauna nativa, proteger los bosques de galería y no fragmentar los hábitats naturales.",
+    "theme": "alison",
+    "colorIdentidad": "#588157",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "at1",
+        "enunciado": "¿Qué es un corredor ecológico (o corredor biológico) en zonas de sabana y piedemonte?",
+        "opciones": [
+          "Una carretera pavimentada",
+          "Franjas de vegetación que conectan áreas naturales fragmentadas para el tránsito de fauna",
+          "Una cerca de alambre de púas",
+          "Un canal de riego"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Evitan el aislamiento genético de las especies silvestres."
+      },
+      {
+        "id": "at2",
+        "enunciado": "La deforestación de los bosques de galería a la orilla de los ríos provoca:",
+        "opciones": [
+          "Mayor caudal limpio",
+          "Escorrentía, erosión de las bancas y pérdida de hábitat acuático y terrestre",
+          "Aumento de peces",
+          "Baja temperatura del agua"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Los bosques de galería protegen las fuentes hídricas y el hábitat ribereño."
+      },
+      {
+        "id": "at3",
+        "enunciado": "¿Por qué son importantes las especies polinizadoras (abejas, murciélagos, colibríes) en la biodiversidad?",
+        "opciones": [
+          "Porque pican a la gente",
+          "Porque garantizan la reproducción de plantas silvestres y la seguridad alimentaria",
+          "Porque destruyen cultivos",
+          "No tienen función ecológica"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Sin polinizadores colapsan plantas silvestres y muchos cultivos."
+      },
+      {
+        "id": "at4",
+        "enunciado": "La pérdida de biodiversidad en los ecosistemas genera:",
+        "opciones": [
+          "Mayor estabilidad ambiental",
+          "Vulnerabilidad frente al cambio climático y colapso de servicios ecosistémicos",
+          "Mejor clima local automático",
+          "Abundancia de todas las especies"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Menos diversidad implica menos resiliencia frente a sequías, plagas y extremos."
+      },
+      {
+        "id": "at5",
+        "enunciado": "Una especie endémica se caracteriza por:",
+        "opciones": [
+          "Habitar en todo el planeta por igual",
+          "Encontrarse únicamente en una región geográfica específica",
+          "Ser siempre una especie plaga",
+          "Criarse solo en granjas"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Si su hábitat se altera, el riesgo de extinción es alto porque no vive en otro lugar."
+      },
+      {
+        "id": "at6",
+        "enunciado": "Las áreas protegidas (parques nacionales o reservas) sirven para:",
+        "opciones": [
+          "Explotación maderera libre",
+          "Conservar muestras representativas de ecosistemas y salvaguardar flora y fauna",
+          "Urbanización acelerada",
+          "Instalar fábricas"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Resguardan biodiversidad y servicios ecosistémicos a largo plazo."
+      },
+      {
+        "id": "at7",
+        "enunciado": "El tráfico ilegal de fauna silvestre genera:",
+        "opciones": [
+          "Bienestar animal",
+          "Ruptura de cadenas tróficas, sufrimiento animal y riesgo de zoonosis",
+          "Equilibrio ecológico",
+          "Turismo saludable"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Extraer fauna ilegalmente desordena el ecosistema y pone en riesgo a las personas."
+      },
+      {
+        "id": "at8",
+        "enunciado": "La restauración ecológica pasiva consiste en:",
+        "opciones": [
+          "Sembrar solo árboles exóticos",
+          "Permitir que la naturaleza se recupere retirando el factor de perturbación humana",
+          "Construir edificios",
+          "Pintar el suelo"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "A veces basta con cesar la presión (ganadería, quema, tala) para que el sistema regenere."
+      }
+    ],
+    "ficha": {
+      "problema": "Fragmentación de hábitats y pérdida de conectividad ecológica en sabana y piedemonte.",
+      "publico": "Estudiantes, comunidad rural y actores de conservación local.",
+      "comportamiento": "Proteger bosques de galería, polinizadores y corredores biológicos.",
+      "mensaje": "Conecta el paisaje, salva la biodiversidad.",
+      "canal": "Plataforma web y socialización territorial.",
+      "indicador": "Número de estudiantes que explican la función de un corredor ecológico."
+    }
+  },
+  {
+    "id": "duvan",
+    "slug": "duvan",
+    "titulo": "Sistemas silvopastoriles y ganadería regenerativa sostenible",
+    "autor": "Duvan Franco",
+    "tema": "Producción agropecuaria · silvopastoril",
+    "ancla": "Sabana del Meta · sombra, forraje y descanso de potreros",
+    "descripcion": "La ganadería regenerativa integra árboles, forrajes y pastoreo racional. Sombra, nitrógeno y descanso del pasto recuperan suelo en lugar de agotarlo.",
+    "compromiso": "Me comprometo a impulsar la ganadería regenerativa, combinando árboles, forrajes y pastoreo racional sin degradar los suelos del Meta.",
+    "theme": "duvan",
+    "colorIdentidad": "#DDA15E",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "df1",
+        "enunciado": "¿Qué es un Sistema Silvopastoril (SSP) en la producción agropecuaria?",
+        "opciones": [
+          "Tener ganado encerrado en establos de concreto",
+          "Integrar árboles y arbustos forrajeros con pasturas y ganadería en la misma área",
+          "Eliminar todos los árboles de la finca",
+          "Sembrar solo maíz"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Mejora biodiversidad, sombra animal y calidad del suelo."
+      },
+      {
+        "id": "df2",
+        "enunciado": "El Pastoreo Racional Voisin (PRV) se caracteriza por:",
+        "opciones": [
+          "Dejar el ganado en el mismo potrero todo el año",
+          "Rotaciones de potreros con carga adecuada y períodos de descanso del pasto",
+          "Alimentar ganado solo con concentrado",
+          "Cercar con energía eléctrica a máxima potencia sin plan"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El descanso permite recuperación del forraje y enriquecimiento de humus."
+      },
+      {
+        "id": "df3",
+        "enunciado": "¿Qué beneficio aportan los árboles dispersos en potreros ganaderos?",
+        "opciones": [
+          "Ninguno, estorban al ganado",
+          "Bienestar animal por sombrío, fijación de nitrógeno y refugio para fauna benéfica",
+          "Secar la tierra",
+          "Atraer rayos de forma exclusiva"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La sombra reduce estrés térmico y los árboles aportan servicios al agroecosistema."
+      },
+      {
+        "id": "df4",
+        "enunciado": "La ganadería regenerativa frente a la ganadería extensiva tradicional destaca por:",
+        "opciones": [
+          "Degradar más los suelos",
+          "Secuestrar carbono en el suelo, regenerar praderas y mejorar la infiltración hídrica",
+          "Gastar más agua por animal sin manejo",
+          "Quemar sabanas cada temporada"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Busca regenerar el suelo y el ciclo del agua, no solo maximizar cabezas por hectárea."
+      },
+      {
+        "id": "df5",
+        "enunciado": "¿Qué especie arbórea leguminosa se usa comúnmente en silvopastoril por su forraje proteico?",
+        "opciones": [
+          "Eucalipto",
+          "Matarratón (Gliricidia sepium) o Leucaena",
+          "Pino pátula",
+          "Cactus"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Gliricidia y Leucaena aportan proteína y fijan nitrógeno."
+      },
+      {
+        "id": "df6",
+        "enunciado": "La compactación del suelo por pisoteo bovino excesivo se previene mediante:",
+        "opciones": [
+          "Aumentar más vacas por metro cuadrado",
+          "Manejo adecuado de cargas animales y descanso de potreros",
+          "Pavimentar el pasto",
+          "Usar maquinaria pesada a diario"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Rotación y carga animal correcta evitan sellar el suelo."
+      },
+      {
+        "id": "df7",
+        "enunciado": "El metano entérico emitido por el ganado se mitiga parcialmente con:",
+        "opciones": [
+          "Dietas basadas en forrajes de mejor calidad y taninos vegetales",
+          "Encerrarlos sin comer",
+          "Darles plástico",
+          "Aumentar el ayuno prolongado"
+        ],
+        "respuesta_correcta": 0,
+        "retroalimentacion": "Mejor digestibilidad y ciertos metabolitos secundarios pueden reducir metano por unidad de producto."
+      },
+      {
+        "id": "df8",
+        "enunciado": "Un indicador clave de salud en un suelo ganadero regenerado es:",
+        "opciones": [
+          "Ausencia absoluta de vida",
+          "Presencia abundante de escarabajos coprófagos y lombrices",
+          "Tierra totalmente lisa sin plantas",
+          "Piedras calientes sin cobertura"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La fauna del suelo cicla nutrientes y mejora estructura e infiltración."
+      }
+    ],
+    "ficha": {
+      "problema": "Degradación de suelos por ganadería extensiva sin árboles ni descanso de potreros.",
+      "publico": "Estudiantes de Producción Agropecuaria, ganaderos y comunidad rural.",
+      "comportamiento": "Adoptar silvopastoril, pastoreo racional y cargas animales adecuadas.",
+      "mensaje": "Árboles, pasto y ganado en el mismo paisaje.",
+      "canal": "Plataforma digital y demostraciones en granja escolar.",
+      "indicador": "Número de participantes interesados en reconversión silvopastoril o regenerativa."
+    }
+  }
+]

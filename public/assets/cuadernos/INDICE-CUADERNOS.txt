@@ -1,0 +1,14 @@
+ABRIR PRIMERO → INICIO.html
+
+Diego Jimenez          → diego/cuaderno.html  (N=26)
+Briget Ramirez         → briget/cuaderno.html  (N=26)
+Alexander Sanchez      → alexander/cuaderno.html  (N=26)
+Sheyla Romero          → sheyla/cuaderno.html  (N=26)
+Jhoan Valencia         → jhoan-valencia/cuaderno.html  (N=28)
+Jhoan de Pablos        → jhoan-depablos/cuaderno.html  (N=26)
+Sebastian Mogollon     → sebastian/cuaderno.html  (N=26)
+Daniela Torres         → daniela/cuaderno.html  (N=28)
+Rous Vidal             → rous/cuaderno.html  (N=28)
+Alison Tarache         → alison/cuaderno.html  (N=28)
+Duvan Franco           → duvan/cuaderno.html  (N=28)
+Katerin Rubiano        → katerin/cuaderno.html  (N=28)

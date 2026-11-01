@@ -1,0 +1,28 @@
+PROYECTO: EcoCiudadano Iracá (I.E. Iracá · Guía 8 · Prof. Lidya Amanda Ladino Cristiano)
+RUTA: .../EcoCiudadano_Iraca/proyecto-iraca
+
+CONTEXTO (léelo completo antes de tocar código)
+- Hay DOS superficies distintas. NO las mezcles en un solo deploy:
+  A) Node+Express oficial: public/index.html (alumnos) + public/admin.html (docente) + server.js :3000
+  B) Demo Netlify global: deploy-netlify/index.html (UN solo archivo) → https://ecociudadano-iraca-guia8.netlify.app
+- Prohibido subir dos index.html a Netlify.
+- N=26/N=28 es muestra del CUADERNO, no “ya encuestados en la web”.
+- Semáforo Ley 1581 de 3 colores solo en contenido de campaña/cuaderno; NO en tarjetas resumen del panel docente si el usuario lo pidió quitar.
+- Calificación real solo en servidor (nunca exponer respuesta_correcta).
+
+PROBLEMAS (prioridad)
+1) Acceso PC vs celular
+   - En EL MISMO computador del servidor usa: http://localhost:3000/  (NO hace falta /index.html)
+   - Celulares en la misma Wi‑Fi: http://IP-LAN:3000/  (ej. http://192.168.101.75:3000/)
+   - Si el PC “no abre” la IP LAN, es normal en Windows: usa localhost en el PC.
+2) Panel docente (Netlify / deploy-netlify): quitar textos/bloques “Evaluador”, “Objetivo/N objetivo”, “Semáforo” del resumen del modal.
+3) Glassmorphism iPhone en CSS, pero en móvil (<860px) backdrop-filter: none (evitar pantalla negra).
+4) Touch targets ≥44px; PC y móvil = mismo sitio responsive (no dos index).
+
+NO CAMBIAR
+- Lógica de calificación del servidor
+- Mascotas SVG / campañas
+- Estructura de datos de cuestionarios
+
+SALIDA
+Español, pasos cortos, diff mínimo, reportar archivos tocados.

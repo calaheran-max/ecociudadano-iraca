@@ -1,0 +1,15 @@
+# Deploy en Render.com (Node.js real, sin tu PC encendida)
+services:
+  - type: web
+    name: ecociudadano-iraca
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: ADMIN_PIN
+        generateValue: true
+      - key: PORT
+        value: "10000"

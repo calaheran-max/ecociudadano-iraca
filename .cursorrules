@@ -1,0 +1,25 @@
+# Reglas de Desarrollo - EcoCiudadano Iracá
+
+## Stack Tecnológico
+- Backend: Node.js, Express, Mongoose (MongoDB Atlas / JSON local).
+- Frontend: HTML5, CSS3 moderno (Variables CSS dinámicas para los 9 temas ambientales), JavaScript Vanilla con DOM dinámico.
+- Seguridad: Calificación de cuestionarios estrictamente en el servidor (`server.js`). NUNCA exponer la propiedad `respuesta_correcta` al navegador o cliente.
+- Usar variables de entorno en `.env` para MongoDB Atlas y el PIN docente.
+- Viewport: `width=device-width, initial-scale=1.0`.
+
+## Directivas de Diseño y UI/UX
+- Transiciones ultra-fluidas obligatorias con `will-change: transform, opacity` y curvas de aceleración `cubic-bezier(0.16, 1, 0.3, 1)`.
+- El menú de la luna creciente (gibosa) debe pausarse en `hover` y soportar navegación por teclado (flechas y Enter).
+- Cada uno de los 9 estudiantes tiene un tema visual y paleta estricta en `themes.css` mediante `body.theme-[estudiante]`.
+- La pasarela de preguntas debe incluir 8 preguntas de nivel académico avanzado (SENA/ICFES), barra de progreso HUD, botón de comprobar con retroalimentación, bitácora de reflexión y guardado en `localStorage`.
+- Respetar `prefers-reduced-motion` en todas las animaciones CSS.
+- Glassmorphism, sombras neón y texturas de cada tema (acuarela, cyberpunk, HUD satelital).
+
+## Restricciones de Seguridad e Integridad
+- No mostrar nunca rutas absolutas locales en los enlaces del cliente; usar siempre rutas relativas (`./css/...`, `./js/...`).
+- El servidor Node.js corre por defecto en el puerto `3000`. No usar Live Server (5500) para probar la API.
+- Mantener modularidad entre `server.js`, `db.js` y los modelos Mongoose.
+- Cada campaña es un módulo aislado. El panel docente filtra por `cuestionarioId`.
+- El flujo del estudiante es: ruleta con mascotas SVG, formulario de nombre y grado, 8 preguntas comprobadas en el servidor, firma del compromiso al final y certificado con código verificable.
+- El puntaje oficial se recalcula en el servidor a partir de las respuestas ya comprobadas. Un puntaje enviado por el navegador no cuenta.
+- `GET /verificar/:codigo` confirma un certificado emitido. La descarga usa `window.print()` y `@media print`.

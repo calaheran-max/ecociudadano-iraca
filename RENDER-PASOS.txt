@@ -1,0 +1,34 @@
+PUBLICAR EN INTERNET SIN TU PC (Render.com) — Node real con API
+================================================================
+
+Netlify NO ejecuta server.js → por eso /api da 404.
+Render SÍ ejecuta Node → URL tipo https://ecociudadano-iraca.onrender.com
+
+PASOS
+1. Crea cuenta en https://github.com y sube esta carpeta proyecto-iraca
+   (o arrastra el ZIP del proyecto a un repo nuevo).
+
+2. Entra a https://render.com → New → Web Service → conecta ese repo.
+
+3. Configura:
+   - Root Directory: (vacío si el repo ES proyecto-iraca)
+   - Build Command: npm install
+   - Start Command: npm start
+   - Instance: Free
+
+4. Environment:
+   - ADMIN_PIN = (tu PIN docente, ej. el de .env)
+   - NODE_VERSION = 20
+
+5. Deploy → copia la URL pública (https://….onrender.com)
+
+6. Prueba en PC y celular:
+   - Alumnos: https://TU-URL.onrender.com/
+   - Docente: https://TU-URL.onrender.com/admin.html
+
+NOTA FREE: el primer acceso tras idle puede tardar ~30–60 s en “despertar”.
+
+NETLIFY (demo visual sin API)
+-----------------------------
+Solo para vitrina: sube deploy-netlify/index.html (UNO solo).
+No esperes /api ahí.

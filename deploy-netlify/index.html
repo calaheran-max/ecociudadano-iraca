@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>EcoCiudadano Iracá - Guía Nº 8</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- QRCode.js Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#e0fff4',
+              500: '#10b981',
+              900: '#064e3b',
+              dark: '#0a0f16'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* CSS Variables for Dynamic Student Palette Swapping */
+    :root {
+      --accent: #10b981;
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --bg-card: rgba(15, 23, 42, 0.95);
+      --border-card: rgba(30, 41, 59, 0.8);
+    }
+
+    /* Mobile GPU Safe Optimization - No backdrop-filter crash on mobile */
+    body {
+      background-color: #06090e;
+      color: #f1f5f9;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      isolation: isolate;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    /* Glass iPhone: sólido en móvil (evita pantallazo negro); blur solo en PC */
+    .bento-card,
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      transition: border-color 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      min-height: 44px;
+    }
+
+    @media (min-width: 768px) {
+      .bento-card,
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+      .bento-card:hover {
+        border-color: var(--accent);
+        box-shadow: 0 0 20px var(--accent-glow), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+        transform: translateY(-2px);
+      }
+    }
+
+    @media (max-width: 767px) {
+      .bento-card,
+      .glass-panel {
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        background: rgba(15, 23, 42, 0.96);
+      }
+    }
+
+    button, .topbar-btn, a.rounded-xl {
+      min-height: 44px;
+      touch-action: manipulation;
+    }
+
+    .accent-border { border-color: var(--accent) !important; }
+    .accent-text { color: var(--accent) !important; }
+    .accent-bg { background-color: var(--accent) !important; }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #06090e; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* Pulse Animations */
+    .pulse-subtle {
+      animation: pulseGlow 3s infinite ease-in-out;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 10px rgba(0,0,0,0.5); }
+      50% { box-shadow: 0 0 20px var(--accent-glow); }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between">
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="sticky top-0 z-40 bg-slate-950/95 border-b border-slate-800 px-4 py-3">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand & Mascot Logo -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="resetToHome()">
+        <div id="nav-mascot-icon" class="w-10 h-10 rounded-xl bg-slate-900 border border-slate-700 flex items-center justify-center text-emerald-400 font-bold shadow-md">
+          🌱
+        </div>
+        <div>
+          <span class="text-xs font-semibold tracking-wider text-emerald-400 uppercase block">I.E. Iracá · Guía 8</span>
+          <h1 class="text-lg font-bold text-white leading-none">EcoCiudadano</h1>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2">
+        <!-- QR Launcher -->
+        <button onclick="toggleQRModal()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-emerald-400 hover:border-emerald-500/50 transition flex items-center gap-2 text-sm font-medium">
+          <i data-lucide="qr-code" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Código QR</span>
+        </button>
+
+        <!-- Teacher Panel Button -->
+        <button onclick="openTeacherPanel()" class="p-2.5 rounded-xl bg-emerald-950/60 border border-emerald-800/80 text-emerald-300 hover:bg-emerald-900/80 transition flex items-center gap-2 text-sm font-medium">
+          <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+          <span class="hidden md:inline">Panel Docente</span>
+        </button>
+
+        <!-- Mobile Drawer Selector Toggle -->
+        <button onclick="toggleStudentDrawer()" class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-300 hover:text-white md:hidden">
+          <i data-lucide="users" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ================= MAIN LAYOUT ================= -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 md:grid-cols-12 gap-6">
+
+    <!-- SIDEBAR: Student Campaign Carousel Navigation (Desktop & Tablet) -->
+    <aside id="student-sidebar" class="hidden md:block md:col-span-4 lg:col-span-3 space-y-3">
+      <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+        <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+          <i data-lucide="sparkles" class="w-4 h-4 text-emerald-400"></i>
+          Proyectos (12)
+        </h2>
+        <span class="text-xs text-slate-500 font-mono">Grado 11°</span>
+      </div>
+
+      <!-- Student List Container -->
+      <div id="student-list" class="space-y-2 max-h-[calc(100vh-140px)] overflow-y-auto pr-1">
+        <!-- Injected via JavaScript -->
+      </div>
+    </aside>
+
+    <!-- CENTER CONTENT: Bento Grid / Interactive Questionnaires -->
+    <section id="main-content-panel" class="col-span-1 md:col-span-8 lg:col-span-9 space-y-6">
+      <!-- Dynamic View Container -->
+      <div id="campaign-view-container">
+        <!-- Rendered via JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= MOBILE DRAWER (SLIDE-OVER) ================= -->
+  <div id="mobile-drawer" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex-col justify-end md:hidden">
+    <div class="bg-slate-900 border-t border-slate-800 rounded-t-2xl p-4 max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+        <div class="flex items-center gap-2">
+          <i data-lucide="users" class="w-5 h-5 text-emerald-400"></i>
+          <h3 class="font-bold text-white">Seleccionar Estudiante</h3>
+        </div>
+        <button onclick="toggleStudentDrawer()" class="p-1 rounded-lg text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <div id="mobile-student-list" class="space-y-2 overflow-y-auto my-3 flex-1 pr-1">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: QR CODE ACCESS ================= -->
+  <div id="qr-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-sm w-full p-6 text-center space-y-4 relative shadow-2xl">
+      <button onclick="toggleQRModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center mx-auto">
+        <i data-lucide="qr-code" class="w-6 h-6"></i>
+      </div>
+
+      <div>
+        <h3 class="text-lg font-bold text-white">Acceso Móvil Instantáneo</h3>
+        <p class="text-xs text-slate-400 mt-1">Escanea para abrir la plataforma EcoCiudadano Iracá en cualquier smartphone sin descargas.</p>
+      </div>
+
+      <!-- QR Canvas Render Zone -->
+      <div class="bg-white p-4 rounded-xl inline-block mx-auto shadow-inner border border-slate-200">
+        <div id="qrcode-container"></div>
+      </div>
+
+      <div class="text-xs text-slate-500 font-mono bg-slate-950 p-2.5 rounded-lg border border-slate-800 break-all select-all">
+        <span id="qr-url-text"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: TEACHER PANEL (PROF. LIDYA AMANDA) ================= -->
+  <div id="teacher-modal" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full p-4 sm:p-6 space-y-6 my-auto shadow-2xl">
+      
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center">
+            <i data-lucide="award" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <div class="text-xs font-semibold text-emerald-400 uppercase tracking-wider">Panel Docente Institucional</div>
+            <h2 class="text-xl font-bold text-white">Prof. Lidya Amanda Ladino Cristiano</h2>
+          </div>
+        </div>
+        <button onclick="closeTeacherPanel()" class="p-2 rounded-xl text-slate-400 hover:text-white bg-slate-800/50">
+          <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+      <!-- Stat Summary Cards (sin "Evaluador", sin "Objetivo N", sin "Semáforo") -->
+      <div class="grid grid-cols-2 md:grid-cols-2 gap-3">
+        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-white/10 backdrop-blur-md">
+          <span class="text-xs text-slate-400 block">Campañas Totales</span>
+          <span class="text-xl font-bold text-white mt-1 block">12 / 12</span>
+        </div>
+        <div class="bg-slate-950/80 p-3.5 rounded-xl border border-white/10 backdrop-blur-md">
+          <span class="text-xs text-slate-400 block">Encuestas web registradas</span>
+          <span class="text-xl font-bold text-amber-300 mt-1 block">0 (aún no)</span>
+        </div>
+      </div>
+
+      <!-- Live Student Audit Table -->
+      <div class="space-y-3">
+        <h3 class="text-sm font-bold text-slate-300 flex items-center gap-2">
+          <i data-lucide="bar-chart-3" class="w-4 h-4 text-emerald-400"></i>
+          Monitoreo de Avance y Retos Evaluados
+        </h3>
+        
+        <div class="overflow-x-auto rounded-xl border border-slate-800">
+          <table class="w-full text-left text-xs text-slate-300">
+            <thead class="bg-slate-950 text-slate-400 uppercase text-[10px] tracking-wider border-b border-slate-800">
+              <tr>
+                <th class="p-3">Estudiante</th>
+                <th class="p-3">Mascota / Tema</th>
+                <th class="p-3">Estado en web</th>
+                <th class="p-3 text-right">Nota Guía 8</th>
+              </tr>
+            </thead>
+            <tbody id="teacher-table-body" class="divide-y divide-slate-800 bg-slate-900/50">
+              <!-- Injected dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex justify-between items-center pt-3 border-t border-slate-800 text-xs text-slate-500">
+        <span>SENA · I.E. Iracá San Martín, Meta</span>
+        <button onclick="exportTeacherReport()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-medium transition flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4"></i>
+          Exportar Informe
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-950 border-t border-slate-900 py-4 px-4 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p>© 2026 I.E. Iracá — Proyecto de Ciudadanía Digital y Sostenibilidad (Guía Nº 8)</p>
+      <p class="text-emerald-500/80 font-mono">SENA · San Martín, Meta</p>
+    </div>
+  </footer>
+
+  <!-- ================= JAVASCRIPT APPLICATION CORE ================= -->
+  <script>
+    // -------------------------------------------------------------
+    // DATA STORE: 12 STUDENT CAMPAIGNS & 8-QUESTION CHALLENGES
+    // -------------------------------------------------------------
+    const PROYECTOS = [
+      {
+        id: "diego",
+        estudiante: "Diego Jimenez",
+        personaje: "Byte",
+        mascotaEmoji: "🦎",
+        estilo: "theme-emerald",
+        accent: "#10b981",
+        linea: "Ciberseguridad IoT",
+        nSample: 26,
+        ficha: {
+          problema: "Vulnerabilidad de nodos IoT y filtración de credenciales en estaciones de monitoreo ambiental escolar.",
+          publico: "Estudiantes de media técnica y comunidad académica de la I.E. Iracá.",
+          comportamiento: "Proteger claves de acceso, actualizar firmware y reportar accesos sospechosos a la estación.",
+          canal: "Plataforma EcoCiudadano Iracá y socialización en el aula.",
+          mensaje: "Cifra tus nodos y asegura el dato ambiental.",
+          indicador: "Número de estudiantes que identifican prácticas seguras en monitoreo conectado."
+        },
+        preguntas: [
+          { q: "¿Cuál es el riesgo de usar contraseñas por defecto en un nodo IoT?", a: ["Acceso no autorizado y alteración de datos", "Consumo excesivo de batería", "Fallo en el Wi-Fi"], correct: 0 },
+          { q: "¿Qué ley en Colombia protege los datos capturados por los nodos?", a: ["Ley 1581 de 2012", "Ley de Aguas 1999", "Código Penal Art 10"], correct: 0 },
+          { q: "¿Qué significa cifrar el firmware de una estación escolar?", a: ["Proteger el código interno contra lectura y hackeo", "Limpiar el polvo del sensor", "Cambiar la pantalla"], correct: 0 },
+          { q: "¿Qué hacer si detectas un puerto de red expuesto sin clave?", a: ["Reportar e iniciar protocolo de bloqueo", "Ignorarlo", "Compartirlo en redes"], correct: 0 },
+          { q: "El consentimiento informado aplica cuando un nodo captura:", a: ["Ubicaciones y voces de personas", "Solo la temperatura del suelo", "El nivel de lluvia"], correct: 0 },
+          { q: "¿Cuál es una buena práctica de ciberhigiene en hardware libre?", a: ["Desactivar servicios no utilizados", "Dejar la clave '123456'", "Usar cables viejos"], correct: 0 },
+          { q: "Si alteran las métricas de un sensor ambiental, el problema es:", a: ["Pérdida de integridad de los datos científicos", "Ninguno", "Mejora del clima"], correct: 0 },
+          { q: "¿Cómo verificar que la transmisión IoT es segura?", a: ["Revisando el uso de HTTPS/TLS o cifrado AES", "Mirando si el LED brilla", "Probando en el teléfono"], correct: 0 }
+        ]
+      },
+      {
+        id: "briget",
+        estudiante: "Briget Ramirez",
+        personaje: "Lia",
+        mascotaEmoji: "🐢",
+        estilo: "theme-cyan",
+        accent: "#06b6d4",
+        linea: "Protección de Datos Personales",
+        nSample: 26,
+        ficha: {
+          problema: "Exposición de datos personales y ubicaciones sensibles en investigaciones y salidas ecológicas escolares.",
+          publico: "Estudiantes, docentes y equipos de investigación escolar.",
+          comportamiento: "Anonimizar datos, pedir consentimiento informado y aplicar minimización (Ley 1581).",
+          canal: "Módulo digital EcoCiudadano y talleres de habeas data ambiental.",
+          mensaje: "Sin consentimiento no hay dato personal en la bitácora.",
+          indicador: "Porcentaje de estudiantes que rechazan publicar datos identificables sin autorización."
+        },
+        preguntas: [
+          { q: "¿Qué es el Habeas Data según la Ley 1581?", a: ["El derecho a conocer, actualizar y rectificar información personal", "Un virus informático", "Un formulario del SENA"], correct: 0 },
+          { q: "¿Qué implica la minimización de datos en bitácoras?", a: ["Recolectar solo los datos estrictamente necesarios", "No escribir nada", "Guardar fotos de todos"], correct: 0 },
+          { q: "Antes de publicar la lista de asistentes a una salida ecológica se requiere:", a: ["Autorización o consentimiento informado", "Permiso del conductor", "Un pago en efectivo"], correct: 0 },
+          { q: "¿Cuál es un dato sensible que NO debe publicarse libremente?", a: ["Dirección exacta de residencia y estado de salud", "Nombre del colegio", "Nombre del municipio"], correct: 0 },
+          { q: "Si anonimizas una encuesta ambiental, garantizas:", a: ["Privacidad de los participantes", "Que nadie responda", "Menos trabajo de campo"], correct: 0 },
+          { q: "¿Quién es el titular de los datos personales de un menor?", a: ["El menor representado por sus padres o acudientes", "El colegio", "Cualquier persona"], correct: 0 },
+          { q: "¿Qué hacer si alguien pide borrar sus datos de la base escolar?", a: ["Tramitar la solicitud de supresión de inmediato", "Cobrarle una multa", "Ignorar el mensaje"], correct: 0 },
+          { q: "La seguridad digital en investigaciones comunitarias previene:", a: ["Extorsión o acoso a la población local", "La lluvia en el cultivo", "Fallas en el motor"], correct: 0 }
+        ]
+      },
+      {
+        id: "alexander",
+        estudiante: "Alexander Sanchez",
+        personaje: "Click",
+        mascotaEmoji: "🐦",
+        estilo: "theme-pink",
+        accent: "#ec4899",
+        linea: "Fotografía de Campo Responsable",
+        nSample: 26,
+        ficha: {
+          problema: "Fotografías de campo que revelan coordenadas, alteran hábitats o vulneran privacidad de personas y fauna.",
+          publico: "Estudiantes en salidas de campo y brigadas de ecoturismo escolar.",
+          comportamiento: "Mantener distancia, ocultar metadatos sensibles y no alterar el entorno para la foto.",
+          canal: "Plataforma web y socialización previa a salidas ecológicas.",
+          mensaje: "La mejor foto es la que no daña el hábitat.",
+          indicador: "Número de estudiantes que aplican criterios éticos al publicar fotos de campo."
+        },
+        preguntas: [
+          { q: "¿Qué son los metadatos EXIF en una fotografía?", a: ["Información oculta como coordenadas GPS, fecha y cámara", "El filtro de color", "El marco impreso"], correct: 0 },
+          { q: "¿Por qué es peligroso publicar las coordenadas de una especie en peligro?", a: ["Atrae cazadores o traficantes de fauna", "Hace que la foto pese más", "Arruina la imagen"], correct: 0 },
+          { q: "Regla de oro al fotografiar fauna silvestre:", a: ["Usar teleobjetivo/zoom y mantener distancia de seguridad", "Tocar al animal para que mire", "Usar flash potente"], correct: 0 },
+          { q: "Para publicar fotos de niños en salidas pedagógicas se exige:", a: ["Firma del formato de derechos de imagen por padres", "Solo un 'me gusta'", "Ningún documento"], correct: 0 },
+          { q: "¿Qué significa hacer fotografía ética de naturaleza?", a: ["Respetar la vida animal sin alterar su conducta ni hábitat", "Usar la cámara más costosa", "Modificar las plantas"], correct: 0 },
+          { q: "Si borras los metadatos de ubicación antes de subir la foto a redes:", a: ["Proteges el sitio vulnerable y la privacidad", "La foto pierde resolución", "Se borra la memoria"], correct: 0 },
+          { q: "El uso irresponsable de drones fotográficos puede causar:", a: ["Estrés y abandono de nidos en aves", "Mejor calidad de video", "Mayor viento"], correct: 0 },
+          { q: "¿Cómo actuar si un poblador no quiere ser fotografiado?", a: ["Respetar su decisión y no tomar la imagen", "Tomársela a escondidas", "Insistirle"], correct: 0 }
+        ]
+      },
+      {
+        id: "sheyla",
+        estudiante: "Sheyla Romero",
+        personaje: "Doc",
+        mascotaEmoji: "🦉",
+        estilo: "theme-amber",
+        accent: "#f59e0b",
+        linea: "Verificación de Noticias Falsas",
+        nSample: 26,
+        ficha: {
+          problema: "Circulación de noticias falsas sobre emergencias y datos ambientales locales.",
+          publico: "Comunidad educativa de San Martín, Meta.",
+          comportamiento: "Contrastar con IDEAM, autoridades ambientales y búsqueda inversa de imágenes.",
+          canal: "Plataforma interactiva y chats escolares moderados.",
+          mensaje: "Fact-check antes del reenvío.",
+          indicador: "Número de estudiantes capaces de detectar al menos una señal de fake news ambiental."
+        },
+        preguntas: [
+          { q: "¿Qué es el Fact-Checking o verificación de datos?", a: ["Contrastar una noticia con fuentes oficiales comprobables", "Compartir de inmediato", "Crear memes"], correct: 0 },
+          { q: "¿Qué señal indica que una noticia ambiental puede ser falsa?", a: ["Título sensacionalista y sin fecha ni autor claro", "Viene de la web del IDEAM", "Tiene firma técnica"], correct: 0 },
+          { q: "Antes de alarmar con un chat de 'incendio forestal masivo', debes:", a: ["Verificar con Gestión del Riesgo o Bomberos", "Reenviarlo a 10 grupos", "Llamar a un amigo"], correct: 0 },
+          { q: "¿Para qué sirve la búsqueda inversa de imágenes?", a: ["Para saber si una foto es antigua o usada fuera de contexto", "Para editar el brillo", "Para imprimir"], correct: 0 },
+          { q: "El impacto negativo de las Fake News ambientales es:", a: ["Generar pánico no justificado o desinformación", "Ninguno", "Ahorro de batería"], correct: 0 },
+          { q: "¿Qué entidad oficial reporta datos del clima en Colombia?", a: ["IDEAM", "Una cadena de WhatsApp", "Un blog anónimo"], correct: 0 },
+          { q: "Si dudas de una información en redes sociales, lo correcto es:", a: ["Pausar y no compartir hasta validar", "Reenviarla 'por si acaso'", "Comentar emojiscrian"], correct: 0 },
+          { q: "La ciudadanía digital crítica promueve:", a: ["El consumo responsable e informado de contenidos", "Creer en todo", "Bloquear internet"], correct: 0 }
+        ]
+      },
+      {
+        id: "jhoan_v",
+        estudiante: "Jhoan Valencia",
+        personaje: "Gota",
+        mascotaEmoji: "🐸",
+        estilo: "theme-blue",
+        accent: "#3b82f6",
+        linea: "Cuidado y Monitoreo del Agua",
+        nSample: 28,
+        ficha: {
+          problema: "Desconocimiento de parámetros de calidad hídrica (pH, OD, turbidez) en fuentes locales.",
+          publico: "Estudiantes de monitoreo ambiental y comunidad cercana a fuentes hídricas.",
+          comportamiento: "Medir con sensores calibrados y reportar anomalías sin alterar el ecosistema acuático.",
+          canal: "Módulo digital y prácticas de campo con sondas de calidad.",
+          mensaje: "Mide el agua, protege la vida.",
+          indicador: "Número de estudiantes que interpretan correctamente un valor de pH o OD en contexto."
+        },
+        preguntas: [
+          { q: "¿Qué mide el pH en una fuente de agua?", a: ["El grado de acidez o alcalinidad del agua", "La velocidad de la corriente", "La cantidad de peces"], correct: 0 },
+          { q: "¿Un pH óptimo para vida acuática suele estar entre:", a: ["6.5 y 8.5", "1.0 y 3.0", "12.0 y 14.0"], correct: 0 },
+          { q: "¿Qué significa OD en análisis hídrico?", a: ["Oxígeno Disuelto", "Orden de Drenaje", "Oxigenación Directa"], correct: 0 },
+          { q: "Una alta turbidez en un caño indica:", a: ["Presencia elevada de sedimentos o sólidos suspendidos", "Agua destilada pura", "Exceso de cloro"], correct: 0 },
+          { q: "Al recolectar muestras de agua en campo se debe:", a: ["Evitar contaminar la muestra y usar frascos limpios", "Usar las manos sucias", "Dejar la botella abierta"], correct: 0 },
+          { q: "Si la sonda registra pH ácido (4.0) en la granja escolar, debes:", a: ["Reportar la anomalía técnica de inmediato", "Beber el agua", "Ignorarlo"], correct: 0 },
+          { q: "La protección de las rondas hídricas evita:", a: ["La erosión de cauces y contaminación directa", "El crecimiento de árboles", "La lluvia"], correct: 0 },
+          { q: "La sensorización hídrica responsable aporta a:", a: ["La gestión sostenible del recurso hídrico local", "Gastar más agua", "Perder tiempo"], correct: 0 }
+        ]
+      },
+      {
+        id: "jhoan_p",
+        estudiante: "Jhoan de Pablos",
+        personaje: "Vigía",
+        mascotaEmoji: "🦇",
+        estilo: "theme-indigo",
+        accent: "#6366f1",
+        linea: "Monitoreo con Drones (RPAS)",
+        nSample: 26,
+        ficha: {
+          problema: "Uso de drones sin respeto a privacidad, fauna y normatividad aeronáutica en monitoreo.",
+          publico: "Estudiantes de media técnica y operadores escolares de RPAS.",
+          comportamiento: "Volar en VLOS, evitar zonas sensibles y planificar traslapes sin estrés a la fauna.",
+          canal: "Plataforma EcoCiudadano y demostraciones de vuelo controladas.",
+          mensaje: "Monitorea desde el aire sin invadir ni ahuyentar.",
+          indicador: "Porcentaje de estudiantes que reconocen límites éticos y normativos del vuelo escolar."
+        },
+        preguntas: [
+          { q: "¿Qué significa volar un dron bajo regla VLOS?", a: ["Mantener contacto visual directo con el dron en todo momento", "Volar de noche sin luces", "Volar a 5 km sin verlo"], correct: 0 },
+          { q: "Antes de despegar un dron en la I.E. Iracá debes revisar:", a: ["Lista de chequeo, batería, clima y presencia de personas", "Solo la cámara", "Nada"], correct: 0 },
+          { q: "Si observas aves alteradas por el ruido del dron debes:", a: ["Aterrizar o alejar el equipo de inmediato", "Acercarlo más", "Hacer piruetas"], correct: 0 },
+          { q: "¿Está permitido grabar viviendas vecinas sin autorización previa?", a: ["No, vulnera la privacidad y norma de datos", "Sí, siempre", "Solo si es rápido"], correct: 0 },
+          { q: "La altura máxima recomendada para vuelos escolares no controlados es:", a: ["120 metros (400 ft) sobre el terreno", "1000 metros", "Sin límite"], correct: 0 },
+          { q: "Un plan de vuelo bien diseñado garantiza:", a: ["Traslape fotográfico adecuado sin repetir zonas ni arriesgar", "Gastar la batería", "Perder el dron"], correct: 0 },
+          { q: "Si el viento supera el límite operativo del RPAS:", a: ["Cancelar o posponer el vuelo por seguridad", "Forzar el despegue", "Volar más alto"], correct: 0 },
+          { q: "El registro de bitácora de vuelo incluye:", a: ["Horas de vuelo, piloto, batería y condiciones meteorológicas", "Solo la foto final", "El precio del equipo"], correct: 0 }
+        ]
+      },
+      {
+        id: "sebastian",
+        estudiante: "Sebastian Mogollon",
+        personaje: "Sensi",
+        mascotaEmoji: "🦗",
+        estilo: "theme-lime",
+        accent: "#84cc16",
+        linea: "Calibración de Sensores y Hardware",
+        nSample: 26,
+        ficha: {
+          problema: "Lecturas erróneas por sensores sin calibrar y nodos mal mantenidos en campo.",
+          publico: "Equipos de telemetría escolar y docentes de monitoreo.",
+          comportamiento: "Calibrar, proteger hardware y registrar datos con marca de tiempo confiable.",
+          canal: "Laboratorio escolar y módulo digital.",
+          mensaje: "Sin calibración no hay dato científico.",
+          indicador: "Número de estudiantes que priorizan calibración antes de una toma de campo."
+        },
+        preguntas: [
+          { q: "¿Qué es la calibración de un sensor ambiental?", a: ["Ajustar su lectura contra un patrón o solución de referencia conocida", "Limpiarlo con agua", "Pintar la caja"], correct: 0 },
+          { q: "Si un sensor de temperatura tiene un desvío constante de +3°C:", a: ["Se debe aplicar offset o recalibrar", "No importa", "Se compra otro colegio"], correct: 0 },
+          { q: "¿Por qué se usa gel de sílice dentro de la caja del sensor?", a: ["Para absorber humedad y prevenir cortocircuitos", "Para dar peso", "Para enfriar el chip"], correct: 0 },
+          { q: "La marca de tiempo (Timestamp) en una medición sirve para:", a: ["Vincular el dato exacto con la hora y fecha de captura", "Ver qué hora es", "Gastar memoria"], correct: 0 },
+          { q: "Un sensor descalibrado genera en la investigación:", a: ["Datos falsos y decisiones erróneas", "Mejor nota", "Imágenes más bonitas"], correct: 0 },
+          { q: "La protección IP65 o IP67 en carcasas significa:", a: ["Resistencia contra polvo y chorros de agua", "Velocidad de Internet", "Color del plástico"], correct: 0 },
+          { q: "Antes de instalar un sensor en la granja debes verificar:", a: ["Conexión de cables, polaridad y voltaje", "Solo el empaque", "El canal de YouTube"], correct: 0 },
+          { q: "El mantenimiento preventivo de hardware escolar evita:", a: ["Daños permanentes y pérdidas de datos climáticos", "Que los alumnos estudien", "El calor"], correct: 0 }
+        ]
+      },
+      {
+        id: "daniela",
+        estudiante: "Daniela Torres",
+        personaje: "Reci",
+        mascotaEmoji: "🐜",
+        estilo: "theme-orange",
+        accent: "#f97316",
+        linea: "Manejo de Suelos y Abonos Orgánicos",
+        nSample: 28,
+        ficha: {
+          problema: "Degradación de suelos agrícolas por mal manejo de abonos, acidez y laboreo excesivo.",
+          publico: "Estudiantes de Producción Agropecuaria y comunidad rural vinculada a la IE.",
+          comportamiento: "Usar compost, rotación de cultivos y laboreo mínimo con control biológico.",
+          canal: "Plataforma EcoCiudadano y práctica en huerta/finca escolar.",
+          mensaje: "Suelo vivo, finca que dura.",
+          indicador: "Número de estudiantes que identifican prácticas de suelo sostenible."
+        },
+        preguntas: [
+          { q: "¿Cuál es el beneficio principal del compostaje en el suelo?", a: ["Mejora la estructura biológica y aporta materia orgánica", "Mata todas las bacterias", "Endurece la tierra"], correct: 0 },
+          { q: "El laboreo excesivo o arado profundo continuo causa:", a: ["Compactación, erosión y pérdida de microorganismos", "Suelo más fértil", "Mayor agua"], correct: 0 },
+          { q: "La rotación de cultivos sirve para:", a: ["Romper ciclos de plagas y balancear nutrientes del suelo", "Gastar más semillas", "Ver la finca bonita"], correct: 0 },
+          { q: "La relación Carbono/Nitrógeno (C/N) adecuada en compostaje es:", a: ["Cercana a 30:1", "1:100", "100:100"], correct: 0 },
+          { q: "Para corregir un suelo extremadamente ácido en la región se usa:", a: ["Encalado agrícola controlado", "Más nitrógeno sintético", "Gasolina"], correct: 0 },
+          { q: "La cobertura vegetal viva o muerta (mulch) ayuda a:", a: ["Retener humedad y evitar el impacto directo de la lluvia", "Atraer calor dañino", "Secar el suelo"], correct: 0 },
+          { q: "La microbiología del suelo (micorrizas y bacterias) es clave para:", a: ["Solubilizar nutrientes para las raíces", "Pudrir la fruta", "Ninguna función"], correct: 0 },
+          { q: "La agricultura de conservación promueve:", a: ["Mínima alteración del suelo y nutrición orgánica", "Uso masivo de químicos", "Quemar el rastrojo"], correct: 0 }
+        ]
+      },
+      {
+        id: "rous",
+        estudiante: "Rous Vidal",
+        personaje: "Solaris",
+        mascotaEmoji: "🦅",
+        estilo: "theme-yellow",
+        accent: "#eab308",
+        linea: "Energías Renovables y Eficiencia",
+        nSample: 28,
+        ficha: {
+          problema: "Dependencia de energía convencional y alto consumo en entornos rurales y escolares.",
+          publico: "Productores rurales y comunidad educativa de San Martín, Meta.",
+          comportamiento: "Promover solar, biogás y eficiencia (LED, bombeo fotovoltaico).",
+          canal: "Módulo digital y talleres de eficiencia energética.",
+          mensaje: "Energía limpia para el campo.",
+          indicador: "Porcentaje de participantes dispuestos a adoptar al menos una práctica de energía limpia."
+        },
+        preguntas: [
+          { q: "¿Qué componente convierte la luz solar en corriente continua (DC)?", a: ["El panel solar fotovoltaico", "El inversor", "La batería"], correct: 0 },
+          { q: "La función del inversor solar en un sistema aislado es:", a: ["Convertir corriente continua (DC) a corriente alterna (AC)", "Cargar el teléfono", "Enfriar los cables"], correct: 0 },
+          { q: "El bombeo fotovoltaico en fincas sustituye el uso de:", a: ["Combustibles fósiles (gasolina/diésel)", "Agua de lluvia", "Tuberías"], correct: 0 },
+          { q: "La iluminación LED comparada con la incandescente ahorra hasta:", a: ["80% de energía", "5%", "Nada"], correct: 0 },
+          { q: "Un biodigestor transforma estiércol orgánico en:", a: ["Biogás y biol (fertilizante líquido)", "Plástico", "Gasolina de avión"], correct: 0 },
+          { q: "Ángulo recomendado de inclinación solar en nuestra latitud cerca al ecuador:", a: ["Entre 10° y 15° hacia el norte/sur", "90° vertical", "0° escondido"], correct: 0 },
+          { q: "El mantenimiento básico de paneles solares consiste en:", a: ["Limpiar polvo/suciedad con agua limpia y paño suave", "Usar lija", "Pintarlos"], correct: 0 },
+          { q: "La eficiencia energética rural busca:", a: ["Producir más con menor consumo y costo ambiental", "Usar motores viejos", "Dejar luces encendidas"], correct: 0 }
+        ]
+      },
+      {
+        id: "alison",
+        estudiante: "Alison Tarache",
+        personaje: "Flora",
+        mascotaEmoji: "🫎",
+        estilo: "theme-teal",
+        accent: "#14b8a6",
+        linea: "Biodiversidad y Corredores Biológicos",
+        nSample: 28,
+        ficha: {
+          problema: "Fragmentación de hábitats y pérdida de conectividad ecológica en sabana y piedemonte.",
+          publico: "Estudiantes, comunidad rural y actores de conservación local.",
+          comportamiento: "Proteger bosques de galería, polinizadores y corredores biológicos.",
+          canal: "Plataforma web y socialización territorial.",
+          mensaje: "Conecta el paisaje, salva la biodiversidad.",
+          indicador: "Número de estudiantes que explican la función de un corredor ecológico."
+        },
+        preguntas: [
+          { q: "¿Qué es un corredor biológico o ecológico?", a: ["Franja de vegetación que conecta áreas naturales fragmentadas", "Una carretera pavimentada", "Un canal de riego"], correct: 0 },
+          { q: "Los bosques de galería a lo largo de los caños protegen:", a: ["El recurso hídrico y el tránsito de fauna nativa", "Solo las rocas", "Edificios"], correct: 0 },
+          { q: "La fragmentación de hábitats produce:", a: ["Aislamiento genético y riesgo de extinción local", "Más espacio para animales", "Mejores plantas"], correct: 0 },
+          { q: "¿Por qué son fundamentales los polinizadores (abejas, aves, murciélagos)?", a: ["Garantizan la reproducción de plantas y frutos", "Hacen ruido", "Consumen tierra"], correct: 0 },
+          { q: "Una cerca viva con árboles nativos aporta a:", a: ["Conectividad paisajística y sombra para el ganado", "Pérdida de terreno", "Basura"], correct: 0 },
+          { q: "La fauna silvestre en la altillanura cumple la función de:", a: ["Dispersores de semillas y controladores biológicos", "Mascotas domésticas", "Ninguna"], correct: 0 },
+          { q: "Evitar las quemas no controladas en la sabana protege:", a: ["El microhábitat del suelo y refugios de animales", "Solo la hierba seca", "El aire frío"], correct: 0 },
+          { q: "La conservación de biodiversidad en predios agrícolas mejora:", a: ["La resiliencia y servicios ecosistémicos de la finca", "El precio del dólar", "La maquinaria"], correct: 0 }
+        ]
+      },
+      {
+        id: "duvan",
+        estudiante: "Duvan Franco",
+        personaje: "Tauro",
+        mascotaEmoji: "🐂",
+        estilo: "theme-emerald",
+        accent: "#059669",
+        linea: "Sistemas Silvopastoriles y Pastoreo",
+        nSample: 28,
+        ficha: {
+          problema: "Degradación de suelos por ganadería extensiva sin árboles ni descanso de potreros.",
+          publico: "Estudiantes de Producción Agropecuaria, ganaderos y comunidad rural.",
+          comportamiento: "Adoptar silvopastoril, pastoreo racional y cargas animales adecuadas.",
+          canal: "Plataforma digital y demostraciones en granja escolar.",
+          mensaje: "Árboles, pasto y ganado en el mismo paisaje.",
+          indicador: "Número de participantes interesados en reconversión silvopastoril o regenerativa."
+        },
+        preguntas: [
+          { q: "¿Qué integra un sistema silvopastoril (SSP)?", a: ["Árboles, arbustos forrajeros, pasto y ganado", "Solo vacas y cemento", "Solo veneno y arado"], correct: 0 },
+          { q: "El pastoreo racional (tipo Voisin) se basa en:", a: ["Rotación frecuente de potreros con periodos de reposo del pasto", "Dejar vacas 6 meses en el mismo sitio", "Quemar el pasto"], correct: 0 },
+          { q: "El estrés calórico en el ganado bovino provoca:", a: ["Baja producción de leche/carne y problemas inmunes", "Mayor ganancia de peso", "Nada"], correct: 0 },
+          { q: "Los árboles leguminosos (como el leucaena o matarratón) aportan al suelo:", a: ["Fijación biológica de Nitrógeno atmosférico", "Acidez dañina", "Venenos"], correct: 0 },
+          { q: "La sombra de árboles en potrero reduce la temperatura ambiental en:", a: ["Entre 3°C y 8°C", "0°C", "Sube el calor"], correct: 0 },
+          { q: "Manejar la carga animal adecuada previene:", a: ["El sobrepastoreo y la compactación del suelo", "El crecimiento del pasto", "La lluvia"], correct: 0 },
+          { q: "La bosta de ganado degradada por escarabajos estercoleros aporta:", a: ["Reciclaje de nutrientes e incorporación de materia orgánica", "Plagas de moscas", "Suciedad permanente"], correct: 0 },
+          { q: "La ganadería regenerativa busca:", a: ["Restaurar la salud del suelo mientras se produce alimento", "Talar todo el bosque", "Usar solo alimento concentrado"], correct: 0 }
+        ]
+      },
+      {
+        id: "katerin",
+        estudiante: "Katerin Rubiano",
+        personaje: "Floro",
+        mascotaEmoji: "🦜",
+        estilo: "theme-sky",
+        accent: "#0284c7",
+        linea: "Redes Sociales y Convivencia Digital",
+        nSample: 28,
+        ficha: {
+          problema: "Uso irresponsable de redes sociales, viralización de contenidos ajenos y ciberacoso escolar.",
+          publico: "Estudiantes de media técnica y grados inferiores de la I.E. Iracá.",
+          comportamiento: "Configurar privacidad, reportar contenido hostil y fomentar la empatía digital.",
+          canal: "Plataforma digital y talleres de convivencia en redes.",
+          mensaje: "Empatía en la red, respeto en el colegio.",
+          indicador: "Porcentaje de estudiantes que implementan ajustes de privacidad en sus perfiles tras la campaña."
+        },
+        preguntas: [
+          { q: "¿Qué es la netiqueta o etiqueta digital?", a: ["Conjunto de normas de comportamiento respetuoso en redes", "Un antivirus", "Una marca de ropa"], correct: 0 },
+          { q: "Si recibes una foto bochornosa de un compañero en un grupo debo:", a: ["No reenviar, borrar y reportar la falta de respeto", "Pasarla a más grupos", "Burlarme"], correct: 0 },
+          { q: "¿Qué es el ciberbullying o ciberacoso?", a: ["Hostigamiento o agresión repetida mediante medios digitales", "Un juego en línea", "Una materia escolar"], correct: 0 },
+          { q: "Configurar tu perfil como 'Privado' en redes sociales ayuda a:", a: ["Controlar quién ve tus fotos e información personal", "Perder seguidores", "Que nadie te hable"], correct: 0 },
+          { q: "La huella digital es:", a: ["El rastro de datos y contenido que dejas al usar Internet", "La marca del dedo en la pantalla", "La clave del Wi-Fi"], correct: 0 },
+          { q: "Antes de hacer un comentario en una publicación pregúntate:", a: ["¿Es verdad? ¿Es constructivo? ¿Respeta a la persona?", "Solo si da likes", "Nada"], correct: 0 },
+          { q: "La Ley 1620 de Convivencia Escolar contempla:", a: ["Rutas de atención para casos de ciberacoso escolar", "Solo multas de tránsito", "Exámenes finales"], correct: 0 },
+          { q: "La empatía digital consiste en:", a: ["Ponerse en el lugar del otro antes de publicar o responder", "Ignorar a los demás", "Criticar sin dar la cara"], correct: 0 }
+        ]
+      }
+    ];
+
+    // Global State
+    let activeIndex = 0;
+    let currentQuizAnswers = [];
+
+    // Initialize UI on Load
+    window.onload = function() {
+      lucide.createIcons();
+      renderStudentList();
+      selectProject(0);
+      initQR();
+    };
+
+    // Render Student Sidebar List
+    function renderStudentList() {
+      const desktopList = document.getElementById("student-list");
+      const mobileList = document.getElementById("mobile-student-list");
+      
+      let html = "";
+      PROYECTOS.forEach((p, idx) => {
+        html += `
+          <button onclick="selectProject(${idx})" class="w-full text-left p-3 rounded-xl transition border flex items-center justify-between ${idx === activeIndex ? 'bg-slate-800/90 border-emerald-500/50 text-white shadow-lg' : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:bg-slate-800/40 hover:text-slate-200'}">
+            <div class="flex items-center gap-3 overflow-hidden">
+              <span class="text-xl flex-shrink-0">${p.mascotaEmoji}</span>
+              <div class="truncate">
+                <div class="font-bold text-sm leading-tight truncate">${p.estudiante}</div>
+                <div class="text-[11px] text-slate-500 truncate">${p.personaje} · ${p.linea}</div>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600 flex-shrink-0"></i>
+          </button>
+        `;
+      });
+
+      desktopList.innerHTML = html;
+      mobileList.innerHTML = html;
+      lucide.createIcons();
+    }
+
+    // Select and Switch Campaign View
+    function selectProject(idx) {
+      activeIndex = idx;
+      const proj = PROYECTOS[idx];
+
+      // Update Root Dynamic Accent Color
+      document.documentElement.style.setProperty('--accent', proj.accent);
+      document.documentElement.style.setProperty('--accent-glow', `${proj.accent}33`);
+
+      // Update Nav Mascot Icon
+      document.getElementById("nav-mascot-icon").innerText = proj.mascotaEmoji;
+
+      // Re-render sidebar active state
+      renderStudentList();
+
+      // Render Main Bento Grid + Questionnaire View
+      renderCampaignView(proj);
+
+      // Close mobile drawer if open
+      document.getElementById("mobile-drawer").classList.add("hidden");
+      document.getElementById("mobile-drawer").classList.remove("flex");
+
+      // Scroll top smoothly on mobile
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Render Main Campaign Bento View
+    function renderCampaignView(proj) {
+      const container = document.getElementById("campaign-view-container");
+
+      container.innerHTML = `
+        <!-- HEADER CAMPAIGN HERO -->
+        <div class="bento-card border-l-4 pulse-subtle" style="border-left-color: ${proj.accent};">
+          <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 rounded-2xl bg-slate-950 border border-slate-800 flex items-center justify-center text-3xl shadow-inner flex-shrink-0">
+                ${proj.mascotaEmoji}
+              </div>
+              <div>
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-950 border border-slate-800 text-[11px] font-semibold text-emerald-400 mb-1">
+                  <span>🛡️ Guía Nº 8 · Iracá</span>
+                </div>
+                <h2 class="text-xl sm:text-2xl font-bold text-white leading-tight">${proj.estudiante}</h2>
+                <p class="text-xs text-slate-400 mt-0.5">Líder: <strong style="color: ${proj.accent};">${proj.personaje}</strong> · Especialidad: <span class="text-slate-300 font-medium">${proj.linea}</span></p>
+              </div>
+            </div>
+            
+            <button onclick="startQuiz(${activeIndex})" class="w-full sm:w-auto px-4 py-3 rounded-xl font-bold text-sm bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20">
+              <i data-lucide="play-circle" class="w-5 h-5"></i>
+              <span>Iniciar Encuesta (8 Retos)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- BENTO GRID (6 INSTITUTIONAL FIELDS) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div class="bento-card space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <i data-lucide="target" class="w-4 h-4"></i>
+              🎯 Problema Identificado
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">${proj.ficha.problema}</p>
+          </div>
+
+          <div class="bento-card space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <i data-lucide="users" class="w-4 h-4"></i>
+              👥 Público Objetivo
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">${proj.ficha.publico}</p>
+          </div>
+
+          <div class="bento-card space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <i data-lucide="lightbulb" class="w-4 h-4"></i>
+              💡 Comportamiento a Promover
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">${proj.ficha.comportamiento}</p>
+          </div>
+
+          <div class="bento-card space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <i data-lucide="radio" class="w-4 h-4"></i>
+              📢 Canal de Difusión
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">${proj.ficha.canal}</p>
+          </div>
+
+          <div class="bento-card md:col-span-2 bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border-emerald-500/30">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400 mb-1">
+              <i data-lucide="message-square-quote" class="w-4 h-4"></i>
+              💬 Mensaje Principal de Impacto
+            </div>
+            <p class="text-base font-semibold text-white italic">"${proj.ficha.mensaje}"</p>
+          </div>
+
+          <div class="bento-card md:col-span-2 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-400">
+              <i data-lucide="bar-chart-2" class="w-4 h-4"></i>
+              Indicador técnico
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">${proj.ficha.indicador}</p>
+          </div>
+
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    // -------------------------------------------------------------
+    // QUESTIONNAIRE / PASARELA DE RETOS ENGINE (8 PREGUNTAS)
+    // -------------------------------------------------------------
+    function startQuiz(projIdx) {
+      const proj = PROYECTOS[projIdx];
+      currentQuizAnswers = new Array(proj.preguntas.length).fill(null);
+
+      const container = document.getElementById("campaign-view-container");
+      
+      let questionsHTML = "";
+      proj.preguntas.forEach((item, qIdx) => {
+        questionsHTML += `
+          <div class="bento-card space-y-3">
+            <div class="flex items-start gap-3">
+              <span class="w-6 h-6 rounded-lg bg-emerald-500/20 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">${qIdx + 1}</span>
+              <h4 class="text-sm font-semibold text-white leading-snug">${item.q}</h4>
+            </div>
+            <div class="space-y-2 pl-9">
+              ${item.a.map((opt, optIdx) => `
+                <label class="flex items-center gap-3 p-2.5 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700 transition text-xs text-slate-300">
+                  <input type="radio" name="question_${qIdx}" value="${optIdx}" onchange="recordAnswer(${qIdx}, ${optIdx})" class="accent-emerald-500 w-4 h-4">
+                  <span>${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = `
+        <div class="bento-card space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div>
+              <span class="text-xs text-emerald-400 font-semibold uppercase">Evaluación Formativa</span>
+              <h2 class="text-lg font-bold text-white">Reto de 8 Preguntas: ${proj.estudiante}</h2>
+            </div>
+            <button onclick="renderCampaignView(PROYECTOS[${projIdx}])" class="px-3 py-1.5 rounded-lg bg-slate-800 text-xs text-slate-300 hover:text-white">
+              Volver a Ficha
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            ${questionsHTML}
+          </div>
+
+          <div class="pt-4 border-t border-slate-800 flex justify-end">
+            <button onclick="submitQuiz(${projIdx})" class="w-full sm:w-auto px-6 py-3 rounded-xl font-bold text-sm bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2">
+              <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+              <span>Enviar Respuestas y Calificar</span>
+            </button>
+          </div>
+        </div>
+      `;
+
+      lucide.createIcons();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function recordAnswer(qIdx, optIdx) {
+      currentQuizAnswers[qIdx] = optIdx;
+    }
+
+    function submitQuiz(projIdx) {
+      const proj = PROYECTOS[projIdx];
+      let score = 0;
+      let unanswered = 0;
+
+      proj.preguntas.forEach((item, idx) => {
+        if (currentQuizAnswers[idx] === null) {
+          unanswered++;
+        } else if (currentQuizAnswers[idx] === item.correct) {
+          score++;
+        }
+      });
+
+      if (unanswered > 0) {
+        alert(`Por favor responde las ${unanswered} preguntas restantes antes de calificar.`);
+        return;
+      }
+
+      const finalGrade = ((score / proj.preguntas.length) * 5.0).toFixed(1);
+      const passed = finalGrade >= 3.0;
+
+      const container = document.getElementById("campaign-view-container");
+      container.innerHTML = `
+        <div class="bento-card text-center py-8 space-y-4 max-w-lg mx-auto">
+          <div class="w-16 h-16 rounded-full ${passed ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' : 'bg-rose-500/20 text-rose-400 border-rose-500/40'} border flex items-center justify-center mx-auto text-3xl">
+            ${passed ? '🎉' : '⚠️'}
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold text-white">${passed ? '¡Excelente Trabajo!' : 'Revisión Necesaria'}</h2>
+            <p class="text-xs text-slate-400 mt-1">Proyecto: <strong>${proj.estudiante}</strong> (${proj.personaje})</p>
+          </div>
+
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 inline-block px-8">
+            <span class="text-xs text-slate-500 uppercase font-semibold block">Calificación Obtenida</span>
+            <span class="text-3xl font-extrabold ${passed ? 'text-emerald-400' : 'text-rose-400'}">${finalGrade} / 5.0</span>
+            <span class="text-xs text-slate-400 block mt-1">${score} de 8 respuestas correctas</span>
+          </div>
+
+          <div class="pt-4 flex flex-col sm:flex-row gap-2 justify-center">
+            <button onclick="renderCampaignView(PROYECTOS[${projIdx}])" class="px-4 py-2.5 rounded-xl bg-slate-800 text-white text-xs font-semibold hover:bg-slate-700">
+              Volver a la Ficha Bento
+            </button>
+            <button onclick="startQuiz(${projIdx})" class="px-4 py-2.5 rounded-xl bg-emerald-500 text-slate-950 text-xs font-bold hover:bg-emerald-400">
+              Reintentar Reto
+            </button>
+          </div>
+        </div>
+      `;
+
+      lucide.createIcons();
+    }
+
+    // -------------------------------------------------------------
+    // TEACHER PANEL (PROF. LIDYA AMANDA) MODAL LOGIC
+    // -------------------------------------------------------------
+    function openTeacherPanel() {
+      const tbody = document.getElementById("teacher-table-body");
+      let rows = "";
+
+      PROYECTOS.forEach(p => {
+        rows += `
+          <tr class="hover:bg-slate-800/40 transition">
+            <td class="p-3 font-semibold text-white flex items-center gap-2">
+              <span>${p.mascotaEmoji}</span>
+              <span>${p.estudiante}</span>
+            </td>
+            <td class="p-3 text-slate-400">${p.personaje} · <span class="text-xs text-slate-300">${p.linea}</span></td>
+            <td class="p-3">
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-950 text-amber-300 border border-amber-800">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                Sin encuesta web aún
+              </span>
+            </td>
+            <td class="p-3 text-right font-bold text-slate-400 font-mono">— / 5.0</td>
+          </tr>
+        `;
+      });
+
+      tbody.innerHTML = rows;
+      document.getElementById("teacher-modal").classList.remove("hidden");
+      document.getElementById("teacher-modal").classList.add("flex");
+      lucide.createIcons();
+    }
+
+    function closeTeacherPanel() {
+      document.getElementById("teacher-modal").classList.add("hidden");
+      document.getElementById("teacher-modal").classList.remove("flex");
+    }
+
+    function exportTeacherReport() {
+      alert("Generando informe consolidado oficial en formato PDF/MD para la docente Lidya Amanda Ladino Cristiano...");
+    }
+
+    // -------------------------------------------------------------
+    // QR CODE MODAL LOGIC
+    // -------------------------------------------------------------
+    function initQR() {
+      const container = document.getElementById("qrcode-container");
+      const urlText = document.getElementById("qr-url-text");
+      const shareUrl = window.location.href.split("#")[0];
+      if (urlText) urlText.textContent = shareUrl;
+      container.innerHTML = "";
+      new QRCode(container, {
+        text: shareUrl,
+        width: 140,
+        height: 140,
+        colorDark: "#06090e",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function toggleQRModal() {
+      const modal = document.getElementById("qr-modal");
+      if (modal.classList.contains("hidden")) {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      } else {
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+      }
+    }
+
+    function toggleStudentDrawer() {
+      const drawer = document.getElementById("mobile-drawer");
+      if (drawer.classList.contains("hidden")) {
+        drawer.classList.remove("hidden");
+        drawer.classList.add("flex");
+      } else {
+        drawer.classList.add("hidden");
+        drawer.classList.remove("flex");
+      }
+    }
+
+    function resetToHome() {
+      selectProject(0);
+    }
+  </script>
+</body>
+</html>
