@@ -39,9 +39,38 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const ADMIN_PIN = String(process.env.ADMIN_PIN || "2026").trim();
 
+/** Headers de seguridad sin dependencia extra (Render-friendly). */
+app.use((_req, res, next) => {
+  res.setHeader("X-Content-Type-Options", "nosniff");
+  res.setHeader("X-Frame-Options", "SAMEORIGIN");
+  res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  res.setHeader("X-XSS-Protection", "0");
+  next();
+});
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
+
+/** Rate limit simple en memoria por IP (API). */
+const apiHits = new Map();
+app.use("/api/", (req, res, next) => {
+  const ip = req.ip || req.socket.remoteAddress || "unknown";
+  const now = Date.now();
+  const windowMs = 15 * 60 * 1000;
+  const max = 200;
+  let bucket = apiHits.get(ip);
+  if (!bucket || now - bucket.start > windowMs) {
+    bucket = { start: now, count: 0 };
+  }
+  bucket.count += 1;
+  apiHits.set(ip, bucket);
+  if (bucket.count > max) {
+    return res.status(429).json({ error: "Demasiadas peticiones. Intenta más tarde." });
+  }
+  next();
+});
 app.use(express.static(path.join(__dirname, "public")));
+/** Bloquear lectura directa de JSON internos (respuestas correctas). */
+app.use("/data", (_req, res) => res.status(404).end());
 
 function pinOk(value) {
   const token = String(value || "").trim();
@@ -67,6 +96,15 @@ function escHtml(value) {
     '"': "&quot;",
     "'": "&#39;",
   }[ch]));
+}
+
+/** Texto plano para nombres/grados (anti XSS al persistir). */
+function cleanText(value, max = 80) {
+  return String(value ?? "")
+    .replace(/[<>`]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, max);
 }
 
 /** Quita respuesta_correcta de cualquier forma anidada. */
@@ -157,15 +195,15 @@ app.post("/api/cuestionarios/:id/calificar", async (req, res) => {
     if (!quiz) return res.status(404).json({ error: "Cuestionario no encontrado." });
 
     const sesion = String(req.body?.sesion || crypto.randomBytes(6).toString("hex"));
-    const nombre = String(req.body?.nombre || "").trim().slice(0, 80);
-    const grado = String(req.body?.grado || "").trim().slice(0, 12);
+    const nombre = cleanText(req.body?.nombre, 80);
+    const grado = cleanText(req.body?.grado, 12);
     const preguntaId = req.body?.preguntaId ? String(req.body.preguntaId) : "";
     const mapa = req.body?.respuestas;
     if (mapa && typeof mapa === "object" && !Array.isArray(mapa)) {
       if (!req.body.aceptoCompromiso) {
         return res.status(400).json({ error: "Falta la firma del compromiso ético." });
       }
-      const estudiante = String(req.body.estudiante || req.body.nombre || "").trim().slice(0, 80);
+      const estudiante = cleanText(req.body.estudiante || req.body.nombre || nombre, 80);
       if (estudiante.length < 3 || !grado) {
         return res.status(400).json({ error: "Nombre y grado son obligatorios." });
       }

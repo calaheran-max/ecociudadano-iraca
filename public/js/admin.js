@@ -79,11 +79,55 @@ function paintShell(campana) {
       <thead><tr><th>Estudiante</th><th>Grado</th><th>Puntaje</th><th>Compromiso</th><th>Fecha</th></tr></thead>
       <tbody id="tabla"><tr><td colspan="5">Cargando esta campaña.</td></tr></tbody>
     </table>`;
-  view.append(mascot, title, owner, form, stats, tableWrap);
+  const links = document.createElement("section");
+  links.className = "links-panel";
+  links.innerHTML = `<h3>Links inteligentes por campaña</h3>
+    <p class="hint">Comparte el enlace: abre esa campaña y el formulario sin pasar por la ruleta.</p>
+    <div class="links-table-wrap"><table class="tabla-docente" id="tabla-links">
+      <thead><tr><th>Estudiante</th><th>Link</th><th>Acciones</th></tr></thead>
+      <tbody></tbody>
+    </table></div>`;
+  view.append(mascot, title, owner, form, stats, tableWrap, links);
   workspace.append(view);
   form.addEventListener("submit", login);
   form.addEventListener("focusin", () => roulette?.pause());
   if (token) form.querySelector("#login-msg").textContent = "Sesión docente activa.";
+  fillLinksTable(links.querySelector("tbody"));
+}
+
+function campaignPublicUrl(id) {
+  const base = window.location.origin.replace(/\/$/, "");
+  return `${base}/?campana=${encodeURIComponent(id)}`;
+}
+
+function fillLinksTable(tbody) {
+  if (!tbody) return;
+  tbody.innerHTML = campañas
+    .map((c) => {
+      const url = campaignPublicUrl(c.id);
+      return `<tr>
+        <td>${esc(c.autor)}</td>
+        <td><code class="link-url">${esc(url)}</code></td>
+        <td class="link-actions">
+          <button type="button" class="btn btn-sm" data-copy="${esc(url)}">Copiar</button>
+          <a class="btn btn-sm" href="${esc(url)}" target="_blank" rel="noopener">Abrir</a>
+        </td>
+      </tr>`;
+    })
+    .join("");
+  tbody.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.getAttribute("data-copy") || "");
+        btn.textContent = "Copiado";
+        setTimeout(() => {
+          btn.textContent = "Copiar";
+        }, 1400);
+      } catch {
+        btn.textContent = "Error";
+      }
+    });
+  });
 }
 
 async function loadCampana(id) {

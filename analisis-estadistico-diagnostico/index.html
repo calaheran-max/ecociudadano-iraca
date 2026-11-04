@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Análisis estadístico — Diagnóstico de Salón y Jardín</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #f3f6f2;
+      --ink: #1c2a22;
+      --muted: #5a6b60;
+      --card: #ffffff;
+      --line: #d5e0d8;
+      --si: #c45c3e;
+      --no: #2f7d5a;
+      --accent: #1f5c45;
+      --soft: #e8f1eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, #dff0e4 0, transparent 40%),
+        linear-gradient(180deg, #eef4ef, var(--bg));
+      line-height: 1.55;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    header.hero {
+      background: linear-gradient(135deg, #163a2d, #2a6b4f);
+      color: #f7fff9;
+      border-radius: 18px;
+      padding: 2rem 1.75rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 18px 40px rgba(22, 58, 45, 0.22);
+    }
+
+    header.hero h1 {
+      margin: 0 0 0.4rem;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      letter-spacing: -0.02em;
+    }
+
+    header.hero p { margin: 0.25rem 0; color: #d8eee2; }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+    }
+
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1.25rem 1.35rem;
+      margin-bottom: 1.15rem;
+      box-shadow: 0 8px 24px rgba(28, 42, 34, 0.04);
+    }
+
+    h2 {
+      margin: 0 0 0.75rem;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.05rem;
+    }
+
+    .note {
+      background: var(--soft);
+      border-left: 4px solid var(--accent);
+      padding: 0.85rem 1rem;
+      border-radius: 0 10px 10px 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    th, td {
+      border: 1px solid var(--line);
+      padding: 0.55rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th { background: #edf5ef; }
+
+    .badge {
+      display: inline-block;
+      min-width: 2.2rem;
+      text-align: center;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 0.15rem 0.45rem;
+      color: #fff;
+    }
+
+    .badge.si { background: var(--si); }
+    .badge.no { background: var(--no); }
+
+    .grade-card {
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .grade-head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .grade-head .title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.6rem;
+      margin: 0.85rem 0 1rem;
+    }
+
+    .stat {
+      background: var(--soft);
+      border-radius: 12px;
+      padding: 0.75rem 0.9rem;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.35rem;
+      line-height: 1.1;
+    }
+
+    .chart-box {
+      position: relative;
+      height: 260px;
+      margin: 0.5rem 0 1rem;
+    }
+
+    .analysis, .conclusion {
+      margin-top: 0.85rem;
+    }
+
+    .conclusion {
+      background: #f7fbf8;
+      border: 1px dashed #b7d0c1;
+      border-radius: 12px;
+      padding: 0.85rem 1rem;
+    }
+
+    .compare-box {
+      position: relative;
+      height: 340px;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-top: 1rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin: 0 0 1rem;
+    }
+
+    button {
+      appearance: none;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.65rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    @media print {
+      body { background: #fff; }
+      .actions { display: none; }
+      header.hero { box-shadow: none; }
+      section, .grade-card { box-shadow: none; }
+    }
+
+    @media (max-width: 640px) {
+      .stats { grid-template-columns: 1fr; }
+      .chart-box, .compare-box { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>Análisis estadístico de Diagnóstico de Salón y Jardín</h1>
+      <p>Institución Educativa Iracá · Media Técnica en Monitoreo Ambiental</p>
+      <p>Organización, diagramas de barras, análisis y conclusiones por grado académico</p>
+      <div class="meta">
+        <span class="chip">12 grados con encabezado válido</span>
+        <span class="chip">4 aspectos evaluados</span>
+        <span class="chip">Sin inventar datos</span>
+      </div>
+    </header>
+
+    <div class="actions">
+      <button type="button" onclick="window.print()">Imprimir / guardar PDF</button>
+      <button type="button" class="secondary" onclick="document.getElementById('incompletos').scrollIntoView({behavior:'smooth'})">Ver datos incompletos</button>
+    </div>
+
+    <section>
+      <h2>1. Criterio de calidad y método</h2>
+      <div class="note">
+        Solo se analizan formatos con <strong>grado legible</strong> en el encabezado.
+        Las hojas de la segunda tabla (normas, separación y contenedores) sin grado
+        <strong>no se asignaron por conjetura</strong>. Las fotos duplicadas de un mismo grado
+        se contabilizan una sola vez.
+      </div>
+      <p style="margin-top:0.9rem;color:var(--muted)">
+        Variable de respuesta: <strong>Sí</strong> = presencia del problema observado;
+        <strong>No</strong> = ausencia del problema. Cada grado aporta 4 observaciones dicotómicas.
+      </p>
+    </section>
+
+    <section>
+      <h2>2. Resumen comparativo entre grados</h2>
+      <p style="color:var(--muted);margin-top:0">Cantidad de aspectos marcados como <strong>Sí</strong> (problema presente) por grado.</p>
+      <div class="compare-box">
+        <canvas id="chartComparativo"></canvas>
+      </div>
+      <div id="resumenTabla"></div>
+    </section>
+
+    <section>
+      <h2>3. Resultados por grado</h2>
+      <div id="grados"></div>
+    </section>
+
+    <section id="incompletos">
+      <h2>4. Anexo — Datos incompletos / no asignables</h2>
+      <div class="note" id="anexoTexto"></div>
+    </section>
+
+    <footer>
+      Informe generado a partir de formatos físicos transcritos · EcoCiudadano Iracá
+    </footer>
+  </div>
+
+  <script>
+    const ASPECTOS = [
+      { id: "residuos_salon", etiqueta: "Residuos en salón/jardín", corta: "Residuos salón" },
+      { id: "residuos_columnas", etiqueta: "Residuos en columnas", corta: "Residuos columnas" },
+      { id: "pared", etiqueta: "Pared sucia o con rayones", corta: "Pared" },
+      { id: "tablero", etiqueta: "Tablero manchado/mal estado", corta: "Tablero" }
+    ];
+
+    const DATA = {
+      grados: [
+        {
+          grado: "6-1", responsable: "Laura Guerrero", docente: "Maria Fernanda", fecha: "24/04/2024",
+          respuestas: {
+            residuos_salon: { valor: "No", porque: "Porque las señoras del aseo siempre llegan a tiempo." },
+            residuos_columnas: { valor: "Sí", porque: "Porque los niños pasan por los pasillos y dejan la basura." },
+            pared: { valor: "Sí", porque: "Porque algunos niños se ponen a rayar paredes." },
+            tablero: { valor: "No", porque: "No tienen manchas de pintura ni marcadores permanentes." }
+          }
+        },
+        {
+          grado: "602", responsable: "Laura Guerrero", docente: "Fredi Diaz", fecha: "24/04/2026",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Porque falta de cultura de aseo." },
+            residuos_columnas: { valor: "Sí", porque: "Porque no tiene cultura ni orden." },
+            pared: { valor: "Sí", porque: "Sí, porque al principio de año estaban rayadas y sucias." },
+            tablero: { valor: "Sí", porque: "Sí, porque el tablero lleva muchos años y tiene manchas." }
+          }
+        },
+        {
+          grado: "701", responsable: "Valeria Palacio", docente: "Yordany Ruano", fecha: "24/04/24",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Sí, porque algunos no saben y se hacen los que no reciclan y no lo hacen bien." },
+            residuos_columnas: { valor: "No", porque: "No, solo mugre." },
+            pared: { valor: "Sí", porque: "Colocan los pies o las botas para limpiarse las botas." },
+            tablero: { valor: "No", porque: "No, solo porque algunas veces." }
+          }
+        },
+        {
+          grado: "702", responsable: "Sheyla Romero", docente: "Anyul Berrio Moreno", fecha: "24/04/2024",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Porque las personas que pasan dejan basura." },
+            residuos_columnas: { valor: "Sí", porque: "Porque las personas que pasan dejan basura ahí." },
+            pared: { valor: "Sí", porque: "Porque los niños la rayan." },
+            tablero: { valor: "Sí", porque: "Por los brotes de [texto incompleto/ilegible en la foto]." }
+          }
+        },
+        {
+          grado: "801", responsable: "Laura Guerrero", docente: "Juliana Vides", fecha: "24/04/26",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Más que todo en el salón, porque a veces los de ambiental no pasan por la basura y se acumula." },
+            residuos_columnas: { valor: "Sí", porque: "Sí, porque los niños que se asoman a la ventana y niños de otros salones a veces dejan basura." },
+            pared: { valor: "Sí", porque: "Porque los compañeros son muy desorganizados y cuando hacen desorden las ensucian." },
+            tablero: { valor: "No", porque: "Porque al final de cada clase limpian el tablero." }
+          }
+        },
+        {
+          grado: "802", responsable: "Valeria Palacio", docente: "Enrique Fajardo", fecha: "24/04/26",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Solo en el salón, más no afuera en el jardín; y si hay es por culpa de otros salones." },
+            residuos_columnas: { valor: "Sí", porque: "Tanto los estudiantes del salón como de otros pasan y dejan tirado ahí." },
+            pared: { valor: "Sí", porque: "Nos la entregaron así a principio de año." },
+            tablero: { valor: "No", porque: "Pues para mi punto de vista lo veo bien." }
+          }
+        },
+        {
+          grado: "9-1", responsable: "Sheyla Romero", docente: "Amanda Ladino", fecha: "24/04/2026",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Mis compañeros me ayudan a clasificar correctamente, pero a veces no lo hacen porque se les olvida." },
+            residuos_columnas: { valor: "Sí", porque: "Mis compañeros o estudiantes de otro salón los echan." },
+            pared: { valor: "Sí", porque: "El salón lo entregaron así, aunque se está buscando la forma de pintarlo." },
+            tablero: { valor: "No", porque: "El tablero nos lo entregaron limpio y sin ningún daño." }
+          }
+        },
+        {
+          grado: "9-3", responsable: "Sheyla Romero", docente: "Juan Gonzalez", fecha: "24/04/2024",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Mis compañeros no me ayudan a clasificar." },
+            residuos_columnas: { valor: "No", porque: "Entre todos nos ayudamos a limpiar." },
+            pared: { valor: "No", porque: "Mantenemos el salón limpio." },
+            tablero: { valor: "No", porque: "Porque lo limpiamos todos los días." }
+          }
+        },
+        {
+          grado: "902", responsable: "Valeria Palacio", docente: "No legible con certeza", fecha: "24/04/24",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Sí, porque no recogen la basura cuando barren." },
+            residuos_columnas: { valor: "Sí", porque: "Sí, porque cuando pasan estudiantes de otro salón también dejan basura ahí." },
+            pared: { valor: "Sí", porque: "Sí, porque los estudiantes las rayan." },
+            tablero: { valor: "No", porque: "Porque lo cambiamos por uno nuevo." }
+          }
+        },
+        {
+          grado: "10.1", responsable: "Laura Guerrero", docente: "Jairo Rodriguez", fecha: "24/04/2026",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Al realizar el aseo, los residuos pequeños los depositan afuera. Botan basura en el aula." },
+            residuos_columnas: { valor: "Sí", porque: "Se encuentran residuos desechables." },
+            pared: { valor: "Sí", porque: "No la han pintado; solo tiene manchones y se la entregaron así." },
+            tablero: { valor: "No", porque: "No tiene rayones con marcador permanente." }
+          }
+        },
+        {
+          grado: "11-1", responsable: "Laura Guerrero", docente: "Fabian Rubio", fecha: "24/04/2024",
+          respuestas: {
+            residuos_salon: { valor: "Sí", porque: "Porque les da pereza; cuando hacen aseo botan los residuos afuera." },
+            residuos_columnas: { valor: "No", porque: "No, porque botan esos residuos en las canecas." },
+            pared: { valor: "Sí", porque: "Solo la pared de enfrente está sucia; de igual forma nos entregaron sucio el salón." },
+            tablero: { valor: "Sí", porque: "Está manchado con marcador y ya no se le quitan." }
+          }
+        },
+        {
+          grado: "11-2", responsable: "Sheyla Romero", docente: "Miguel Ortiz", fecha: "24/04/26",
+          respuestas: {
+            residuos_salon: { valor: "No", porque: "Normalmente pasan por los residuos." },
+            residuos_columnas: { valor: "No", porque: "Cualquier residuo se recoge y se deja en el sitio que pertenece." },
+            pared: { valor: "No", porque: "Tenemos sentido de pertenencia en nuestro salón." },
+            tablero: { valor: "No", porque: "Siempre se ha cuidado." }
+          }
+        }
+      ]
+    };
+
+    function conteos(g) {
+      let si = 0;
+      let no = 0;
+      ASPECTOS.forEach((a) => {
+        if (g.respuestas[a.id].valor === "Sí") si += 1;
+        else no += 1;
+      });
+      return { si, no };
+    }
+
+    function problemasMarcados(g) {
+      return ASPECTOS
+        .filter((a) => g.respuestas[a.id].valor === "Sí")
+        .map((a) => a.corta);
+    }
+
+    function analisisDe(g) {
+      const { si, no } = conteos(g);
+      const problemas = problemasMarcados(g);
+      if (si === 0) {
+        return `En el grado ${g.grado} los 4 aspectos evaluados fueron marcados como No. El formato no registra presencia de acumulación de residuos, deterioro de paredes ni daño del tablero en el momento del diagnóstico.`;
+      }
+      if (si === 4) {
+        return `En el grado ${g.grado} los 4 aspectos fueron marcados como Sí. El diagnóstico concentra hallazgos en residuos (salón/jardín y columnas), estado de paredes y condición del tablero.`;
+      }
+      return `En el grado ${g.grado} se observaron ${si} aspecto(s) con problema (Sí) y ${no} sin problema (No). Los hallazgos afirmativos corresponden a: ${problemas.join(", ")}.`;
+    }
+
+    function conclusionDe(g) {
+      const { si } = conteos(g);
+      const razones = ASPECTOS
+        .filter((a) => g.respuestas[a.id].valor === "Sí")
+        .map((a) => a.corta.toLowerCase());
+
+      if (si === 0) {
+        return `Conclusión ${g.grado}: según los datos del formato, este grado presenta la mejor condición relativa del conjunto analizado (0/4 problemas). Las justificaciones apuntan a hábitos de orden, recolección y sentido de pertenencia.`;
+      }
+      if (si === 1) {
+        return `Conclusión ${g.grado}: el diagnóstico es mayormente favorable (1/4). El único aspecto con problema es ${razones[0]}, por lo que la intervención puede focalizarse ahí sin generalizar un deterioro amplio del aula.`;
+      }
+      if (si === 4) {
+        return `Conclusión ${g.grado}: el diagnóstico es crítico dentro de la muestra (4/4). Conviene priorizar acciones simultáneas de aseo, manejo de residuos y mantenimiento de infraestructura del aula.`;
+      }
+      return `Conclusión ${g.grado}: el grado presenta una condición intermedia-alta de hallazgos (${si}/4). Las observaciones escritas permiten orientar acciones sobre ${razones.join(", ")}, sin extrapolar a variables que no fueron medidas en este formato.`;
+    }
+
+    function renderResumen() {
+      const filas = DATA.grados.map((g) => {
+        const c = conteos(g);
+        return `<tr>
+          <td><strong>${g.grado}</strong></td>
+          <td>${g.responsable}</td>
+          <td>${c.si}</td>
+          <td>${c.no}</td>
+          <td>${((c.si / 4) * 100).toFixed(0)}%</td>
+        </tr>`;
+      }).join("");
+
+      document.getElementById("resumenTabla").innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Grado</th>
+              <th>Responsable</th>
+              <th>Problemas (Sí)</th>
+              <th>Sin problema (No)</th>
+              <th>% Sí sobre 4 aspectos</th>
+            </tr>
+          </thead>
+          <tbody>${filas}</tbody>
+        </table>`;
+    }
+
+    function renderGrados() {
+      const root = document.getElementById("grados");
+      root.innerHTML = "";
+
+      DATA.grados.forEach((g, index) => {
+        const c = conteos(g);
+        const card = document.createElement("article");
+        card.className = "grade-card";
+        card.style.marginBottom = "1.25rem";
+        card.innerHTML = `
+          <div class="grade-head">
+            <div>
+              <div class="title">Grado ${g.grado}</div>
+              <div style="color:var(--muted);font-size:0.92rem">
+                Responsable: ${g.responsable} · Docente: ${g.docente} · Fecha: ${g.fecha}
+              </div>
+            </div>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong style="color:var(--si)">${c.si}</strong> Aspectos con problema (Sí)</div>
+            <div class="stat"><strong style="color:var(--no)">${c.no}</strong> Aspectos sin problema (No)</div>
+          </div>
+          <div class="chart-box"><canvas id="chart-${index}"></canvas></div>
+          <table>
+            <thead>
+              <tr>
+                <th>Aspecto</th>
+                <th>Sí/No</th>
+                <th>¿Por qué?</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${ASPECTOS.map((a) => {
+                const r = g.respuestas[a.id];
+                const cls = r.valor === "Sí" ? "si" : "no";
+                return `<tr>
+                  <td>${a.etiqueta}</td>
+                  <td><span class="badge ${cls}">${r.valor}</span></td>
+                  <td>${r.porque}</td>
+                </tr>`;
+              }).join("")}
+            </tbody>
+          </table>
+          <div class="analysis"><h3>Análisis</h3><p>${analisisDe(g)}</p></div>
+          <div class="conclusion"><h3>Conclusión</h3><p>${conclusionDe(g)}</p></div>
+        `;
+        root.appendChild(card);
+
+        const valores = ASPECTOS.map((a) => (g.respuestas[a.id].valor === "Sí" ? 1 : 0));
+        const colores = valores.map((v) => (v === 1 ? "#c45c3e" : "#2f7d5a"));
+
+        new Chart(document.getElementById(`chart-${index}`), {
+          type: "bar",
+          data: {
+            labels: ASPECTOS.map((a) => a.corta),
+            datasets: [{
+              label: "1 = Sí (problema), 0 = No",
+              data: valores,
+              backgroundColor: colores,
+              borderRadius: 8,
+              maxBarThickness: 54
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: `Diagrama de barras — Grado ${g.grado}`,
+                color: "#1f5c45",
+                font: { weight: "700", size: 14 }
+              },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => (ctx.raw === 1 ? "Sí (problema presente)" : "No (sin problema)")
+                }
+              }
+            },
+            scales: {
+              y: {
+                min: 0,
+                max: 1,
+                ticks: {
+                  stepSize: 1,
+                  callback: (v) => (v === 1 ? "Sí" : v === 0 ? "No" : "")
+                },
+                title: { display: true, text: "Respuesta" }
+              },
+              x: {
+                title: { display: true, text: "Aspectos evaluados" }
+              }
+            }
+          }
+        });
+      });
+    }
+
+    function renderComparativo() {
+      const labels = DATA.grados.map((g) => g.grado);
+      const valores = DATA.grados.map((g) => conteos(g).si);
+
+      new Chart(document.getElementById("chartComparativo"), {
+        type: "bar",
+        data: {
+          labels,
+          datasets: [{
+            label: "Cantidad de aspectos con Sí",
+            data: valores,
+            backgroundColor: "#1f5c45",
+            borderRadius: 8,
+            maxBarThickness: 42
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+            title: {
+              display: true,
+              text: "Comparación entre grados: problemas detectados (máx. 4)",
+              color: "#1f5c45",
+              font: { weight: "700", size: 14 }
+            }
+          },
+          scales: {
+            y: {
+              min: 0,
+              max: 4,
+              ticks: { stepSize: 1 },
+              title: { display: true, text: "Número de Sí" }
+            },
+            x: {
+              title: { display: true, text: "Grado académico" }
+            }
+          }
+        }
+      });
+    }
+
+    document.getElementById("anexoTexto").innerHTML = `
+      <p><strong>Qué se excluyó:</strong> hojas de la segunda tabla del instrumento
+      (conocimiento de normas ambientales, separación de residuos y estado de contenedores)
+      que no traían grado en el encabezado.</p>
+      <p><strong>Por qué:</strong> las compañeras de recolección no marcaron el grado;
+      asignarlo por conjetura violaría el criterio de precisión del trabajo.</p>
+      <p><strong>Tratamiento:</strong> esas hojas quedan como <em>datos incompletos / no asignables</em>
+      y no alimentan gráficos ni conclusiones por grado.</p>
+      <p><strong>Duplicados detectados:</strong> se encontraron fotos repetidas de 701, 702 y 802;
+      en este informe cada grado se analiza una sola vez.</p>
+    `;
+
+    renderResumen();
+    renderComparativo();
+    renderGrados();
+  </script>
+</body>
+</html>

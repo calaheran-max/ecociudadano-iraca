@@ -344,6 +344,31 @@ function toCampaign(quiz) {
   };
 }
 
+/** Aliases amigables ?campana=diego-jimenez → id real diego */
+const CAMPANA_ALIASES = {
+  "diego-jimenez": "diego",
+  "briget-ramirez": "briget",
+  "alexander-sanchez": "alexander",
+  "katerin-rubiano": "katerin",
+  "sheyla-romero": "sheyla",
+  "jhoan-valencia": "jhoan-valencia",
+  "jhoan-de-pablos": "jhoan-depablos",
+  "jhoan-depablos": "jhoan-depablos",
+  "sebastian-mogollon": "sebastian",
+  "daniela-torres": "daniela",
+  "rous-vidal": "rous",
+  "alison-tarache": "alison",
+  "duvan-franco": "duvan",
+};
+
+function resolveCampanaFromUrl(list) {
+  const params = new URLSearchParams(window.location.search);
+  const raw = (params.get("campana") || params.get("c") || "").trim().toLowerCase();
+  if (!raw) return null;
+  const id = CAMPANA_ALIASES[raw] || raw;
+  return list.find((q) => q.id === id || q.slug === id) || null;
+}
+
 async function boot() {
   initQrModal();
   const res = await fetch("/api/cuestionarios");
@@ -382,6 +407,14 @@ async function boot() {
       roulette.center(roulette.index(), true);
     }
   });
+
+  const deep = resolveCampanaFromUrl(quizzes);
+  if (deep) {
+    document.body.className = `theme-${deep.theme}`;
+    roulette.centerById(deep.id, false);
+    // Link inteligente: abre directo el formulario de nombre/grado
+    showGateForm(deep.id);
+  }
 }
 
 boot().catch((err) => {

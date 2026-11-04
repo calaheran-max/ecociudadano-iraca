@@ -1,0 +1,24 @@
+LINKS INTELIGENTES · EcoCiudadano Iracá (12 campañas)
+====================================================
+Base: https://ecociudadano-iraca.onrender.com
+
+Diego Jimenez        https://ecociudadano-iraca.onrender.com/?campana=diego
+Briget Ramirez       https://ecociudadano-iraca.onrender.com/?campana=briget
+Alexander Sanchez    https://ecociudadano-iraca.onrender.com/?campana=alexander
+Katerin Rubiano      https://ecociudadano-iraca.onrender.com/?campana=katerin
+Sheyla Romero        https://ecociudadano-iraca.onrender.com/?campana=sheyla
+Jhoan Valencia       https://ecociudadano-iraca.onrender.com/?campana=jhoan-valencia
+Jhoan de Pablos      https://ecociudadano-iraca.onrender.com/?campana=jhoan-depablos
+Sebastian Mogollon   https://ecociudadano-iraca.onrender.com/?campana=sebastian
+Daniela Torres       https://ecociudadano-iraca.onrender.com/?campana=daniela
+Rous Vidal           https://ecociudadano-iraca.onrender.com/?campana=rous
+Alison Tarache       https://ecociudadano-iraca.onrender.com/?campana=alison
+Duvan Franco         https://ecociudadano-iraca.onrender.com/?campana=duvan
+
+También sirven alias tipo ?campana=diego-jimenez
+
+Panel docente: https://ecociudadano-iraca.onrender.com/admin.html
+(Ahí hay tabla Copiar / Abrir de todos los links)
+
+Local:
+http://localhost:3000/?campana=diego

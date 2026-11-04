@@ -1,0 +1,177 @@
+{
+  "titulo": "Diagnóstico de Salón y Jardín — Análisis estadístico por grado",
+  "institucion": "Institución Educativa Iracá",
+  "programa": "Media Técnica en Monitoreo Ambiental",
+  "fecha_recoleccion": "24/04/2024–2026 (según formatos)",
+  "criterio": "Solo se incluyen formatos con grado legible en el encabezado. No se inventan ni asignan por conjetura hojas sin grado.",
+  "aspectos": [
+    {
+      "id": "residuos_salon",
+      "etiqueta": "Acumulación de residuos en salón y/o jardín"
+    },
+    {
+      "id": "residuos_columnas",
+      "etiqueta": "Acumulación de residuos sólidos en columnas"
+    },
+    {
+      "id": "pared",
+      "etiqueta": "Pared sucia o con rayones"
+    },
+    {
+      "id": "tablero",
+      "etiqueta": "Tablero con manchas o en mal estado"
+    }
+  ],
+  "grados": [
+    {
+      "grado": "6-1",
+      "responsable": "Laura Guerrero",
+      "docente": "Maria Fernanda",
+      "fecha": "24/04/2024",
+      "respuestas": {
+        "residuos_salon": { "valor": "No", "porque": "Porque las señoras del aseo siempre llegan a tiempo." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Porque los niños pasan por los pasillos y dejan la basura." },
+        "pared": { "valor": "Sí", "porque": "Porque algunos niños se ponen a rayar paredes." },
+        "tablero": { "valor": "No", "porque": "No tienen manchas de pintura ni marcadores permanentes." }
+      }
+    },
+    {
+      "grado": "602",
+      "responsable": "Laura Guerrero",
+      "docente": "Fredi Diaz",
+      "fecha": "24/04/2026",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Porque falta de cultura de aseo." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Porque no tiene cultura ni orden." },
+        "pared": { "valor": "Sí", "porque": "Sí, porque al principio de año estaban rayadas y sucias." },
+        "tablero": { "valor": "Sí", "porque": "Sí, porque el tablero lleva muchos años y tiene manchas." }
+      }
+    },
+    {
+      "grado": "701",
+      "responsable": "Valeria Palacio",
+      "docente": "Yordany Ruano",
+      "fecha": "24/04/24",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Sí, porque algunos no saben y se hacen los que no reciclan y no lo hacen bien." },
+        "residuos_columnas": { "valor": "No", "porque": "No, solo mugre." },
+        "pared": { "valor": "Sí", "porque": "Colocan los pies o las botas para limpiarse las botas." },
+        "tablero": { "valor": "No", "porque": "No, solo porque algunas veces." }
+      }
+    },
+    {
+      "grado": "702",
+      "responsable": "Sheyla Romero",
+      "docente": "Anyul Berrio Moreno",
+      "fecha": "24/04/2024",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Porque las personas que pasan dejan basura." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Porque las personas que pasan dejan basura ahí." },
+        "pared": { "valor": "Sí", "porque": "Porque los niños la rayan." },
+        "tablero": { "valor": "Sí", "porque": "Por los brotes de [texto incompleto/ilegible en la foto]." }
+      }
+    },
+    {
+      "grado": "801",
+      "responsable": "Laura Guerrero",
+      "docente": "Juliana Vides",
+      "fecha": "24/04/26",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Más que todo en el salón, porque a veces los de ambiental no pasan por la basura y se acumula." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Sí, porque los niños que se asoman a la ventana y niños de otros salones a veces dejan basura." },
+        "pared": { "valor": "Sí", "porque": "Porque los compañeros son muy desorganizados y cuando hacen desorden las ensucian." },
+        "tablero": { "valor": "No", "porque": "Porque al final de cada clase limpian el tablero." }
+      }
+    },
+    {
+      "grado": "802",
+      "responsable": "Valeria Palacio",
+      "docente": "Enrique Fajardo",
+      "fecha": "24/04/26",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Solo en el salón, más no afuera en el jardín; y si hay es por culpa de otros salones." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Tanto los estudiantes del salón como de otros pasan y dejan tirado ahí." },
+        "pared": { "valor": "Sí", "porque": "Nos la entregaron así a principio de año." },
+        "tablero": { "valor": "No", "porque": "Pues para mi punto de vista lo veo bien." }
+      }
+    },
+    {
+      "grado": "9-1",
+      "responsable": "Sheyla Romero",
+      "docente": "Amanda Ladino",
+      "fecha": "24/04/2026",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Mis compañeros me ayudan a clasificar correctamente, pero a veces no lo hacen porque se les olvida." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Mis compañeros o estudiantes de otro salón los echan." },
+        "pared": { "valor": "Sí", "porque": "El salón lo entregaron así, aunque se está buscando la forma de pintarlo." },
+        "tablero": { "valor": "No", "porque": "El tablero nos lo entregaron limpio y sin ningún daño." }
+      }
+    },
+    {
+      "grado": "9-3",
+      "responsable": "Sheyla Romero",
+      "docente": "Juan Gonzalez",
+      "fecha": "24/04/2024",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Mis compañeros no me ayudan a clasificar." },
+        "residuos_columnas": { "valor": "No", "porque": "Entre todos nos ayudamos a limpiar." },
+        "pared": { "valor": "No", "porque": "Mantenemos el salón limpio." },
+        "tablero": { "valor": "No", "porque": "Porque lo limpiamos todos los días." }
+      }
+    },
+    {
+      "grado": "902",
+      "responsable": "Valeria Palacio",
+      "docente": "No legible con certeza",
+      "fecha": "24/04/24",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Sí, porque no recogen la basura cuando barren." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Sí, porque cuando pasan estudiantes de otro salón también dejan basura ahí." },
+        "pared": { "valor": "Sí", "porque": "Sí, porque los estudiantes las rayan." },
+        "tablero": { "valor": "No", "porque": "Porque lo cambiamos por uno nuevo." }
+      }
+    },
+    {
+      "grado": "10.1",
+      "responsable": "Laura Guerrero",
+      "docente": "Jairo Rodriguez",
+      "fecha": "24/04/2026",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Al realizar el aseo, los residuos pequeños los depositan afuera. Botan basura en el aula." },
+        "residuos_columnas": { "valor": "Sí", "porque": "Se encuentran residuos desechables." },
+        "pared": { "valor": "Sí", "porque": "No la han pintado; solo tiene manchones y se la entregaron así." },
+        "tablero": { "valor": "No", "porque": "No tiene rayones con marcador permanente." }
+      }
+    },
+    {
+      "grado": "11-1",
+      "responsable": "Laura Guerrero",
+      "docente": "Fabian Rubio",
+      "fecha": "24/04/2024",
+      "respuestas": {
+        "residuos_salon": { "valor": "Sí", "porque": "Porque les da pereza; cuando hacen aseo botan los residuos afuera." },
+        "residuos_columnas": { "valor": "No", "porque": "No, porque botan esos residuos en las canecas." },
+        "pared": { "valor": "Sí", "porque": "Solo la pared de enfrente está sucia; de igual forma nos entregaron sucio el salón." },
+        "tablero": { "valor": "Sí", "porque": "Está manchado con marcador y ya no se le quitan." }
+      }
+    },
+    {
+      "grado": "11-2",
+      "responsable": "Sheyla Romero",
+      "docente": "Miguel Ortiz",
+      "fecha": "24/04/26",
+      "respuestas": {
+        "residuos_salon": { "valor": "No", "porque": "Normalmente pasan por los residuos." },
+        "residuos_columnas": { "valor": "No", "porque": "Cualquier residuo se recoge y se deja en el sitio que pertenece." },
+        "pared": { "valor": "No", "porque": "Tenemos sentido de pertenencia en nuestro salón." },
+        "tablero": { "valor": "No", "porque": "Siempre se ha cuidado." }
+      }
+    }
+  ],
+  "datos_incompletos": {
+    "descripcion": "Hojas de la segunda tabla (normas ambientales, separación de residuos y estado de contenedores) sin grado en el encabezado. No se asignaron por conjetura.",
+    "motivo": "Las compañeras de recolección no marcaron el grado en esas hojas.",
+    "tratamiento": "Se excluyen del análisis por grado. Quedan registradas como limitación del estudio.",
+    "observacion": "También se detectaron fotos duplicadas de los grados 701, 702 y 802; en el dataset oficial cada grado aparece una sola vez."
+  }
+}

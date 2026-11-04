@@ -159,12 +159,20 @@ export function createMoonRoulette({ stage, campaigns, mascots, onFocus, onEnter
     }
   });
 
+  function centerById(campanaId, enter = false) {
+    const i = campaigns.findIndex((c) => c.id === campanaId || c.slug === campanaId);
+    if (i < 0) return false;
+    centerOn(i, enter);
+    return true;
+  }
+
   frameId = requestAnimationFrame(tick);
   return {
     destroy() {
       cancelAnimationFrame(frameId);
     },
     center: centerOn,
+    centerById,
     pause,
     resume,
     index: () => focusedIdx,
