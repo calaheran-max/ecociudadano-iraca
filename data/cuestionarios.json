@@ -1426,5 +1426,124 @@
       "canal": "Plataforma digital y demostraciones en granja escolar.",
       "indicador": "Número de participantes interesados en reconversión silvopastoril o regenerativa."
     }
+  },
+  {
+    "id": "zharik",
+    "slug": "zharik",
+    "titulo": "Uso responsable del GPS",
+    "autor": "Zharik Betancur",
+    "tema": "Geolocalización responsable",
+    "ancla": "Meta · brújula y mapa de campo protegido",
+    "descripcion": "Usar GPS para monitorear sin publicar coordenadas que pongan en riesgo personas, fauna o lugares protegidos.",
+    "compromiso": "Me comprometo a no publicar ubicaciones exactas que puedan poner en riesgo a personas, animales o lugares protegidos, y a usar el GPS solo para fines educativos y autorizados.",
+    "theme": "zharik",
+    "colorIdentidad": "#00C853",
+    "publicado": true,
+    "preguntas": [
+      {
+        "id": "zh1",
+        "enunciado": "¿Cuál es el riesgo principal de publicar la ubicación exacta de una especie en peligro de extinción?",
+        "opciones": [
+          "Atrae turismo responsable",
+          "Facilita la caza furtiva y el tráfico ilegal",
+          "Ayuda a los científicos",
+          "No tiene ningún riesgo"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Publicar ubicaciones exactas de especies en peligro facilita que cazadores furtivos las encuentren."
+      },
+      {
+        "id": "zh2",
+        "enunciado": "Según la Ley 1581 de 2012, los datos de geolocalización de una persona se consideran:",
+        "opciones": [
+          "Datos públicos",
+          "Datos personales sensibles",
+          "Datos irrelevantes",
+          "Datos comerciales"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "La geolocalización puede identificar a una persona y está protegida por la Ley 1581."
+      },
+      {
+        "id": "zh3",
+        "enunciado": "¿Qué debes hacer antes de compartir la ubicación de un lugar protegido en redes sociales?",
+        "opciones": [
+          "Publicarla sin pensarlo",
+          "Compartirla solo con amigos cercanos",
+          "Verificar si está permitido y si pone en riesgo el lugar",
+          "Publicarla con filtro"
+        ],
+        "respuesta_correcta": 2,
+        "retroalimentacion": "Siempre debes verificar si compartir esa ubicación puede poner en riesgo el lugar."
+      },
+      {
+        "id": "zh4",
+        "enunciado": "En un proyecto de monitoreo ambiental, ¿cómo debes registrar las coordenadas GPS?",
+        "opciones": [
+          "Publicarlas en tiempo real",
+          "Anonimizarlas y protegerlas",
+          "Compartirlas con todos",
+          "No registrarlas"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las coordenadas deben anonimizarse y protegerse para evitar riesgos."
+      },
+      {
+        "id": "zh5",
+        "enunciado": "¿Qué información NO deberías compartir junto con tus fotos de campo?",
+        "opciones": [
+          "La fecha",
+          "Las coordenadas exactas",
+          "El nombre del proyecto",
+          "El tipo de cámara"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las coordenadas exactas pueden revelar la ubicación de lugares protegidos o personas."
+      },
+      {
+        "id": "zh6",
+        "enunciado": "¿Cuál es un uso responsable del GPS en un proyecto escolar?",
+        "opciones": [
+          "Publicar la ubicación de tu casa",
+          "Monitorear áreas de estudio con autorización",
+          "Seguir a personas sin permiso",
+          "Compartir rutas de compañeros"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "El GPS debe usarse para monitorear áreas de estudio con autorización y fines educativos."
+      },
+      {
+        "id": "zh7",
+        "enunciado": "Si una app de mapas te pide acceso a tu ubicación, ¿qué debes hacer?",
+        "opciones": [
+          "Aceptar sin leer",
+          "Verificar para qué la necesita y si es confiable",
+          "Compartir tu ubicación con todos",
+          "Instalar la app sin revisar"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Siempre debes verificar qué datos pide la app y si es confiable antes de aceptar."
+      },
+      {
+        "id": "zh8",
+        "enunciado": "¿Qué es una geocerca (geofencing) en el contexto de monitoreo ambiental?",
+        "opciones": [
+          "Un juego de realidad virtual",
+          "Un límite virtual que alerta cuando se entra o sale de un área",
+          "Un tipo de dron",
+          "Una red social"
+        ],
+        "respuesta_correcta": 1,
+        "retroalimentacion": "Las geocercas son límites virtuales que permiten monitorear áreas sin exponer datos sensibles."
+      }
+    ],
+    "ficha": {
+      "problema": "Publicación irresponsable de coordenadas GPS que pone en riesgo personas, fauna o lugares protegidos.",
+      "publico": "Estudiantes de media técnica y brigadas de monitoreo con dispositivos de geolocalización.",
+      "comportamiento": "Anonimizar coordenadas, pedir autorización y no publicar ubicaciones exactas de sitios sensibles.",
+      "mensaje": "GPS con criterio: mide sin exponer.",
+      "canal": "Plataforma EcoCiudadano Iracá y talleres de georreferenciación ética.",
+      "indicador": "Número de estudiantes que identifican riesgos de publicar coordenadas exactas."
+    }
   }
 ]

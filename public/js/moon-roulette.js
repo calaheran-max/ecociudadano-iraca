@@ -33,6 +33,7 @@ export function createMoonRoulette({ stage, campaigns, mascots, onFocus, onEnter
     el.setAttribute("role", "option");
     el.dataset.id = campaign.id;
     const art = document.createElement("span");
+    art.className = "moon-mascot";
     art.innerHTML = mascots[campaign.id] ?? "";
     const text = document.createElement("span");
     const name = document.createElement("strong");

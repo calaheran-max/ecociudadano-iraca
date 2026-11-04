@@ -1,4 +1,4 @@
-/** Mascotas SVG de las 12 campañas. Sin imágenes externas. */
+/** Mascotas SVG de las campañas. Sin imágenes externas. */
 export const MASCOTAS = {
   diego: {
     nombre: "Byte",
@@ -60,6 +60,11 @@ export const MASCOTAS = {
     rol: "el toro sabanero",
     svg: `<svg viewBox="0 0 200 200" aria-hidden="true"><circle cx="160" cy="70" r="16" fill="#606C38"/><rect x="157" y="84" width="6" height="40" fill="#7F4F24"/><circle cx="148" cy="62" r="12" fill="#606C38"/><circle cx="172" cy="60" r="12" fill="#606C38"/><ellipse cx="95" cy="130" rx="50" ry="30" fill="#DDA15E"/><circle cx="60" cy="100" r="26" fill="#BC6C25"/><path d="M40 82 Q22 60 30 50 Q38 70 48 78Z" fill="#FEFAE0"/><path d="M80 82 Q98 60 90 50 Q82 70 72 78Z" fill="#FEFAE0"/><circle cx="52" cy="96" r="4" fill="#283618"/><circle cx="68" cy="96" r="4" fill="#283618"/><ellipse cx="60" cy="114" rx="14" ry="9" fill="#FEFAE0"/><circle cx="55" cy="114" r="2" fill="#283618"/><circle cx="65" cy="114" r="2" fill="#283618"/><g stroke="#BC6C25" stroke-width="9" stroke-linecap="round"><line x1="70" y1="155" x2="70" y2="180"/><line x1="120" y1="155" x2="120" y2="180"/></g><path d="M145 125 Q160 120 158 140" stroke="#BC6C25" stroke-width="4" fill="none"/><path d="M0 185 H200" stroke="#606C38" stroke-width="6"/></svg>`,
   },
+  zharik: {
+    nombre: "Ruta",
+    rol: "el zorro navegante",
+    svg: `<svg viewBox="0 0 200 200" aria-hidden="true"><ellipse cx="105" cy="118" rx="52" ry="28" fill="#00C853"/><circle cx="62" cy="100" r="24" fill="#1E88E5"/><circle cx="56" cy="94" r="6" fill="#0A0F0D"/><path d="M48 82 Q30 48 22 42 M70 80 Q82 45 98 36" stroke="#00C853" stroke-width="4" fill="none"/><circle cx="22" cy="42" r="5" fill="#69F0AE"/><circle cx="98" cy="36" r="5" fill="#69F0AE"/><path d="M145 120 L172 88 L182 148" stroke="#1E88E5" stroke-width="6" fill="none"/><circle cx="150" cy="150" r="18" fill="none" stroke="#69F0AE" stroke-width="3"/><line x1="150" y1="132" x2="150" y2="168" stroke="#69F0AE" stroke-width="2"/><line x1="132" y1="150" x2="168" y2="150" stroke="#69F0AE" stroke-width="2"/><polyline points="70,168 90,158 105,172 125,150 145,168" stroke="#00C853" stroke-width="3" fill="none"/></svg>`,
+  },
 };
 
 const ALIAS = {
@@ -75,6 +80,7 @@ const ALIAS = {
   "rous-vidal": "rous",
   "alison-tarache": "alison",
   "duvan-franco": "duvan",
+  "zharik-betancur": "zharik",
 };
 
 export function mascotaDe(id) {

@@ -13,9 +13,18 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/themes.css" />
   </head>
-  <body class="theme-diego">
+  <body class="theme-diego intro-fase-0">
     <div class="water-background" aria-hidden="true"><span></span><span></span><span></span></div>
-    <header class="topbar">
+
+    <div id="intro-overlay" class="intro-overlay" role="dialog" aria-label="Presentación EcoCiudadano">
+      <div class="intro-copy">
+        <h1 id="intro-title" class="intro-title"></h1>
+        <p id="intro-sub" class="intro-sub" hidden></p>
+      </div>
+      <button type="button" class="btn intro-skip" id="intro-skip">Saltar entrada</button>
+    </div>
+
+    <header class="topbar intro-ui">
       <div>
         <small>I.E. Iracá · San Martín, Meta · Guía 8</small>
         <strong>EcoCiudadano Iracá</strong>
@@ -28,7 +37,7 @@
         <a class="topbar-btn topbar-btn-docente" href="./admin.html">Panel docente</a>
       </nav>
     </header>
-    <div class="shell">
+    <div class="shell intro-ui">
       <aside class="moon-stage" id="moon-stage" tabindex="0" role="listbox" aria-label="Campañas. Usa flechas arriba y abajo, Enter para entrar">
         <div class="moon-disc" aria-hidden="true"></div>
         <span class="moon-pointer" aria-hidden="true"></span>

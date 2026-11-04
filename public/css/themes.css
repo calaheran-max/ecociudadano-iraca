@@ -1,4 +1,4 @@
-/* Identidad visual de los 12 proyectos — body.theme-[estudiante] */
+/* Identidad visual de los 13 proyectos — body.theme-[estudiante] */
 
 body.theme-diego {
   --campaign-accent: #00ff9c;
@@ -369,6 +369,32 @@ body.theme-duvan {
 body.theme-duvan .preview-card:hover {
   transform: translateY(-6px);
   border-color: #dda15e;
+}
+
+body.theme-zharik {
+  --campaign-accent: #00c853;
+  --campaign-surface: #1a1a2e;
+  --campaign-border: #1e88e5;
+  --campaign-text: #ffffff;
+  --primary-color: #00c853;
+  --accent-color: #69f0ae;
+  --bg-theme: #1a1a2e;
+  --text-theme: #ffffff;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+}
+
+body.theme-zharik .water-background {
+  background:
+    radial-gradient(circle at 18% 28%, rgba(0, 200, 83, 0.16), transparent 55%),
+    radial-gradient(circle at 82% 78%, rgba(30, 136, 229, 0.14), transparent 55%),
+    #1a1a2e;
+}
+
+body.theme-zharik .preview-card:hover,
+body.theme-zharik .moon-card.is-selected {
+  box-shadow: 0 0 24px rgba(0, 200, 83, 0.35);
+  border-color: #00c853;
 }
 
 /* Mobile: apagar blur de temas (evita capa negra en GPU) */

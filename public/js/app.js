@@ -1,6 +1,7 @@
 import { mascotaDe } from "./mascotas.js";
 import { createMoonRoulette } from "./moon-roulette.js";
 import { initQrModal } from "./qr-modal.js";
+import { startEntranceAnimation } from "./entrance-animation.js";
 
 const workspace = document.getElementById("workspace");
 const toastEl = document.getElementById("toast");
@@ -359,6 +360,7 @@ const CAMPANA_ALIASES = {
   "rous-vidal": "rous",
   "alison-tarache": "alison",
   "duvan-franco": "duvan",
+  "zharik-betancur": "zharik",
 };
 
 function resolveCampanaFromUrl(list) {
@@ -369,8 +371,17 @@ function resolveCampanaFromUrl(list) {
   return list.find((q) => q.id === id || q.slug === id) || null;
 }
 
+function applyTheme(theme) {
+  const intro = [...document.body.classList].filter((c) => c.startsWith("intro-"));
+  document.body.className = [`theme-${theme}`, ...intro].join(" ");
+}
+
 async function boot() {
   initQrModal();
+  const deepPreview =
+    new URLSearchParams(window.location.search).get("campana") ||
+    new URLSearchParams(window.location.search).get("c");
+
   const res = await fetch("/api/cuestionarios");
   if (!res.ok) throw new Error("La API no respondió (" + res.status + ")");
   const data = await res.json();
@@ -384,7 +395,7 @@ async function boot() {
     campaigns,
     mascots,
     onFocus: (campaign) => {
-      if (!quizLock) document.body.className = `theme-${campaign.theme}`;
+      if (!quizLock) applyTheme(campaign.theme);
       previewCampaign(campaign);
     },
     onEnter: (campaign) => showFicha(campaign.id),
@@ -408,11 +419,12 @@ async function boot() {
     }
   });
 
+  await startEntranceAnimation({ skip: Boolean(deepPreview) });
+
   const deep = resolveCampanaFromUrl(quizzes);
   if (deep) {
-    document.body.className = `theme-${deep.theme}`;
+    applyTheme(deep.theme);
     roulette.centerById(deep.id, false);
-    // Link inteligente: abre directo el formulario de nombre/grado
     showGateForm(deep.id);
   }
 }
